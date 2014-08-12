@@ -15,4 +15,12 @@ RSpec.describe ItemsController, type: :controller do
 		end
 	end
 
+	describe 'GET show' do 
+		it 'exists' do
+			item = Item.create!(valid_attributes)
+			get :show, {id: item.to_param}
+			expect(assigns(:item)).to eq(item)
+		end
+	end
+
 end
