@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :items, only: [:index, :show]
+  resources :items, except: [:destroy]
   root to: 'items#index'
 end
