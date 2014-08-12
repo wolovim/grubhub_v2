@@ -56,6 +56,13 @@ describe 'when viewing the items' do
 		expect(page).not_to have_content "Just like, wow."
 	end
 
-	
+	it 'can delete and item' do
+		item = Item.create(title: "Shitty Donut", description: "A Mistake", price: 0)
+		visit item_path(item)
+		click_link "Delete Deliciousness"
+		expect(current_path).to eq(items_path)
+		expect(page).not_to have_content "Shitty Donut"
+		expect(page).not_to have_content "A Mistake"
+	end
 
 end
