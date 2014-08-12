@@ -28,6 +28,8 @@ gem 'spring',        group: :development
 
 group :development, :test do
 	gem 'rspec-rails'
+	gem 'capybara'
+	gem 'capybara-webkit'
 end
 
 # Use ActiveModel has_secure_password
