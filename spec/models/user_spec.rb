@@ -18,9 +18,8 @@ describe User, type: :model do
   end
 
   it { should validate_presence_of(:email) }
+  it { should validate_presence_of(:password) }
 
   it { should allow_value('me@example.com', 'yourmom123@aol.com').for :email }
-
   it { should_not allow_value('sdaf*!@~=-0>!', nil, '').for :email }
-
 end

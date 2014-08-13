@@ -18,12 +18,14 @@ describe '' do
       expect(page).to have_content "Email can't be blank"
     end
 
+    it 'cannot register without a password' do
+      register(password: nil)
+      expect(page).to have_content "Password can't be blank"
+    end
+
     it 'cannot register with an invalid email address' do
       register(email: '^$%^%#$@#$^%$^.com')
       expect(page).to have_content "Email is invalid"
     end
-
-  
-
   end
 end
