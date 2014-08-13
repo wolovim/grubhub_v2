@@ -1,6 +1,7 @@
 <h1>CATEGORIES</h1>h
 <% @categories.each do |category| %>
 	<%= category.name %>
-	<%= link_to "edit", edit_category_path(category) %>
+	<%= link_to "Edit", edit_category_path(category) %>
+	<%= link_to "Delete", category_path(category), method: :delete %>
 <% end %>
 <%= link_to 'Add Category', new_category_path %>
