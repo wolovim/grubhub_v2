@@ -30,6 +30,7 @@ group :development, :test do
 	gem 'rspec-rails'
 	gem 'capybara'
 	gem 'capybara-webkit'
+	gem 'shoulda-matchers', require: false
 end
 
 # Use ActiveModel has_secure_password
@@ -43,4 +44,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
