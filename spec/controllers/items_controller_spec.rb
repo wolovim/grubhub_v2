@@ -32,7 +32,7 @@ RSpec.describe ItemsController, type: :controller do
 
 	describe 'GET edit' do
 		it "assigns the requested item as @item" do
-			get :edit, {:id => item.to_param}
+			get :edit, id: item.to_param
 			expect(assigns(:item)).to eq(item)
 		end
 	end

@@ -65,4 +65,19 @@ describe 'when viewing the items' do
 		expect(page).not_to have_content "A Mistake"
 	end
 
+	it 'shows the category associated with an item' do
+		item = Item.create(title: "Shitty Donut", description: "A Mistake", price: 0)
+		category = Category.create(name: "Savory")
+		item.categories << category
+		category.items << item
+		visit item_path(item)
+		expect(page).to have_content "Shitty Donut"
+		expect(page).to have_content "Savory"
+		visit items_path
+		expect(page).to have_content "Shitty Donut"
+		expect(page).to have_content "Savory"
+	end
+
+	it 
+
 end
