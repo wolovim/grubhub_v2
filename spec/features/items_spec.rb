@@ -78,6 +78,4 @@ describe 'when viewing the items' do
 		expect(page).to have_content "Savory"
 	end
 
-	it 
-
 end
