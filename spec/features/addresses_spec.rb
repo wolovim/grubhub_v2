@@ -3,7 +3,6 @@ require 'rails_helper'
 describe '' do
 
   context 'as a user' do
-
     it 'can add address with a street, unit, city, state, and zip' do
       add_address
       expect(current_path).to eq addresses_path
