@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140813214252) do
+ActiveRecord::Schema.define(version: 20140814175846) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20140813214252) do
     t.datetime "updated_at"
   end
 
+  create_table "order_items", force: true do |t|
+    t.integer  "item_id"
+    t.integer  "quantity"
+    t.integer  "unit_price"
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "orders", force: true do |t|
     t.integer  "user_id"
     t.string   "order_type"
@@ -43,5 +52,18 @@ ActiveRecord::Schema.define(version: 20140813214252) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "nickname"
+    t.string   "role"
+    t.string   "password_hash"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end
