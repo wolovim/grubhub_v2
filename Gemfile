@@ -31,6 +31,7 @@ group :development, :test do
 	gem 'capybara'
 	gem 'capybara-webkit'
 	gem 'shoulda-matchers', require: false
+	gem 'launchy'
 end
 
 # Use ActiveModel has_secure_password
