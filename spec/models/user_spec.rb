@@ -22,7 +22,7 @@ describe User, type: :model do
   it { should validate_presence_of(:password) }
 
   it { should validate_presence_of(:password_confirmation) }
-  
+
   it { should allow_value('me@example.com', 'yourmom123@aol.com').for :email }
 
   it { should_not allow_value('sdaf*!@~=-0>!', nil, '').for :email }
@@ -30,5 +30,7 @@ describe User, type: :model do
   it { should validate_confirmation_of(:password) }
 
   it { should validate_uniqueness_of(:email) }
+
+  it { should have_secure_password }
 
 end
