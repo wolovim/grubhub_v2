@@ -29,6 +29,20 @@ describe '' do
     it 'cannot add address without state length of two' do
       add_address(state: 'C')
       expect(page).to have_content "State is the wrong length (should be 2 characters)"
+      add_address(state: 'COO')
+      expect(page).to have_content "State is the wrong length (should be 2 characters)"
+    end
+
+    it 'cannot add address without a zip' do
+      add_address(zip: nil)
+      expect(page).to have_content "Zip can't be blank"
+    end
+
+    it 'cannot add address without a length of 5' do
+      add_address(zip: '134')
+      expect(page).to have_content "Zip is the wrong length (should be 5 characters)"
+      add_address(zip: '1234567')
+      expect(page).to have_content "Zip is the wrong length (should be 5 characters)"
     end
   end
 end
