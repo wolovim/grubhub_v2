@@ -1,4 +1,7 @@
-def register(email: 'test@example.com', password: '123456', password_confirmation: '123456')
+def register(email: 'test@example.com',
+            password: '123456',
+            password_confirmation: '123456')
+
   visit root_path
   click_on('Register')
   fill_in "Email", with: email

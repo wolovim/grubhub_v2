@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   resources :order_items, only: [:destroy, :update]
   resources :users,  only: [:new, :create]
+  resources :addresses, only: [:new, :create, :index]
 
   root to: 'categories#index'
 end

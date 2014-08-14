@@ -19,6 +19,7 @@ group :development, :test do
 	gem 'capybara'
 	gem 'capybara-webkit'
 	gem 'shoulda-matchers', require: false
+	gem 'launchy'
 end
 
 gem 'simple_form'

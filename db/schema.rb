@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20140817205953) do
   create_table "item_categories", force: true do |t|
     t.integer  "item_id"
     t.integer  "category_id"
+
+  create_table "addresses", force: true do |t|
+    t.string   "street"
+    t.string   "unit"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
