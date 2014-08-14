@@ -1,11 +1,5 @@
-<h1>UPDATE!</h1>
-
-<%= form_for @item do |f| %>
-	<%= f.label :title %>
-	<%= f.text_field :title %>
-	<%= f.label :description %>
-	<%= f.text_area :description %>
-	<%= f.label :price %>
-	<%= f.text_field :price %>
-	<%= f.submit %>
-<% end %>
+<%- model_class = Item -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= render :partial => 'form' %>

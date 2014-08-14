@@ -7,8 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render partial: 'shared/navbar' %>
-<%= yield %>
+
+	<%= render 'shared/navbar' %>
+
+	<div class="container">
+		<div class="row">
+			<div class="span8"><%= yield %></div>
+			<div class="span4">
+				<h2>Sidebar</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias deleniti, error nulla non porro, unde officiis. Blanditiis inventore facere eaque quisquam laborum magnam architecto nisi, placeat, perferendis tempora modi optio.</p>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

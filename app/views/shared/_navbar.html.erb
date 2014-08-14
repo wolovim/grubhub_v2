@@ -1,9 +1,22 @@
-<nav class="navbar navbar-inverse" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-    </ul>
-  </div><!-- /.container-fluid -->
-</nav>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">Ivory Tower Donuts</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "Browse Donuts", items_path %></li>
+          <li><%= link_to "Orders", orders_path %></li>
+          <li><%= link_to "Categories", categories_path %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Cart" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
