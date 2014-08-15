@@ -22,30 +22,46 @@ describe 'when viewing the orders' do
 			expect(page).to have_content("delivery")
 		end
 
-
-
-
 		it "has link to cancel or mark as paid orders" do
 			pending
-			expect(page).to have_button('Mark as paid')
-			expect(page).to have_button('Cancel')
+			expect(page).to have_link('Change Status')
+			expect(page).to have_link('Cancel')
 		end
 
 		it 'can cancel orders' do
-			pending
-			click_button("Cancel")
+			click_link("Cancel")
 			expect(current_path).to eq(orders_path)
-			expect(page).not_to have_content("pickup")
-			expect(page).not_to have_content("ordered")
+			expect(page).not_to have_content("completed")
+			expect(page).to have_content("cancelled")
 		end
 
 		it 'can change status to paid' do
 			pending
-			click_button('Mark as paid')
+			order.status = 'paid'
+			order.save
+			click_link('Change Status')
+			expect(current_path).to eq(orders_path)
+			expect(page).to have_content('completed')
+			expect(page).not_to have_content('paid')
+		end
+
+		it 'can change status to completed' do
+			pending
+			order.status = 'ordered'
+			order.save
+			click_link('Change Status')
 			expect(current_path).to eq(orders_path)
 			expect(page).to have_content('paid')
 			expect(page).not_to have_content('ordered')
 		end
 
+		it 'shows Mark as Paid button for ordered status' do
+			order.status = 'ordered'
+			order.save
+			visit orders_path
+			binding.pry
+			expect(page).to have_link('Mark as Paid')
+			expect(page).not_to have_link('Mark as Completed')
+		end
 	end
 end

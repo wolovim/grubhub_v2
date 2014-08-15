@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'twitter-bootstrap-rails'
 gem 'therubyracer'
 gem 'less-rails'
+gem 'pry'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -48,4 +49,3 @@ gem 'less-rails'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
