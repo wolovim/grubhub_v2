@@ -6,7 +6,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="#">Ivory Tower Donuts</a>
+      <a href="/"><img src="http://www.clker.com/cliparts/f/U/g/9/G/B/cartoon-elephant-bw-hi.png" class="brand" height="40px" width="40px" /></a>
+      <a class="brand" href="/">Ivory Tower Donut Shop</a>
       <div class="nav-collapse">
         <ul class="nav">
           <li><%= link_to "Browse Donuts", items_path %></li>
@@ -14,7 +15,12 @@
           <li><%= link_to "Categories", categories_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Cart" %></li>
+          <li class="active">
+            <a href="/">
+            View Cart
+            <span class="badge">0</span>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
