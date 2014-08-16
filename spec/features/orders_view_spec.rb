@@ -4,9 +4,13 @@ describe 'when viewing the orders' do
 	context 'as an admin' do
 		# let(:user)  { User.create }
 		let(:order)  { Order.create(user_id: 1, order_type: "pickup", address_id: 2, status: "ordered", total: 2200) }
+		let(:item) { Item.create(title: 'The Awesome Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4500) }
+		let(:order_item) { OrderItem.create(order_id: order.id, item_id: item.id, quantity: 2, unit_price: 200) }
 
 		before(:each) do
 			order
+			item
+			order_item
 			visit orders_path
 		end
 
@@ -67,6 +71,24 @@ describe 'when viewing the orders' do
 			visit orders_path
 			expect(page).not_to have_link('Mark As Paid')
 			expect(page).not_to have_link('Mark As Completed')
+		end
+
+		it 'can filter items by status' do
+
+		end
+
+		it 'can remove items from an order' do
+			expect(page).to have_content('The Awesome Donut')
+			expect(order.items).to eq([item])
+			click_link('Edit')
+			expect(current_path).to eq(edit_order_path(order))
+			click_link('Remove')
+			expect(current_path).to eq(edit_order_path(order))
+			expect(page).not_to have_content('The Awesome Donut')
+		end
+
+		it 'can update quantity of an order item' do
+			
 		end
 	end
 end

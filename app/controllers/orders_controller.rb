@@ -3,6 +3,10 @@ class OrdersController < ApplicationController
 		@orders = Order.all
 	end
 
+	def show
+		@order = Order.find(params[:id])
+	end
+
 	def edit
 		@order = Order.find(params[:id])
 	end
@@ -26,6 +30,12 @@ class OrdersController < ApplicationController
 		@order = Order.find(params[:order_id])
 		@order.update_status
 		redirect_to orders_path
+	end
+
+	def remove_item
+		@order = Order.find(params[:order_id])
+		@order.remove_item(params[:item_id])
+		redirect_to edit_order_path(@order)
 	end
 
 	private

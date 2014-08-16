@@ -10,10 +10,21 @@
   <dd><%= @order.order_type %></dd>
   <dt><strong><%= model_class.human_attribute_name(:address_id) %>:</strong></dt>
   <dd><%= @order.address_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:items) %>:</strong></dt>
+  <% @order.order_items.each do |order_item| %>
+    <dd><%= link_to order_item.item_title, item_path(order_item.item) %> |
+      Quantity: <%= order_item.quantity %> |
+      Unit Price: <%= order_item.unit_price_dollars %> |
+      Subtotal: <%= order_item.subtotal %><br/></dd>
+  <% end %><br/>
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
   <dd><%= @order.status %></dd>
   <dt><strong><%= model_class.human_attribute_name(:total) %>:</strong></dt>
   <dd><%= @order.total %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:order_date) %>:</strong></dt>
+  <dd><%= @order.format_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:order_time) %>:</strong></dt>
+  <dd><%= @order.format_time %></dd>
 </dl>
 
 <div class="form-actions">

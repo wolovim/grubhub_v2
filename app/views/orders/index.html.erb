@@ -6,12 +6,13 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:customer) %></th>
       <th><%= model_class.human_attribute_name(:order_type) %></th>
       <th><%= model_class.human_attribute_name(:address_id) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%= model_class.human_attribute_name(:items) %></th>
       <th><%= model_class.human_attribute_name(:total) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:order_date) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -23,8 +24,11 @@
         <td><%= order.order_type %></td>
         <td><%= order.address_id %></td>
         <td><%= order.status %></td>
+        <% order.items.each do |item| %>
+          <td><%= item.title %></td>
+        <% end %>
         <td><%= order.total %></td>
-        <td><%=l order.created_at %></td>
+        <td><%= order.format_date %></td>
         <td>
           <% if pending?(order.status) %>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
