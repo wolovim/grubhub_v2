@@ -53,14 +53,6 @@ describe 'when viewing the orders' do
 			expect(page).not_to have_content('ordered')
 		end
 
-		it 'shows Mark as Paid button for ordered status' do
-			order.status = 'ordered'
-			order.save
-			visit orders_path
-			expect(page).to have_link('Mark As Paid')
-			expect(page).not_to have_link('Mark As Completed')
-		end
-
 		it 'does not show an update button for completed status' do
 			order.status = 'completed'
 			order.save
