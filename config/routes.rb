@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     get '/update_status' => 'orders#update_status', as: :update_status
     get '/cancel' => 'orders#cancel', as: :cancel
   end
-  root to: 'items#index'
+  root to: 'categories#index'
 end
