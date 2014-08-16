@@ -33,19 +33,19 @@ group :development, :test do
 end
 
 gem 'simple_form'
-gem 'twitter-bootstrap-rails'
-gem 'therubyracer'
-gem 'less-rails'
 
-# gem 'bootstrap-sass'
-# gem 'sass-rails', '>= 3.2'
+# gem 'twitter-bootstrap-rails'
+# gem 'less-rails'
+# gem 'therubyracer'
+# gem 'bootstrap_helper'
+
+gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -1,0 +1,23 @@
+body {
+ 	padding-top: 65px;
+}
+
+#ele-logo {
+	margin-top: -10px;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,700);
+
+$body-bg: #eee;
+$font-family-sans-serif: 'Ubuntu', Helvetica, sans-serif;
+$navbar-height: 75px;
+$navbar-inverse-bg: #024;
+$navbar-inverse-link-color: #bbb;
+$navbar-inverse-brand-color: #fff;
+
+.navbar-brand {
+	font-weight: bold;
+}
+
+@import "bootstrap-sprockets";
+@import 'bootstrap';
