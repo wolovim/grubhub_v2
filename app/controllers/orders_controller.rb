@@ -16,6 +16,18 @@ class OrdersController < ApplicationController
 		end
 	end
 
+	def cancel
+		@order = Order.find(params[:order_id])
+		@order.cancel
+		redirect_to orders_path
+	end
+
+	def update_status
+		@order = Order.find(params[:order_id])
+		@order.update_status
+		redirect_to orders_path
+	end
+
 	private
 
 	def order_params

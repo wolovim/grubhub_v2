@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model  do
-	let(:order) { Order.new(user_id: 1, order_type: "delivery", address_id: 3, status: "completed", total: 3300) }
+	let(:order) { Order.new(user_id: 1, order_type: "delivery", address_id: 3, status: "ordered", total: 3300) }
 
 	it 'is valid' do
 		expect(order).to be_valid
@@ -38,5 +38,22 @@ RSpec.describe Order, type: :model  do
 
 	it 'has an array of items' do
 		expect(order.items).to eq([])
+	end
+
+	it 'can update the status from ordered to paid' do
+		order.update_status
+		expect(order.status).to eq('paid')
+	end
+
+	it 'can cancel the status' do
+		order.cancel
+		expect(order.status).to eq('cancelled')
+	end
+
+	it 'can update the status from paid to completed' do
+		order2 = Order.new(user_id: 2, order_type: "delivery", address_id: 4,
+			status: "paid", total: 300)
+		order2.update_status
+		expect(order2.status).to eq('completed')
 	end
 end

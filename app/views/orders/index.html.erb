@@ -26,13 +26,18 @@
         <td><%= order.total %></td>
         <td><%=l order.created_at %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_order_path(order), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      order_path(order),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+          <% if pending?(order.status) %>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_order_path(order), :class => 'btn btn-mini' %>
+
+            <%= link_to t('.edit', :default => t(get_update_button(order.status))),
+                        order_update_status_path(order),
+                        :class => 'btn btn-mini' %>
+            <%= link_to t('.edit', :default => t("Cancel")),
+                        order_cancel_path(order),
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-mini btn-danger' %>
+          <% end %>
         </td>
       </tr>
     <% end %>
