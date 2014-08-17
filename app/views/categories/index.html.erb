@@ -3,19 +3,19 @@
 		<span class="category-name"><%= category.name %></span>
 		<%= link_to "Edit", edit_category_path(category) %>
 		<%= link_to "Delete", category_path(category), method: :delete %><br/>
-		<% category.items.each do |item| %>
-			<div class="item-box">
-				<strong><%= item.title %></strong><br/>
-				<%= item.description %><br/>
-				$<%= item.price %><br/>
-				<button type="button" class="btn btn-primary add-item" href="#">
-					<span class='glyphicon glyphicon-plus-sign'></span> Add to Cart
-				</button>
-			</div><br/><br/>
-		<% end %>
-		<div class="add-item-box">
-			<a class="add-item-text" href="#">Add A New Donut!</a>
-		</div>
-		<br/>
-	<% end %><br/><br/>
+		<div class="donuts transitions-enabled">
+			<% category.items.each do |item| %>
+				<div class="item-box">
+					<strong><%= item.title %></strong><br/>
+					<%= item.description %><br/>
+					$<%= item.price %><br/>
+					<button type="button" class="btn btn-primary add-item" href="#">
+						<span class='glyphicon glyphicon-plus-sign'></span> Add to Cart
+					</button>
+				</div>
+			<% end %>
+		</div> <!-- /.donuts -->
+	<% end %>
+
+		<br/><br/>
 	<%= button_to 'Add Category', new_category_path %>

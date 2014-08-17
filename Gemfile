@@ -26,6 +26,8 @@ gem 'pry'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'jquery-turbolinks'
+gem 'masonry-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
