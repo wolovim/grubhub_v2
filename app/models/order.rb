@@ -12,4 +12,26 @@ class Order < ActiveRecord::Base
 		self.status = 'cancelled'
 		self.save
 	end
+
+	def remove_item(item_id)
+		self.items = items.reject { |item| item.id == item_id.to_i }
+		self.save
+	end
+
+	def format_date
+		self.created_at.to_time.strftime("%m/%d/%Y")
+	end
+
+	def format_time
+		self.created_at.to_time.strftime("%I:%M %p")
+	end
+
+	def customer_name
+		User.find(params[:user_id])
+	end
+
+	def total
+		pretax_total = self.order_items.inject(0) { |sum, order_item| sum + order_item.quantity * order_item.unit_price }
+		"$" + sprintf("%.2f", (pretax_total += pretax_total* 0.07) / 100)
+	end
 end

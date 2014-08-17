@@ -2,16 +2,21 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<div>
+  Ordered: <%= orders_by_status('ordered') %> |
+  Paid: <%= orders_by_status('paid') %> |
+  Completed: <%= orders_by_status('completed') %> |
+  Cancelled: <%= orders_by_status('cancelled') %>
+</div>
 <table class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:customer) %></th>
       <th><%= model_class.human_attribute_name(:order_type) %></th>
-      <th><%= model_class.human_attribute_name(:address_id) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:total) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:order_date) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -21,10 +26,9 @@
         <td><%= link_to order.id, order_path(order) %></td>
         <td><%= order.user_id %></td>
         <td><%= order.order_type %></td>
-        <td><%= order.address_id %></td>
         <td><%= order.status %></td>
         <td><%= order.total %></td>
-        <td><%=l order.created_at %></td>
+        <td><%= order.format_date %></td>
         <td>
           <% if pending?(order.status) %>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),

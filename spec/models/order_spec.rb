@@ -56,4 +56,17 @@ RSpec.describe Order, type: :model  do
 		order2.update_status
 		expect(order2.status).to eq('completed')
 	end
+
+	it 'can have an item removed' do
+		item = Item.create(title: 'The Awesome Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4500)
+		order.items << item
+		expect(order.items).to eq([item])
+
+		order.remove_item(1)
+		expect(order.items).to eq([])
+	end
+
+	it 'can return total price' do
+		
+	end
 end
