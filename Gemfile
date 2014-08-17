@@ -28,11 +28,11 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'jquery-turbolinks'
 gem 'masonry-rails'
+gem 'paperclip'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use unicorn as the app server
 gem 'unicorn'
 
 # Use Capistrano for deployment
