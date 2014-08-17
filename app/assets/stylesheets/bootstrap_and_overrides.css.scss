@@ -4,7 +4,7 @@ $font-family-sans-serif: 'Ubuntu', Helvetica, sans-serif;
 
 // BODY //
 body {
- 	padding-top: 65px;
+ 	padding-top: 85px;
 }
 $body-bg: #eee;
 
@@ -40,6 +40,11 @@ $navbar-inverse-brand-color: #fff;
 	width: 325px;
 	height: 200px;
 	background-color: #E8F3FF;
+}
+
+.item-image {
+	float: right;
+	border: 2px solid #024;
 }
 
 .add-item-box {

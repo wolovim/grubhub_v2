@@ -2,6 +2,8 @@
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.input :price %>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

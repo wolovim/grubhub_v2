@@ -9,9 +9,13 @@
 					<strong><%= item.title %></strong><br/>
 					<%= item.description %><br/>
 					$<%= item.price %><br/>
+					<%= image_tag item.image.url(:small), class: "item-image" %><br/>
 					<button type="button" class="btn btn-primary add-item" href="#">
 						<span class='glyphicon glyphicon-plus-sign'></span> Add to Cart
 					</button>
+					<!-- <div class="add-item-box">
+						<a class="add-item-text" href="#">Add A New Donut!</a>
+					</div> -->
 				</div>
 			<% end %>
 		</div> <!-- /.donuts -->
