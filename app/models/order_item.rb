@@ -14,7 +14,11 @@ class OrderItem < ActiveRecord::Base
 		"$" + sprintf("%.2f", (unit_price * quantity).to_f / 100)
 	end
 
+	def unit_price_decimal
+		unit_price / 100.00
+	end
+
 	def unit_price_dollars
-		"$" + sprintf("%.2f", unit_price.to_f / 100)
+		"$" + sprintf("%.2f", unit_price_decimal)
 	end
 end
