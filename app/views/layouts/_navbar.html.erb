@@ -1,0 +1,33 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a id="ele-logo" class="navbar-brand" href="/"><img src="http://www.clker.com/cliparts/f/U/g/9/G/B/cartoon-elephant-bw-hi.png" class="brand" height="35px" width="35px" /></a>
+	      <a class="navbar-brand" href="/">Ivory Tower Donuts</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <li><%= link_to "Donuts", items_path %></li>
+	        <li><%= link_to "Categories", categories_path %></li>
+	        <li><%= link_to "Orders", orders_path %></li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li class="active">
+	        	<a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>
+	        		View Cart <span class="badge">0</span>
+        		</a>
+	        </li>	
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</div><!-- /.container -->
+</nav>

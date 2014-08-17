@@ -1,0 +1,76 @@
+// FONTS //
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,700);
+$font-family-sans-serif: 'Ubuntu', Helvetica, sans-serif;
+
+// BODY //
+body {
+ 	padding-top: 65px;
+}
+$body-bg: #eee;
+
+// NAVBAR //
+$navbar-height: 75px;
+$navbar-inverse-bg: #024;
+$navbar-inverse-link-color: #bbb;
+$navbar-inverse-brand-color: #fff;
+
+#ele-logo {
+	margin-top: -10px;
+}
+
+.navbar-brand {
+	font-weight: bold;
+}
+
+// CATEGORIES //
+.category-name {
+	font-weight: bold;
+	font-size: 1.5em;
+	color: #024;
+}
+
+.item-box {
+	border: 4px solid #024;
+	padding: 10px;
+	max-width: 45%;
+	background-color: #E8F3FF;
+}
+
+.add-item-box {
+	border: 4px dashed #00450E;
+	padding: 20px;
+	max-width: 45%;
+	background-color: #D6F5D6;
+}
+
+.add-item-text {
+	margin-left: 60px;
+	color: #175B17;
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+a.add-item-text:hover {
+	color: #000;
+	text-decoration: none;
+}
+
+// FOOTER //
+.footer {
+	clear: both;
+	margin-top: 15px;
+	padding: 10px;
+	background-color: #aaa;
+	color: white;
+	text-align: center;
+	width: 100%;
+	height: 45px;
+}
+
+#turing-link {
+	color: #eee;
+}
+
+// IMPORTS //
+@import "bootstrap-sprockets";
+@import 'bootstrap';
