@@ -1,5 +1,7 @@
 // FONTS //
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:400,700);
+@import url(http://fonts.googleapis.com/css?family=Parisienne);
+@import url(http://fonts.googleapis.com/css?family=Yellowtail);
 $font-family-sans-serif: 'Ubuntu', Helvetica, sans-serif;
 
 // BODY //
@@ -42,8 +44,41 @@ $navbar-inverse-brand-color: #fff;
 	background-color: #E8F3FF;
 }
 
+.item-box-description {
+	float: left;
+	width: 100%;
+	background-color: white;
+	border: 2px dotted black;
+	padding: 4px;
+}
+
+.item-price {
+	float: left;
+	color: red;
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-top: 20px;
+	margin-left: 10px;
+}
+
+.only-price {
+	margin-left: 15px;
+}
+
+.only {
+	font-family: 'Parisienne', cursive;
+	// font-family: 'Yellowtail', cursive;
+	color: black;
+	font-size: 1.2em;
+}
+
+.add-item {
+	margin-top: 10px;
+}
+
 .item-image {
 	float: right;
+	margin-top: 10px;
 	border: 2px solid #024;
 }
 
