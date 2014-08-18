@@ -18,6 +18,7 @@ group :development, :test do
 	gem 'rspec-rails'
 	gem 'capybara'
 	gem 'capybara-webkit'
+	gem 'shoulda-matchers', require: false
 end
 
 gem 'simple_form'

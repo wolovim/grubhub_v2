@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     get '/remove_item/:item_id' => 'orders#remove_item', as: :remove_item
   end
   resources :order_items, only: [:destroy, :update]
+  resources :users,  only: [:new, :create]
+
   root to: 'categories#index'
 end
