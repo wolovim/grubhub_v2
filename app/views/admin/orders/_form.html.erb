@@ -1,0 +1,22 @@
+<% @order.order_items.each do |order_item| %>
+  <%= order_item.item_title %>
+  <%= simple_form_for order_item, :html => { :class => 'form-horizontal' } do |f| %>
+    <%= f.input :quantity %>
+    <%= f.input :unit_price, :input_html => { :value => order_item.unit_price_decimal }, as: :decimal %>
+    <%= f.button :submit, :class => 'btn-primary' %>
+  <% end %>
+  <%= link_to t('.edit', :default => t("Remove")),
+              order_item_path(order_item), method: :delete,
+              :class => 'btn btn-mini btn-danger' %>
+<% end %><br/><br/>
+<%= simple_form_for @order, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :order_type %>
+  <%= f.input :address_id %>
+  <%= f.input :status %><br/>
+  Total: <%= @order.total %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("Back")),
+                orders_path, :class => 'btn' %>
+  </div>
+<% end %>

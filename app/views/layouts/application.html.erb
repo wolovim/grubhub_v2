@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+  <%= flash[:error] if flash[:error] %>
 	<%= render 'layouts/navbar' %>
 
 	<div class="container">
@@ -27,6 +28,5 @@
 			<p>A <%= link_to "Turing.io", "http://www.turing.io", id: "turing-link" %> project.</p>
 		</div>
 	</footer>
-
 </body>
 </html>
