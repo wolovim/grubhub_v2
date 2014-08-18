@@ -20,6 +20,7 @@ describe '' do
 
     it 'cannot register with an email already registersed' do
       register
+      click_on 'Logout'
       register
       expect(page).to have_content "Email has already been taken"
     end
@@ -42,6 +43,17 @@ describe '' do
     it 'cannnot register when passwords do not match' do
       register(password: '123', password_confirmation: '1234')
       expect(page).to have_content "Password confirmation doesn't match Password"
+    end
+
+    # i = wherever you rae 
+    # a = after wherever you are
+    # A = end of the line
+    # o = next line
+    # O = previous line
+    
+    it 'stays logged in after registration' do
+      register
+      expect(page).to have_link "Logout"
     end
   end
 end
