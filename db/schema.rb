@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20140817205953) do
   create_table "item_categories", force: true do |t|
     t.integer  "item_id"
     t.integer  "category_id"
+  end
 
   create_table "addresses", force: true do |t|
     t.string   "street"
