@@ -14,6 +14,16 @@ describe 'Logging in' do
       expect(page).to_not have_content 'Login'
       expect(page).to     have_content 'Logout'
     end
+
+    it 'cannot log in with an invalid password' do
+      login(password: '1234')
+      expect(page).to have_content 'Invalid username or password.'
+    end
+
+    it 'can try to log in to a non-existent account without blowing up' do
+      login(email: 'not@real.com', password: '123')
+      expect(page).to have_content 'Invalid username or password.'
+    end
   end
 
   context 'as an Authenticated User' do
