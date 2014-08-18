@@ -7,6 +7,16 @@ class OrdersController < ApplicationController
 		@order = Order.find(params[:id])
 	end
 
+	def ordered
+	  @orders = Order.all.select { |order| order.status == 'ordered' }
+		render :index
+	end
+
+	def paid
+		@orders = Order.all.select { |order| order.status == 'paid' }
+		render :index
+	end
+
 	def edit
 		@order = Order.find(params[:id])
 	end

@@ -3,6 +3,13 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 <div>
+  <%= link_to 'All', orders_path %>
+  <%= link_to 'Ordered', ordered_path %>
+  <%= link_to 'Paid', paid_path %>
+  <%= link_to 'Completed' %>
+  <%= link_to 'Cancelled' %>
+</div>
+<div>
   Ordered: <%= orders_by_status('ordered') %> |
   Paid: <%= orders_by_status('paid') %> |
   Completed: <%= orders_by_status('completed') %> |
