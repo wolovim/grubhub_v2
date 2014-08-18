@@ -27,11 +27,6 @@ RSpec.describe Order, type: :model  do
 		expect(order).not_to be_valid
 	end
 
-	it 'is invalid without a total' do
-		order.total = nil
-		expect(order).not_to be_valid
-	end
-
 	it 'has an array of order items' do
 		expect(order.order_items).to eq([])
 	end
@@ -66,7 +61,27 @@ RSpec.describe Order, type: :model  do
 		expect(order.items).to eq([])
 	end
 
-	it 'can return total price' do
-		
+	it 'can return all orders with ordered status' do
+		example = Order.create(user_id: 1, order_type: "delivery", address_id: 3, status: "ordered", total: 3300)
+
+		expect(Order.all_ordered).to eq([example])
+	end
+
+	it 'can return all orders with ordered status' do
+		example = Order.create(user_id: 1, order_type: "delivery", address_id: 3, status: "paid", total: 3300)
+
+		expect(Order.all_paid).to eq([example])
+	end
+
+	it 'can return all orders with completed status' do
+		example = Order.create(user_id: 1, order_type: "delivery", address_id: 3, status: "completed", total: 3300)
+
+		expect(Order.all_completed).to eq([example])
+	end
+
+	it 'can return all orders with cancelled status' do
+		example = Order.create(user_id: 1, order_type: "delivery", address_id: 3, status: "cancelled", total: 3300)
+
+		expect(Order.all_cancelled).to eq([example])
 	end
 end

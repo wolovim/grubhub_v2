@@ -8,12 +8,22 @@ class OrdersController < ApplicationController
 	end
 
 	def ordered
-	  @orders = Order.all.select { |order| order.status == 'ordered' }
+	  @orders = Order.all_ordered
 		render :index
 	end
 
 	def paid
-		@orders = Order.all.select { |order| order.status == 'paid' }
+		@orders = Order.all_paid
+		render :index
+	end
+
+	def completed
+		@orders = Order.all_completed
+		render :index
+	end
+
+	def cancelled
+		@orders = Order.all_cancelled
 		render :index
 	end
 

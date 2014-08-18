@@ -2,6 +2,22 @@ class Order < ActiveRecord::Base
 	validates :user_id, :order_type, :address_id, :status, :total, presence: true
 	has_many :order_items
 	has_many :items, through: :order_items
+		
+	def self.all_ordered
+		all.select { |order| order.status == 	'ordered' }
+	end
+
+	def self.all_paid
+		all.select { |order| order.status == 	'paid' }
+	end
+
+	def self.all_completed
+		all.select { |order| order.status == 	'completed' }
+	end
+
+	def self.all_cancelled
+		all.select { |order| order.status == 	'cancelled' }
+	end
 
 	def update_status
 		self.status == 'ordered' ? self.status = 'paid' : self.status = 'completed'
