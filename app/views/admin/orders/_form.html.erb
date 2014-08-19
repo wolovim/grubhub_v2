@@ -5,12 +5,12 @@
     <%= f.input :unit_price, :input_html => { :value => order_item.unit_price_decimal }, as: :decimal %>
     <%= f.button :submit, :class => 'btn-primary' %>
   <% end %>
-  <%= link_to t('.edit', :default => t("Remove")), 
-                         admin_order_item_path(order_item), 
+  <%= link_to t('.edit', :default => t("Remove")),
+                         admin_order_item_path(order_item),
                          method: :delete, :class => 'btn btn-mini btn-danger' %>
 <% end %><br/><br/>
 
-<%= simple_form_for @order, :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for @order, :html => { :class => 'form-horizontal' }, url: admin_order_path(@order) do |f| %>
   <%= f.input :order_type %>
   <%= f.input :address_id %>
   <%= f.input :status %><br/>

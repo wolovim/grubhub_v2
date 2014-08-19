@@ -1,0 +1,16 @@
+<%- model_class = Item -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= simple_form_for @item, :html => { :class => 'form-horizontal' }, url: admin_items_path, method: :post do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+  <div class="form-actions">
+  <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                admin_items_path, :class => 'btn' %>
+  </div>
+<% end %>

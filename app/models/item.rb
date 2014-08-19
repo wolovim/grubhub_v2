@@ -10,4 +10,8 @@ class Item < ActiveRecord::Base
 	def display_categories
 		self.categories.map { |c| c.name }.join(', ')
 	end
+
+	def price_in_dollars
+		'$' + sprintf("%.2f", price / 100.00)
+	end
 end
