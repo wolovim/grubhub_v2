@@ -104,7 +104,6 @@ describe 'when viewing the orders' do
 			order2 =  Order.create(user_id: 1, order_type: "delivery", address_id: 2, status: "paid", total: 2200)
 			item2 = Item.create(title: 'The Paid Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4300)
 			order_item2 = OrderItem.create(order_id: order2.id, item_id: item2.id, quantity: 2, unit_price: 210)
-			save_and_open_page
 			click_link('Paid')
 			expect(page).to have_content('delivery')
 			expect(page).not_to have_content('pickup')
