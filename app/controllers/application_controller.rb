@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
 
     unless user.role == 'admin'
       flash[:error] = 'You must be logged in to access that.'
+      session[:last_page] = request.path
       redirect_to login_path
     end
   end
