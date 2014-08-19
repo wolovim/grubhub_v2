@@ -34,7 +34,7 @@ class Admin::OrdersController < ApplicationController
 	def update
 		@order = Order.find(params[:id])
 		if @order.update(order_params)
-			redirect_to orders_path
+			redirect_to admin_orders_path
 		else
 			render :edit
 		end
@@ -43,19 +43,19 @@ class Admin::OrdersController < ApplicationController
 	def cancel
 		@order = Order.find(params[:order_id])
 		@order.cancel
-		redirect_to orders_path
+		redirect_to admin_orders_path
 	end
 
 	def update_status
 		@order = Order.find(params[:order_id])
 		@order.update_status
-		redirect_to orders_path
+		redirect_to admin_orders_path
 	end
 
 	def remove_item
 		@order = Order.find(params[:order_id])
 		@order.remove_item(params[:item_id])
-		redirect_to edit_order_path(@order)
+		redirect_to edit_admin_order_path(@order)
 	end
 
 	private
