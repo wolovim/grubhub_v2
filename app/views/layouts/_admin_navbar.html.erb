@@ -22,11 +22,6 @@
 	        <li><%= link_to "Users", '#' %></li>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
-	        <li class="active">
-	        	<a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>
-	        		View Cart <span class="badge">0</span>
-        		</a>
-	        </li>
 	        <% if current_user %>
             <li><%= link_to "Logout", logout_path, method: :delete %></li>
           <% else %>
