@@ -12,4 +12,4 @@ describe 'Redirect after login', type: :feature do
     expect(current_path).to eq admin_orders_path
   end
 
-end
+ end

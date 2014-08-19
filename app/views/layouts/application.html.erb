@@ -8,8 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <%= flash[:error] if flash[:error] %>
 	<%= render 'layouts/navbar' %>
+
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :class => "flash_#{name}" %>
+  <% end %>
 
 	<div class="container">
 		<div class="row">

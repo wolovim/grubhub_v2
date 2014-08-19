@@ -49,5 +49,12 @@ describe '' do
       register
       expect(page).to have_link "Logout"
     end
+
+    it 'gives me confirmation after successful registration' do
+      register
+      expect(page).to have_content "Registration successful, congrats you can use a keyboard."
+    end
+
+
   end
 end
