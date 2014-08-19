@@ -9,7 +9,12 @@
 </head>
 <body>
   <%= flash[:error] if flash[:error] %>
-	<%= render 'layouts/navbar' %>
+
+  <% if  %>
+		<%= render 'layouts/admin_navbar' %>
+	<% else %>
+		<%= render 'layouts/navbar' %>
+	<% end %>
 
 	<div class="container">
 		<div class="row">
