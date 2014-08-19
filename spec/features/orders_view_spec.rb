@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe 'when viewing the orders' do
+  before(:each) do
+    User.create(email: 'yourdad123@aol.com', password: '123', password_confirmation: '123', role: 'admin')
+    login_as_admin
+  end
+
 	context 'as an admin' do
 		# let(:user)  { User.create }
 		let(:order)  { Order.create(user_id: 1, order_type: "pickup", address_id: 2, status: "ordered", total: 2200) }
