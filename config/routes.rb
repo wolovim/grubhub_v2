@@ -26,6 +26,6 @@ Rails.application.routes.draw do
 	  end
   end
 
-  get '/admin/' => 'admin/orders#index' # How to set namespace specific controller?
+  get '/admin/' => 'admin/orders#index'
 
 end
