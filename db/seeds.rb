@@ -53,69 +53,69 @@ Item.create( title: "Donut12", price: 62,
   # password: "password", role: :user, display_name: "Ree-na")
 
 # #ORDER ITEMS
-# ##1
-# OrderItem.create(product_id: 1, cart_id: nil,
-#   order_id: 1, quantity: 3, price: 24)
-# OrderItem.create(product_id: 2, cart_id: nil,
-#   order_id: 1, quantity: 4, price: 200)
-# OrderItem.create(product_id: 3, cart_id: nil,
-#   order_id: 1, quantity: 5, price: 500)
-# ##2
-# OrderItem.create(product_id: 25, cart_id: nil,
-#   order_id: 2, quantity: 1, price: 300)
-# OrderItem.create(product_id: 26, cart_id: nil,
-#   order_id: 2, quantity: 15, price: 205)
-# OrderItem.create(product_id: 6, cart_id: nil,
-#   order_id: 2, quantity: 4, price: 1000)
-# ##3
-# OrderItem.create(product_id: 7, cart_id: nil,
-#   order_id: 3, quantity: 7, price: 600)
-# OrderItem.create(product_id: 10, cart_id: nil,
-#   order_id: 3, quantity: 1, price: 5)
-# ##4
-# OrderItem.create(product_id: 1, cart_id: nil,
-#   order_id: 4, quantity: 1, price: 377)
-# OrderItem.create(product_id: 15, cart_id: nil,
-#   order_id: 4, quantity: 1, price: 111)
-# ##5
-# OrderItem.create(product_id: 13, cart_id: nil,
-#   order_id: 5, quantity: 1, price: 800)
-# ##6
-# OrderItem.create(product_id: 12, cart_id: nil,
-#   order_id: 6, quantity: 6, price: 123)
-# OrderItem.create(product_id: 11, cart_id: nil,
-#   order_id: 6, quantity: 2, price: 111)
-# OrderItem.create(product_id: 17, cart_id: nil,
-#   order_id: 6, quantity: 2, price: 89)
-# ##7
-# OrderItem.create(product_id: 9, cart_id: nil,
-#   order_id: 7, quantity: 2, price: 4)
-# ##8
-# OrderItem.create(product_id: 8, cart_id: nil,
-#   order_id: 8, quantity: 20, price: 800)
-# ##9
-# OrderItem.create(product_id: 31, cart_id: nil,
-#   order_id: 9, quantity: 1, price: 444)
-# OrderItem.create(product_id: 32, cart_id: nil,
-#   order_id: 9, quantity: 2, price: 1230)
-# OrderItem.create(product_id: 33, cart_id: nil,
-#   order_id: 9, quantity: 3, price: 500)
-# OrderItem.create(product_id: 10, cart_id: nil,
-#   order_id: 9, quantity: 4, price: 110)
-# ##10
-# OrderItem.create(product_id: 24, cart_id: nil,
-#   order_id: 10, quantity: 5, price: 80)
-# OrderItem.create(product_id: 23, cart_id: nil,
-#   order_id: 10, quantity: 6, price: 10)
+##1
+OrderItem.create(item_id: 1,
+  order_id: 1, quantity: 3, unit_price: 24)
+OrderItem.create(item_id: 2,
+  order_id: 1, quantity: 4, unit_price: 200)
+OrderItem.create(item_id: 3,
+  order_id: 1, quantity: 5, unit_price: 500)
+##2
+OrderItem.create(item_id: 4,
+  order_id: 2, quantity: 1, unit_price: 300)
+OrderItem.create(item_id: 5,
+  order_id: 2, quantity: 15, unit_price: 205)
+OrderItem.create(item_id: 6,
+  order_id: 2, quantity: 4, unit_price: 1000)
+##3
+OrderItem.create(item_id: 6,
+  order_id: 3, quantity: 7, unit_price: 600)
+OrderItem.create(item_id: 10,
+  order_id: 3, quantity: 1, unit_price: 5)
+##4
+OrderItem.create(item_id: 1,
+  order_id: 4, quantity: 1, unit_price: 377)
+OrderItem.create(item_id: 9,
+  order_id: 4, quantity: 1, unit_price: 111)
+##5
+OrderItem.create(item_id: 13,
+  order_id: 5, quantity: 1, unit_price: 800)
+##6
+OrderItem.create(item_id: 12,
+  order_id: 6, quantity: 6, unit_price: 123)
+OrderItem.create(item_id: 11,
+  order_id: 6, quantity: 2, unit_price: 111)
+OrderItem.create(item_id: 10,
+  order_id: 6, quantity: 2, unit_price: 89)
+##7
+OrderItem.create(item_id: 9,
+  order_id: 7, quantity: 2, unit_price: 4)
+##8
+OrderItem.create(item_id: 8,
+  order_id: 8, quantity: 20, unit_price: 800)
+##9
+OrderItem.create(item_id: 11,
+  order_id: 9, quantity: 1, unit_price: 444)
+OrderItem.create(item_id: 12,
+  order_id: 10, quantity: 2, unit_price: 1230)
+OrderItem.create(item_id: 3,
+  order_id: 11, quantity: 3, unit_price: 500)
+OrderItem.create(item_id: 10,
+  order_id: 13, quantity: 4, unit_price: 110)
+##10
+OrderItem.create(item_id: 2,
+  order_id: 12, quantity: 5, unit_price: 80)
+OrderItem.create(item_id: 3,
+  order_id: 14, quantity: 6, unit_price: 10)
 
-# #ORDERS
-# Order.create(status: "pending", user_id: 1, total_cost: 3372)
-# Order.create(status: "pending", user_id: 4, total_cost: 7375)
-# Order.create(status: "cancelled", user_id: 1, total_cost: 4205)
-# Order.create(status: "cancelled", user_id: 1, total_cost: 488)
-# Order.create(status: "paid", user_id: 4, total_cost: 800)
-# Order.create(status: "paid", user_id: 1, total_cost: 1138)
-# Order.create(status: "shipped", user_id: 4, total_cost: 8)
-# Order.create(status: "shipped", user_id: 4, total_cost: 16000)
-# Order.create(status: "returned", user_id: 1, total_cost: 4844)
-# Order.create(status: "returned", user_id: 4, total_cost: 460)
+#ORDERS
+Order.create(user_id: 1, order_type: 'delivery', address_id: 1, status: "ordered", total: 3372)
+Order.create(user_id: 2, order_type: 'delivery', address_id: 2, status: "ordered", total: 7375)
+Order.create(user_id: 3, order_type: 'delivery', address_id: 3, status: "cancelled", total: 4205)
+Order.create(user_id: 4, order_type: 'delivery', address_id: 4, status: "cancelled", total: 488)
+Order.create(user_id: 5, order_type: 'delivery', address_id: 5, status: "paid", total: 800)
+Order.create(user_id: 6, order_type: 'delivery', address_id: 6, status: "paid", total: 1138)
+Order.create(user_id: 7, order_type: 'pickup', address_id: 7, status: "completed", total: 8)
+Order.create(user_id: 8, order_type: 'pickup', address_id: 8, status: "completed", total: 16000)
+Order.create(user_id: 9, order_type: 'pickup', address_id: 9, status: "ordered", total: 4844)
+Order.create(user_id: 10, order_type: 'pickup', address_id: 10, status: "paid", total: 460)

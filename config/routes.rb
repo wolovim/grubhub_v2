@@ -8,6 +8,11 @@ Rails.application.routes.draw do
     get '/remove_item/:item_id' => 'orders#remove_item', as: :remove_item
   end
 
+  get '/ordered' => 'orders#ordered', as: :ordered
+  get '/paid' => 'orders#paid', as: :paid
+  get '/completed' => 'orders#completed', as: :completed
+  get '/cancelled' => 'orders#cancelled', as: :cancelled
+
   resources :order_items, only: [:destroy, :update]
   resources :users,  only: [:new, :create]
   resources :addresses, only: [:new, :create, :index]

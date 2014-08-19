@@ -71,10 +71,6 @@ describe 'when viewing the orders' do
 			expect(page).not_to have_link('Mark As Completed')
 		end
 
-		it 'can filter items by status' do
-
-		end
-
 		it 'can remove items from an order' do
 			expect(order.items).to eq([item])
 			click_link('Edit')
@@ -90,6 +86,49 @@ describe 'when viewing the orders' do
 			expect(page).to have_content("Paid: 0")
 			expect(page).to have_content("Completed: 0")
 			expect(page).to have_content("Cancelled: 0")
+		end
+
+		it 'shows links to filter orders by status' do
+			expect(page).to have_link('Ordered')
+			expect(page).to have_link('Paid')
+			expect(page).to have_link('Completed')
+			expect(page).to have_link('Cancelled')
+		end
+
+		it 'filters by ordered status' do
+			order2 =  Order.create(user_id: 1, order_type: "delivery", address_id: 2, status: "paid", total: 2200)
+			item2 = Item.create(title: 'The Paid Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4300)
+			order_item2 = OrderItem.create(order_id: order2.id, item_id: item2.id, quantity: 2, unit_price: 210)
+			click_link('Ordered')
+			expect(page).not_to have_content('delivery')
+			expect(page).to have_content('pickup')
+		end
+
+		it 'filters by paid status' do
+			order2 =  Order.create(user_id: 1, order_type: "delivery", address_id: 2, status: "paid", total: 2200)
+			item2 = Item.create(title: 'The Paid Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4300)
+			order_item2 = OrderItem.create(order_id: order2.id, item_id: item2.id, quantity: 2, unit_price: 210)
+			click_link('Paid')
+			expect(page).to have_content('delivery')
+			expect(page).not_to have_content('pickup')
+		end
+
+		it 'filters by completed status' do
+			order2 =  Order.create(user_id: 1, order_type: "delivery", address_id: 2, status: "completed", total: 2200)
+			item2 = Item.create(title: 'The Paid Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4300)
+			order_item2 = OrderItem.create(order_id: order2.id, item_id: item2.id, quantity: 2, unit_price: 210)
+			click_link('Completed')
+			expect(page).to have_content('delivery')
+			expect(page).not_to have_content('pickup')
+		end
+
+		it 'filters by cancelled status' do
+			order2 =  Order.create(user_id: 1, order_type: "delivery", address_id: 2, status: "cancelled", total: 2200)
+			item2 = Item.create(title: 'The Paid Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4300)
+			order_item2 = OrderItem.create(order_id: order2.id, item_id: item2.id, quantity: 2, unit_price: 210)
+			click_link('Cancelled')
+			expect(page).to have_content('delivery')
+			expect(page).not_to have_content('pickup')
 		end
 	end
 end
