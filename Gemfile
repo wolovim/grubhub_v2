@@ -22,6 +22,10 @@ group :development, :test do
 	gem 'launchy'
 end
 
+group :test do
+  gem 'simplecov', require: false
+end
+
 gem 'simple_form'
 
 gem 'pry'

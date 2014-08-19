@@ -5,7 +5,12 @@ class SessionsController < ApplicationController
   def create
     if (user = User.find_by(email: params[:email])) && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path
+
+      if is_admin?
+        redirect_to session.delete(:last_page) || admin_orders_path
+      else
+        redirect_to session.delete(:last_page) || root_path
+      end
     else
       flash.now[:error] = 'Invalid username or password.'
       render :new
