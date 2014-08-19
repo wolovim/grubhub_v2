@@ -2,12 +2,23 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-<div>
-  Ordered: <%= orders_by_status('ordered') %> |
-  Paid: <%= orders_by_status('paid') %> |
-  Completed: <%= orders_by_status('completed') %> |
-  Cancelled: <%= orders_by_status('cancelled') %>
-</div>
+<ul class="nav nav-tabs" role="tablist">
+  <li class="<%= 'active' if current_page?(admin_orders_path) %>">
+    <%= link_to admin_orders_path do %>All <span class="badge"><%= Order.all.count %></span><% end %>
+  </li>
+  <li class="<%= 'active' if current_page?(admin_ordered_path) %>">
+    <%= link_to admin_ordered_path do %>Ordered <span class="badge"><%= orders_by_status('ordered') %></span><% end %>
+  </li>
+  <li class="<%= 'active' if current_page?(admin_paid_path) %>">
+    <%= link_to admin_paid_path do %>Paid <span class="badge"><%= orders_by_status('paid') %></span><% end %>
+  </li>
+  <li class="<%= 'active' if current_page?(admin_completed_path) %>">
+    <%= link_to admin_completed_path do %>Completed <span class="badge"><%= orders_by_status('completed') %></span><% end %>
+  </li>
+  <li class="<%= 'active' if current_page?(admin_cancelled_path) %>">
+    <%= link_to admin_cancelled_path do %>Cancelled <span class="badge"><%= orders_by_status('cancelled') %></span><% end %>
+  </li>
+</ul>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -23,7 +34,7 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to order.id, order_path(order) %></td>
+        <td><%= link_to order.id, admin_order_path(order) %></td>
         <td><%= order.user_id %></td>
         <td><%= order.order_type %></td>
         <td><%= order.status %></td>
@@ -32,13 +43,13 @@
         <td>
           <% if pending?(order.status) %>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_order_path(order), :class => 'btn btn-mini' %>
+                        edit_admin_order_path(order), :class => 'btn btn-mini' %>
 
             <%= link_to t('.edit', :default => t(get_update_button(order.status))),
-                        order_update_status_path(order),
+                        admin_order_update_status_path(order),
                         :class => 'btn btn-mini' %>
             <%= link_to t('.edit', :default => t("Cancel")),
-                        order_cancel_path(order),
+                        admin_order_cancel_path(order),
                         :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                         :class => 'btn btn-mini btn-danger' %>
           <% end %>
@@ -49,5 +60,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_order_path,
+            new_admin_order_path,
             :class => 'btn btn-primary' %>
