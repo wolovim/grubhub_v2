@@ -9,4 +9,5 @@ describe 'When viewing the admin dashboard' do
 			expect(page).to have_content("Orders")
 		end
 	end
+
 end

@@ -9,7 +9,7 @@ describe 'when viewing the items' do
 			visit items_path
 		end
 
-		it 'should exist' do 
+		it 'should exist' do
 			expect(page.status_code).to eq 200
 		end
 
@@ -59,7 +59,7 @@ describe 'when viewing the items' do
 	it 'can delete and item' do
 		item = Item.create(title: "Shitty Donut", description: "A Mistake", price: 0)
 		visit item_path(item)
-		click_link "Delete Deliciousness"
+		click_link "Delete"
 		expect(current_path).to eq(items_path)
 		expect(page).not_to have_content "Shitty Donut"
 		expect(page).not_to have_content "A Mistake"

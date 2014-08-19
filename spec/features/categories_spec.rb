@@ -26,11 +26,11 @@ describe 'when viewing the categories' do
 		end
 
 		it 'has a link to add a category' do
-			expect(page).to have_link('Add Category')
+			expect(page).to have_button('Add Category')
 		end
 
 		it 'can add a category' do
-			click_link 'Add Category'
+			click_button 'Add Category'
 			fill_in "Name", with: 'New Category'
 			click_button 'Create Category'
 			expect(page).to have_content('New Category')
@@ -40,6 +40,5 @@ describe 'when viewing the categories' do
 			click_link "Delete"
 			expect(page).not_to have_content("Savory")
 		end
-
 	end
 end
