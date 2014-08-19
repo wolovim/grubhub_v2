@@ -40,17 +40,13 @@ Item.create( title: "Donut12", price: 62,
 
 # #RETIRED
 # Item.create( title: "Donut13", price: 3000,
-#   description: "Classy coat for the classy gent.", category_ids: ["1"], retired: true)
+#   description: "Classy coat for the classy gent.", category_ids: ["1"], retired: true) 
 
-#USERS
-# User.create(full_name: "Franklin Webber", email: "demoXX+franklin@jumpstartlab.com",
-#   password: "password", role: :user, display_name: nil)
-# User.create(full_name: "Jeff", email: "demoXX+jeff@jumpstartlab.com",
-#   password: "password", role: :admin, display_name: "j3")
-# User.create(full_name: "Steve Klabnik", email: "demoXX+steve@jumpstartlab.com",
-#   password: "password", role: :superuser, display_name: "SkrilleX")
-# User.create(full_name: "Katrina Owen", email: "demoXX+katrina@jumpstartlab.com",
-  # password: "password", role: :user, display_name: "Ree-na")
+# USERS
+User.create(first_name: "Nando", last_name: "Hasselhoff", email: "yourmom@aol.com",
+  password: "password", password_confirmation: "password", role: :admin, nickname: "Nandozer")
+User.create(first_name: "Joe", last_name: "Shmoe", email: "yourdad@aol.com",
+  password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
 
 # #ORDER ITEMS
 ##1
