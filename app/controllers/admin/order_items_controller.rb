@@ -1,16 +1,16 @@
-class OrderItemsController < ApplicationController
+class Admin::OrderItemsController < ApplicationController
   def destroy
     @order_item = OrderItem.find(params[:id])
     order = Order.find(@order_item.order_id)
     @order_item.destroy
-    redirect_to edit_order_path(order)
+    redirect_to edit_admin_order_path(order)
   end
 
   def update
     @order_item = OrderItem.find(params[:id])
     order = Order.find(@order_item.order_id)
     @order_item.update(order_item_params)
-    redirect_to edit_order_path(order)
+    redirect_to edit_admin_order_path(order)
   end
 
   private

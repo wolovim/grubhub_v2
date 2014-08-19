@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
 	def update
 		@order = Order.find(params[:id])
 		if @order.update(order_params)
-			redirect_to admin_orders_path
+			redirect_to orders_path
 		else
 			render :edit
 		end
