@@ -1,4 +1,6 @@
 class Admin::OrdersController < ApplicationController
+  before_action :check_admin, only: [:index]
+
 	def index
 		@orders = Order.all
 	end
