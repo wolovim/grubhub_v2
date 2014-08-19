@@ -7,4 +7,13 @@ class ApplicationController < ActionController::Base
   def current_user
     User.find(session[:user_id]) if session[:user_id]
   end
+
+  def check_admin
+    user = current_user || User.new(role: 'guest')
+
+    unless user.role == 'admin'
+      flash[:error] = 'You must be logged in to access that.'
+      redirect_to login_path
+    end
+  end
 end
