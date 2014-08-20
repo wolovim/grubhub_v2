@@ -14,7 +14,7 @@
 						<span class="only-price">
 							<span class="only">only:</span> $<%= item.price %><br/>
 						</span>
-            <%= form_tag(cart_path, method: "put") do %>
+            <%= form_tag(cart_path, method: "patch") do %>
               <%= hidden_field_tag :item_id, item.id %>
               <%= button_tag type: 'submit', class: 'btn btn-primary add-item' do %>
                 <span class='glyphicon glyphicon-plus-sign'></span> Add to Cart
