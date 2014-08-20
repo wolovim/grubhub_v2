@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140817205953) do
+ActiveRecord::Schema.define(version: 20140820151421) do
 
   create_table "addresses", force: true do |t|
     t.string   "street"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140817205953) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.boolean  "enabled",            default: true
   end
 
   create_table "order_items", force: true do |t|

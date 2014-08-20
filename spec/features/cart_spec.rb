@@ -6,7 +6,8 @@ describe 'Shopping cart', type: :feature do
     category.items.create(
       title: 'A Donut',
       description: 'This is a description',
-      price: 1000
+      price: 1000,
+      enabled: true
     )
   end
 
@@ -15,5 +16,28 @@ describe 'Shopping cart', type: :feature do
     first(:button, 'Add to Cart').click 
     total_items = find('span.badge').text
     expect(total_items).to eq '1'
+  end
+
+  it 'cannot add items that do not exist' do
+    visit categories_path
+    Item.destroy_all
+    first(:button, 'Add to Cart').click 
+    expect(page).to have_content 'That item is no longer available.'
+  end
+
+  it 'cannot add items that are disabled' do
+    visit categories_path
+    Item.first.update_column('enabled', false)
+    first(:button, 'Add to Cart').click 
+    expect(page).to have_content 'That item is no longer available.'
+  end
+
+  it 'can view the cart' do
+    skip
+    visit categories_path
+    first(:button, 'Add to Cart').click 
+    click_link 'View Cart'
+    expect(page).to have_content 'A Donut'
+    expect(page).to have_content '$10.00'
   end
 end
