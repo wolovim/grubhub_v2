@@ -13,7 +13,7 @@ describe 'Shopping cart', type: :feature do
 
   it 'can add items to a cart' do
     visit categories_path
-    first(:button, 'Add to Cart').click 
+    first(:button, 'Add to Cart').click
     total_items = find('span.badge').text
     expect(total_items).to eq '1'
   end
@@ -21,20 +21,20 @@ describe 'Shopping cart', type: :feature do
   it 'cannot add items that do not exist' do
     visit categories_path
     Item.destroy_all
-    first(:button, 'Add to Cart').click 
+    first(:button, 'Add to Cart').click
     expect(page).to have_content 'That item is no longer available.'
   end
 
   it 'cannot add items that are disabled' do
     visit categories_path
     Item.first.update_column('enabled', false)
-    first(:button, 'Add to Cart').click 
+    first(:button, 'Add to Cart').click
     expect(page).to have_content 'That item is no longer available.'
   end
 
   it 'can view the cart' do
     visit categories_path
-    first(:button, 'Add to Cart').click 
+    first(:button, 'Add to Cart').click
     click_link 'View Cart'
     expect(page).to have_content 'A Donut'
     expect(page).to have_content '$10.00'
