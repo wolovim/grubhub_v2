@@ -1,6 +1,8 @@
 <h1>CATEGORIES!</h1>
 	<% @categories.each do |category| %>
 		<span class="category-name"><%= category.name %></span>
+		<%= link_to "Edit", edit_category_path(category) %>
+		<%= link_to "Delete", category_path(category), method: :delete %><br/>
 		<div class="donuts transitions-enabled">
 			<% category.items.each do |item| %>
 				<div class="item-box">
@@ -17,7 +19,13 @@
 						</button>
 					</div>
 					<%= image_tag item.image.url(:small), class: "item-image" %><br/>
+					<!-- <div class="add-item-box">
+						<a class="add-item-text" href="#">Add A New Donut!</a>
+					</div> -->
 				</div>
 			<% end %>
-		</div>
+		</div> <!-- /.donuts -->
 	<% end %>
+
+		<br/><br/>
+	<%= button_to 'Add Category', new_category_path, method: :get %>

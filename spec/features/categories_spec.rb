@@ -41,4 +41,22 @@ describe 'when viewing the categories' do
 			expect(page).not_to have_content("Savory")
 		end
 	end
+
+	context 'as a guest' do
+
+		let(:category) { Category.create(name: 'Savory') }
+
+		before(:each) do
+			category
+			visit categories_path
+		end
+
+
+		it 'cannnot edit, delete, or add categories' do
+			expect(page).not_to have_content('Edit')
+			expect(page).not_to have_content('Delete')
+			expect(page).not_to have_content('Add Category')
+		end
+
+	end
 end
