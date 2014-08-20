@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :order_items, only: [:destroy, :update]
   resources :users,  only: [:new, :create]
   resources :addresses, only: [:new, :create, :index]
+  resource :cart, only: [:show, :update]
 
   resources :orders do
     get '/update_status' => 'orders#update_status', as: :update_status
