@@ -44,7 +44,7 @@ describe '' do
       register(password: '123', password_confirmation: '1234')
       expect(page).to have_content "Password confirmation doesn't match Password"
     end
-  
+
     it 'stays logged in after registration' do
       register
       expect(page).to have_link "Logout"
@@ -54,7 +54,5 @@ describe '' do
       register
       expect(page).to have_content "Registration successful, congrats you can use a keyboard."
     end
-
-
   end
 end
