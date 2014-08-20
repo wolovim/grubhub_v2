@@ -26,9 +26,10 @@
 		        </li>
 	        <% end %>
 	        <li class="active">
-	        	<a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>
+            <%= link_to cart_path do %>
+              <span class="glyphicon glyphicon-shopping-cart"></span>
               View Cart <span class="badge"><%= cart_count %></span>
-        		</a>
+            <% end %>
 	        </li>
 	        <% if current_user %>
             <li><%= link_to "Logout", logout_path, method: :delete %></li>

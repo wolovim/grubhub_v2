@@ -33,7 +33,6 @@ describe 'Shopping cart', type: :feature do
   end
 
   it 'can view the cart' do
-    skip
     visit categories_path
     first(:button, 'Add to Cart').click 
     click_link 'View Cart'
