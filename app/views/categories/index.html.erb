@@ -2,8 +2,6 @@
 <h1>MENU!</h1>
 	<% @categories.each do |category| %>
 		<span class="category-name"><%= category.name %></span>
-		<%= link_to "Edit", edit_category_path(category) %>
-		<%= link_to "Delete", category_path(category), method: :delete %><br/>
 		<div class="donuts transitions-enabled">
 			<% category.items.each do |item| %>
 				<div class="item-box">
@@ -25,7 +23,7 @@
 					<%= image_tag item.image.url(:small), class: "item-image" %><br/>
 				</div>
 			<% end %>
-		</div> <!-- /.donuts -->
+		</div>
 	<% end %>
 </div>
 <div class="col-md-4">

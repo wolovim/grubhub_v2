@@ -40,13 +40,14 @@ Item.create( title: "Donut12", price: 620,
 
 # #RETIRED
 # Item.create( title: "Donut13", price: 3000,
-#   description: "Classy coat for the classy gent.", category_ids: ["1"], retired: true) 
+#   description: "Classy coat for the classy gent.", category_ids: ["1"], retired: true)
 
 # USERS
 User.create(first_name: "Nando", last_name: "Hasselhoff", email: "yourmom@aol.com",
   password: "password", password_confirmation: "password", role: :admin, nickname: "Nandozer")
 User.create(first_name: "Joe", last_name: "Shmoe", email: "yourdad@aol.com",
   password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
+
 
 # #ORDER ITEMS
 ##1

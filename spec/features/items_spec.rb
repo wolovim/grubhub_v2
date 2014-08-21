@@ -4,11 +4,13 @@ describe 'when viewing the items' do
 
 	let(:item) { Item.create(title: 'The Awesome Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4500) }
 
-	context 'as a guest' do
+	context 'as an admin' do
 
 		before(:each) do
+			register_as_admin
+			login_as_admin
 			item
-			visit items_path
+			visit admin_items_path
 		end
 
 		it 'should exist' do
@@ -18,16 +20,16 @@ describe 'when viewing the items' do
 		it 'should see existing items' do
 			expect(page).to have_content 'The Awesome Donut'
 			expect(page).to have_content 'Clearly, the best donut you\'ve ever had.'
-			#expect(page).to have_content '$45.00'
+			expect(page).to have_content '$45.00'
 		end
 
 		it 'has a link to an item' do
-			expect(page).to have_link 'The Awesome Donut', href: item_path(item)
+			expect(page).to have_link 'The Awesome Donut', href: admin_item_path(item)
 		end
 
 		it 'links successfully to item' do
 			click_link 'The Awesome Donut'
-			expect(current_path).to eq(item_path(item))
+			expect(current_path).to eq(admin_item_path(item))
 			expect(page).to have_content 'The Awesome Donut'
 			expect(page).to have_content 'Clearly, the best donut you\'ve ever had.'
 		end
@@ -37,19 +39,9 @@ describe 'when viewing the items' do
 			category = Category.create(name: "Savory")
 			item.categories << category
 			category.items << item
-			visit items_path
+			visit admin_items_path
 			expect(page).to have_content "Shitty Donut"
 			expect(page).to have_content "Savory"
-		end
-	end
-
-	context 'as an admin' do
-
-		before(:each) do
-			register_as_admin
-			login_as_admin
-			item
-			visit admin_items_path
 		end
 
 		it 'links successfully to item' do

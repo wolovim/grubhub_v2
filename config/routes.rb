@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :items
+  # resources :items
   resources :categories
   resources :order_items, only: [:destroy, :update]
   resources :users,  only: [:new, :create]
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get '/paid' => 'orders#paid', as: :paid
   get '/completed' => 'orders#completed', as: :completed
   get '/cancelled' => 'orders#cancelled', as: :cancelled
- 
+
   namespace :admin do
     resources :items
     resources :categories
