@@ -60,6 +60,19 @@ describe '' do
       expect(current_path).to eq(login_path)
       visit admin_categories_path
       expect(current_path).to eq(login_path)
+
+    it 'can view their orders' do
+      register
+      click_on "Account"
+      click_on "My Orders"
+      expect(page).to have_content "My Orders"
+    end
+
+    it 'can view their user profile' do
+      register
+      click_on "Account"
+      click_on "Profile"
+      expect(page).to have_content "Account Settings"
     end
   end
 end

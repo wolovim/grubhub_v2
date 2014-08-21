@@ -1,4 +1,23 @@
-<% @items.each do |item| %>
-  <%= item.title %>
-  <%= item.price_in_dollars %>
-<% end %>
+<div class="container" style="width: 100%">
+<h2>My Cart</h2>
+	<table class="table table-striped">
+		<tr>
+			<th>Title</th>
+			<th>Quantity</th>
+			<th>Unit Price</th>
+			<th>Subtotal</th>
+			<th>Remove?</th>
+		</tr>
+		<% @items.each do |item| %>
+			<tr>
+			  <td><%= item.title %></td>
+			  <td>(quantity)</td>
+			  <td><%= item.price_in_dollars %></td>
+			  <td>(Subtotal)</td>
+			  <td><%= button_to "Remove", '#', class: "btn btn-danger" %></td>
+		  </tr>
+	  <% end %>
+	</table>
+
+	<%= button_to "Checkout", '#', class: "btn btn-success" %>
+</div>
