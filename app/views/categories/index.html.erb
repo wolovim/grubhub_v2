@@ -4,24 +4,26 @@
 		<span class="category-name"><%= category.name %></span>
 		<div class="donuts transitions-enabled">
 			<% category.items.each do |item| %>
-				<div class="item-box">
-					<div class="item-box-description">
-						<strong><%= item.title %></strong><br/>
-						<%= item.description %><br/>
+				<% unless item.retired? %>
+					<div class="item-box">
+						<div class="item-box-description">
+							<strong><%= item.title %></strong><br/>
+							<%= item.description %><br/>
+						</div>
+						<div class="item-price">
+							<span class="only-price">
+								<span class="only">only:</span> <%= item.price_in_dollars %><br/>
+							</span>
+	            <%= form_tag(cart_path, method: "patch") do %>
+	              <%= hidden_field_tag :item_id, item.id %>
+	              <%= button_tag type: 'submit', class: 'btn btn-primary add-item' do %>
+	                <span class='glyphicon glyphicon-plus-sign'></span> Add to Cart
+	              <% end %>
+	            <% end %>
+						</div>
+						<%= image_tag item.image.url(:small), class: "item-image" %><br/>
 					</div>
-					<div class="item-price">
-						<span class="only-price">
-							<span class="only">only:</span> <%= item.price_in_dollars %><br/>
-						</span>
-            <%= form_tag(cart_path, method: "patch") do %>
-              <%= hidden_field_tag :item_id, item.id %>
-              <%= button_tag type: 'submit', class: 'btn btn-primary add-item' do %>
-                <span class='glyphicon glyphicon-plus-sign'></span> Add to Cart
-              <% end %>
-            <% end %>
-					</div>
-					<%= image_tag item.image.url(:small), class: "item-image" %><br/>
-				</div>
+				<% end %>
 			<% end %>
 		</div>
 	<% end %>

@@ -27,7 +27,7 @@ date/time order was submitted
 if completed or cancelled, display a timestamp when that action took place
 
 
-if any item is retired from the menu:
+if any item is retired from the menu, from the my orders page:
 
 they can still access the item page
 they cannot add it to a new cart
@@ -40,8 +40,6 @@ CHAD and I will finish this today:
 Administrators
 
 As an authenticated Administrator, I can:
-
-Retire a item from being sold, which hides it from browsing by any non-administrator
 
 As an Administrator, I can also view an order "dashboard" where I can:
 

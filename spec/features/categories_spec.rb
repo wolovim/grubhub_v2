@@ -50,9 +50,13 @@ describe 'when viewing the categories' do
 	context 'as a guest' do
 
 		let(:category) { Category.create(name: 'Savory') }
+		let(:item) { Item.create(title: 'The Awesome Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4500) }
+		let(:item_category) { ItemCategory.create(item_id: 1, category_id: 1) }
 
 		before(:each) do
 			category
+			item
+			item_category
 			visit categories_path
 		end
 
@@ -63,5 +67,14 @@ describe 'when viewing the categories' do
 			expect(page).not_to have_content('Add Category')
 		end
 
+
+		it 'cannot see items that are retired' do
+			item.enabled = false
+			item.save
+
+			visit categories_path
+
+			expect(page).not_to have_content('The Awesome Donut')
+		end
 	end
 end

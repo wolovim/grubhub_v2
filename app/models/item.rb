@@ -25,7 +25,7 @@ class Item < ActiveRecord::Base
 	end
 
 	def retire
-		self.enabled = false
+		self.enabled = !enabled
 		self.save
 	end
 end
