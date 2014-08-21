@@ -42,9 +42,9 @@ class Admin::ItemsController < AdminController
 
 	def add_category
 		item = Item.find(params[:item_id])
-		
-		ItemCategory.create(item_id: params[:item_id], category_id: params[:category_id])
-		# item.add_category(params[:category_id])
+		unless ItemCategory.find_by(item_id: params[:item_id], category_id: params[:category_id])
+			ItemCategory.create(item_id: params[:item_id], category_id: params[:category_id])
+		end
 		redirect_to edit_admin_item_path(item)
 	end
 
