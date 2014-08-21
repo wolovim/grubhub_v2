@@ -22,7 +22,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:details) %></th>
       <th><%= model_class.human_attribute_name(:customer) %></th>
       <th><%= model_class.human_attribute_name(:order_type) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
@@ -36,7 +36,7 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to order.id, admin_order_path(order) %></td>
+        <td><%= link_to 'Details', admin_order_path(order) %></td>
         <td><%= order.customer_name %></td>
         <td><%= order.order_type %></td>
         <td><%= order.status %></td>

@@ -47,8 +47,23 @@ class Order < ActiveRecord::Base
 		user.first_name + ' ' + user.last_name
 	end
 
+	def customer_email
+		user = User.find(self.user_id)
+		user.email
+	end
+
 	def total
 		pretax_total = self.order_items.inject(0) { |sum, order_item| sum + order_item.quantity * order_item.unit_price }
 		"$" + sprintf("%.2f", (pretax_total += pretax_total* 0.07) / 100)
+	end
+
+	def delivery?
+		order_type == 'delivery'
+	end
+
+	def address
+		data = Address.find(self.address_id)
+		location = [data[:street], data[:city], data[:state], data[:zip]]
+		location.join(', ')
 	end
 end

@@ -7,7 +7,8 @@ describe 'when viewing the orders' do
   end
 
 	context 'as an admin' do
-		let(:order)  { Order.create(user_id: 1, order_type: "pickup", address_id: 2, status: "ordered", total: 2200) }
+    let(:address) { Address.create(street: '1 Blake St', city: 'Denver', state: 'CO', zip: '80000') }
+		let(:order)  { Order.create(user_id: 1, order_type: "pickup", address_id: 1, status: "ordered", total: 2200) }
 		let(:item) { Item.create(title: 'The Awesome Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4300) }
 		let(:order_item) { OrderItem.create(order_id: order.id, item_id: item.id, quantity: 2, unit_price: 210) }
 
@@ -15,6 +16,7 @@ describe 'when viewing the orders' do
 			order
 			item
 			order_item
+      address
 			visit admin_orders_path
 		end
 
@@ -133,6 +135,25 @@ describe 'when viewing the orders' do
 
     it 'can see customer name from orders page' do
       expect(page).to have_content('your dad')
+    end
+
+    it 'can see email address and customer name on details page' do
+      click_link 'Details'
+      expect(page).to have_content('your dad')
+      expect(page).to have_content('yourdad123@aol.com')
+    end
+
+    it 'shows the address for delivery orders' do
+      order.order_type = 'delivery'
+      order.save
+      visit admin_orders_path
+      click_link 'Details'
+      expect(page).to have_content('1 Blake St, Denver, CO, 80000')
+    end
+
+    it 'does not show address for pickup orders' do
+      click_link 'Details'
+      expect(page).not_to have_content('1 Blake St, Denver, CO, 80000')
     end
 	end
 end
