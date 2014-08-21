@@ -20,6 +20,7 @@
 	        <li><%= link_to "Categories", admin_categories_path %></li>
 	        <li><%= link_to "Orders", admin_orders_path %></li>
 	        <li><%= link_to "Users", '#' %></li>
+	        <li><%= link_to "Admin Profile", edit_user_path(current_user) %></li>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 	        <% if current_user %>

@@ -28,8 +28,10 @@ class ItemsController < ApplicationController
 	def update
 		@item = Item.find(params[:id])
 		if @item.update(item_params)
+			flash[:success] = "Item successfully updated!"
 			redirect_to items_path
 		else
+			flash[:error] = "Something went wrong."
 			render :edit
 		end
 	end
