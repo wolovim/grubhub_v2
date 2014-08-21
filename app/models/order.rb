@@ -2,7 +2,7 @@ class Order < ActiveRecord::Base
 	validates :user_id, :order_type, :address_id, :status, :total, presence: true
 	has_many :order_items
 	has_many :items, through: :order_items
-		
+
 	def self.all_ordered
 		all.select { |order| order.status == 	'ordered' }
 	end
@@ -43,7 +43,8 @@ class Order < ActiveRecord::Base
 	end
 
 	def customer_name
-		User.find(params[:user_id])
+		user = User.find(self.user_id)
+		user.first_name + ' ' + user.last_name
 	end
 
 	def total

@@ -47,6 +47,18 @@ User.create(first_name: "Nando", last_name: "Hasselhoff", email: "yourmom@aol.co
   password: "password", password_confirmation: "password", role: :admin, nickname: "Nandozer")
 User.create(first_name: "Joe", last_name: "Shmoe", email: "yourdad@aol.com",
   password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
+User.create(first_name: "John", last_name: "Smith", email: "joe@aol.com",
+  password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
+User.create(first_name: "Tom", last_name: "Davis", email: "tom@aol.com",
+  password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
+User.create(first_name: "George", last_name: "Thomas", email: "george@aol.com",
+  password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
+User.create(first_name: "Mary", last_name: "Jones", email: "mary@aol.com",
+  password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
+User.create(first_name: "Alice", last_name: "Anderson", email: "alice@aol.com",
+  password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
+User.create(first_name: "Jane", last_name: "Rogers", email: "jane@aol.com",
+  password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
 
 
 # #ORDER ITEMS
@@ -114,5 +126,5 @@ Order.create(user_id: 5, order_type: 'delivery', address_id: 5, status: "paid", 
 Order.create(user_id: 6, order_type: 'delivery', address_id: 6, status: "paid", total: 1138)
 Order.create(user_id: 7, order_type: 'pickup', address_id: 7, status: "completed", total: 8000)
 Order.create(user_id: 8, order_type: 'pickup', address_id: 8, status: "completed", total: 16000)
-Order.create(user_id: 9, order_type: 'pickup', address_id: 9, status: "ordered", total: 4844)
-Order.create(user_id: 10, order_type: 'pickup', address_id: 10, status: "paid", total: 4600)
+Order.create(user_id: 2, order_type: 'pickup', address_id: 9, status: "ordered", total: 4844)
+Order.create(user_id: 3, order_type: 'pickup', address_id: 10, status: "paid", total: 4600)

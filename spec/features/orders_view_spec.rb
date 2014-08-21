@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'when viewing the orders' do
   before(:each) do
-    User.create(email: 'yourdad123@aol.com', password: '123', password_confirmation: '123', role: 'admin')
+    User.create(email: 'yourdad123@aol.com', first_name: 'your', last_name: 'dad', password: '123', password_confirmation: '123', role: 'admin')
     login_as_admin
   end
 
@@ -131,9 +131,8 @@ describe 'when viewing the orders' do
 			expect(page).not_to have_content('pickup')
 		end
 
-    it 'clicks on view order to see customers order' do
-      pending
-      click_link('View Order')
+    it 'can see customer name from orders page' do
+      expect(page).to have_content('your dad')
     end
 	end
 end
