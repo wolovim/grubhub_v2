@@ -60,6 +60,7 @@ describe '' do
       expect(current_path).to eq(login_path)
       visit admin_categories_path
       expect(current_path).to eq(login_path)
+    end
 
     it 'can view their orders' do
       register

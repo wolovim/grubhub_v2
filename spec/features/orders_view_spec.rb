@@ -7,7 +7,6 @@ describe 'when viewing the orders' do
   end
 
 	context 'as an admin' do
-		# let(:user)  { User.create }
 		let(:order)  { Order.create(user_id: 1, order_type: "pickup", address_id: 2, status: "ordered", total: 2200) }
 		let(:item) { Item.create(title: 'The Awesome Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4300) }
 		let(:order_item) { OrderItem.create(order_id: order.id, item_id: item.id, quantity: 2, unit_price: 210) }
@@ -77,7 +76,6 @@ describe 'when viewing the orders' do
 		end
 
 		it 'can remove items from an order' do
-      skip
 			expect(order.items).to eq([item])
 			click_link('Edit')
 			expect(page).to have_content('The Awesome Donut')
