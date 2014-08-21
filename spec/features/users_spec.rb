@@ -54,5 +54,12 @@ describe '' do
       register
       expect(page).to have_content "Registration successful, congrats you can use a keyboard."
     end
+
+    it 'cannot backdoor to admin pages' do
+      visit admin_items_path
+      expect(current_path).to eq(login_path)
+      visit admin_categories_path
+      expect(current_path).to eq(login_path)
+    end
   end
 end

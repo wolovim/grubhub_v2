@@ -6,6 +6,8 @@ describe 'when viewing the categories' do
 		let(:category) { Category.create(name: 'Savory') }
 
 		before(:each) do
+			register_as_admin
+			login_as_admin
 			category
 			visit admin_categories_path
 		end

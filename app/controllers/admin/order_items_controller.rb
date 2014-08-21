@@ -1,4 +1,4 @@
-class Admin::OrderItemsController < ApplicationController
+class Admin::OrderItemsController < AdminController
   def destroy
     @order_item = OrderItem.find(params[:id])
     order = Order.find(@order_item.order_id)
