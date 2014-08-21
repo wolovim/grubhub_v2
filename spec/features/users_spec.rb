@@ -54,5 +54,19 @@ describe '' do
       register
       expect(page).to have_content "Registration successful, congrats you can use a keyboard."
     end
+
+    it 'can view their orders' do
+      register
+      click_on "Account"
+      click_on "My Orders"
+      expect(page).to have_content "My Orders"
+    end
+
+    it 'can view their user profile' do
+      register
+      click_on "Account"
+      click_on "Profile"
+      expect(page).to have_content "Account Settings"
+    end
   end
 end
