@@ -34,6 +34,12 @@ class Admin::ItemsController < AdminController
 		end
 	end
 
+	def delete_category
+		item = Item.find(params[:item_id])
+		item.remove_category(params[:category_id])
+		redirect_to edit_admin_item_path(item)
+	end
+
 	def destroy
 		Item.find(params[:id]).destroy
 		redirect_to admin_items_path

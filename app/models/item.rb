@@ -14,4 +14,9 @@ class Item < ActiveRecord::Base
 	def price_in_dollars
 		'$' + sprintf("%.2f", price / 100.00)
 	end
+
+	def remove_category(category_id)
+		self.categories = categories.reject { |category| category.id == category_id.to_i}
+		self.save
+	end
 end

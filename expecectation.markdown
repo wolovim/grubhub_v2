@@ -34,12 +34,13 @@ they cannot add it to a new cart
 NOT allowed to:
 
 
+CHAD and I will finish this today:
 
 Administrators
 
 As an authenticated Administrator, I can:
 
-Assign items to categories or remove them from categories.
+Assign items to categories from categories.
 Products can belong to more than one category.
 Retire a item from being sold, which hides it from browsing by any non-administrator
 

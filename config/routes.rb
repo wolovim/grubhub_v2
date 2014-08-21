@@ -25,7 +25,9 @@ Rails.application.routes.draw do
   get '/cancelled' => 'orders#cancelled', as: :cancelled
 
   namespace :admin do
-    resources :items
+    resources :items do
+      get '/delete_category/:category_id' => 'items#delete_category', as: :delete_category
+    end
     resources :categories
     resources :order_items, only: [:destroy, :update]
     resources :users,  only: [:new, :create]

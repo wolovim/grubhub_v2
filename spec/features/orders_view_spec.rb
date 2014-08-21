@@ -130,5 +130,10 @@ describe 'when viewing the orders' do
 			expect(page).to have_content('delivery')
 			expect(page).not_to have_content('pickup')
 		end
+
+    it 'clicks on view order to see customers order' do
+      pending
+      click_link('View Order')
+    end
 	end
 end
