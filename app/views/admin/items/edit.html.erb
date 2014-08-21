@@ -2,7 +2,7 @@
 <div class="page-header">
   <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
 </div>
-<%= simple_form_for @item, :html => { :class => 'form-horizontal' }, url: admin_item_path(@item) do |f| %>
+<%= simple_form_for @item, url: admin_item_path(@item) do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.input :price %>
