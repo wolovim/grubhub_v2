@@ -14,27 +14,15 @@
 	<% else %>
 		<%= render 'layouts/navbar' %>
 	<% end %>
-
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :class => "flash_#{name}" %>
-  <% end %>
+	
+	<div class="container">
+	  <% flash.each do |name, msg| %>
+	    <%= content_tag :div, msg, :class => "alert flash #{name}" %>
+	  <% end %>
+  </div>
 
 	<div class="container">
-		<div class="row">
-
-			<% if is_admin? %>
-				<div class="col-md-12"><%= yield %></div>
-			<% else %>
-				<div class="col-md-8"><%= yield %></div>
-				<div class="col-md-4">
-					<img src="/assets/tower_logo.png" style="padding-top: 45px" height="100%" width="100%"/>
-					<h3 style="text-align: center">Ivory Tower Donut Shop</h3>
-					<h4 style="text-align: center">You're probably not welcome here.</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias deleniti, error nulla non porro, unde officiis. Blanditiis inventore facere eaque quisquam laborum magnam architecto nisi, placeat, perferendis tempora modi optio.</p>
-				</div>
-			<% end %>
-
-		</div>
+		<%= yield %>
 	</div>
 
 	<footer class="footer">

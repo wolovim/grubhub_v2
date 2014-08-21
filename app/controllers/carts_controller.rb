@@ -5,6 +5,7 @@ class CartsController < ApplicationController
 
   def update
     if item = Item.find_by(id: params[:item_id], enabled: true)
+      flash[:success] = 'Added to your cart. (You can afford that?)'
       current_cart << params[:item_id]
     else
       flash[:error] = 'That item is no longer available.'

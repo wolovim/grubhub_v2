@@ -1,4 +1,5 @@
-<h1>CATEGORIES!</h1>
+<div class="col-md-8">
+<h1>MENU!</h1>
 	<% @categories.each do |category| %>
 		<span class="category-name"><%= category.name %></span>
 		<%= link_to "Edit", edit_category_path(category) %>
@@ -22,13 +23,14 @@
             <% end %>
 					</div>
 					<%= image_tag item.image.url(:small), class: "item-image" %><br/>
-					<!-- <div class="add-item-box">
-						<a class="add-item-text" href="#">Add A New Donut!</a>
-					</div> -->
 				</div>
 			<% end %>
 		</div> <!-- /.donuts -->
 	<% end %>
-
-		<br/><br/>
-	<%= button_to 'Add Category', new_category_path, method: :get %>
+</div>
+<div class="col-md-4">
+	<img src="/assets/tower_logo.png" style="padding-top: 45px" height="100%" width="100%"/>
+	<h3 style="text-align: center">Ivory Tower Donut Shop</h3>
+	<h4 style="text-align: center">You're probably not welcome here.</h4>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias deleniti, error nulla non porro, unde officiis.</p>
+</div>
