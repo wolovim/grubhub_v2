@@ -12,7 +12,7 @@
   <dd><%= @order.address_id %></dd>
   <dt><strong><%= model_class.human_attribute_name(:items) %>:</strong></dt>
   <% @order.order_items.each do |order_item| %>
-    <dd><%= link_to order_item.item_title, item_path(order_item.item) %> |
+    <dd><%= link_to order_item.item_title, admin_item_path(order_item.item) %> |
       Quantity: <%= order_item.quantity %> |
       Unit Price: <%= order_item.unit_price_dollars %> |
       Subtotal: <%= order_item.subtotal %><br/></dd>

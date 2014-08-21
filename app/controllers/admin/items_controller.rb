@@ -40,6 +40,14 @@ class Admin::ItemsController < AdminController
 		redirect_to edit_admin_item_path(item)
 	end
 
+	def add_category
+		item = Item.find(params[:item_id])
+		
+		ItemCategory.create(item_id: params[:item_id], category_id: params[:category_id])
+		# item.add_category(params[:category_id])
+		redirect_to edit_admin_item_path(item)
+	end
+
 	def destroy
 		Item.find(params[:id]).destroy
 		redirect_to admin_items_path

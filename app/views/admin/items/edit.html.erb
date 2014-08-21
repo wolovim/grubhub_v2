@@ -6,6 +6,11 @@
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.input :price %>
+  Add Category:
+  <% categories.each do |category| %>
+    |<%= link_to t('.add', :default => t(category.name)),
+             admin_item_add_category_path(@item, category), :class => 'btn' %> |
+  <% end %></br>
   <% @item.categories.each do |category| %>
     <%= category.name %>
     <%= link_to t('.delete', :default => t("helpers.links.delete")),

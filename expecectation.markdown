@@ -26,6 +26,7 @@ order total price
 date/time order was submitted
 if completed or cancelled, display a timestamp when that action took place
 
+
 if any item is retired from the menu:
 
 they can still access the item page
@@ -40,15 +41,13 @@ Administrators
 
 As an authenticated Administrator, I can:
 
-Assign items to categories from categories.
-Products can belong to more than one category.
 Retire a item from being sold, which hides it from browsing by any non-administrator
 
 As an Administrator, I can also view an order "dashboard" where I can:
 
 See a listing of all orders with:
 
-links for each individual order
+links for each individual order (really want to change this to )
 
 link to transition to a different status:
 
