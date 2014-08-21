@@ -123,6 +123,16 @@ describe 'when viewing the items' do
 			click_link "Tasty"
 			expect(page).to have_content 'Delete'
 		end
-		
+
+		it 'has link to retire an item from being sold' do
+			expect(page).to have_link('Retire')
+		end
+
+		it 'has a link to activate a retired item' do
+			expect(page).not_to have_link('Activate')
+			click_link 'Retire'
+			expect(page).to have_link('Activate')
+			expect(page).not_to have_link('Retire')
+		end
 	end
 end

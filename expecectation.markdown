@@ -47,22 +47,11 @@ As an Administrator, I can also view an order "dashboard" where I can:
 
 See a listing of all orders with:
 
-links for each individual order (really want to change this to )
 
 link to transition to a different status:
 
 Access details of an individual order, including:
-Purchaser full name and email address
 
 For each item on the order:
-
-Name linked to the item page
-Quantity
-Price
-Line item subtotal
-Total for the order
-Status of the order
-Update an individual order
-View and edit orders; may change quantity or remove items from orders with the status of pending or paid
 
 NOT allowed to:

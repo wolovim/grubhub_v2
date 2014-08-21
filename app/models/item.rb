@@ -19,4 +19,13 @@ class Item < ActiveRecord::Base
 		self.categories = categories.reject { |category| category.id == category_id.to_i}
 		self.save
 	end
+
+	def retired?
+		enabled == false
+	end
+
+	def retire
+		self.enabled = false
+		self.save
+	end
 end

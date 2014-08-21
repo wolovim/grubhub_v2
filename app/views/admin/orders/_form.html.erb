@@ -12,7 +12,6 @@
 
 <%= simple_form_for @order, url: admin_order_path(@order) do |f| %>
   <%= f.input :order_type %>
-  <%= f.input :address_id %>
   <%= f.input :status %><br/>
   Total: <%= @order.total %>
   <div class="form-actions">

@@ -53,6 +53,12 @@ class Admin::ItemsController < AdminController
 		redirect_to admin_items_path
 	end
 
+	def retire
+		@item = Item.find(params[:item_id])
+		@item.retire
+		redirect_to admin_items_path
+	end
+
 	private
 
 	def item_params
