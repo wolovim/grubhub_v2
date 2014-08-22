@@ -1,12 +1,12 @@
 class CartsController < ApplicationController
   def show
-    @items = Item.where(id: session[:cart])
+    @items = Item.where(id: session[:cart].keys)
   end
 
   def update
     if item = Item.find_by(id: params[:item_id], enabled: true)
       flash[:success] = 'Added to your cart. (You can afford that?)'
-      current_cart << params[:item_id]
+      current_cart.store(params[:item_id], 1)
     else
       flash[:error] = 'That item is no longer available.'
     end
