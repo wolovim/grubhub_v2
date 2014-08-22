@@ -4,9 +4,11 @@ class CartsController < ApplicationController
   end
 
   def update
-    if item = Item.find_by(id: params[:item_id], enabled: true)
+    item_id = params[:item_id]
+    if item = Item.find_by(id: item_id, enabled: true)
+      current_quantity = current_cart[item_id] || 0
+      current_cart.store(item_id, current_quantity + 1)
       flash[:success] = 'Added to your cart. (You can afford that?)'
-      current_cart.store(params[:item_id], 1)
     else
       flash[:error] = 'That item is no longer available.'
     end

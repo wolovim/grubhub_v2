@@ -11,21 +11,29 @@ describe 'Shopping cart', type: :feature do
     )
   end
 
-  it 'can add items to a cart' do
+  it 'can add an item to a cart' do
     visit categories_path
     first(:button, 'Add to Cart').click
     total_items = find('span.badge').text
     expect(total_items).to eq '1'
   end
 
-  it 'cannot add items that do not exist' do
+  it 'can add the same item multiple times' do
+    visit categories_path
+    first(:button, 'Add to Cart').click
+    first(:button, 'Add to Cart').click
+    total_items = find('span.badge').text
+    expect(total_items).to eq '2'
+  end
+
+  it 'cannot add an item that do not exist' do
     visit categories_path
     Item.destroy_all
     first(:button, 'Add to Cart').click
     expect(page).to have_content 'That item is no longer available.'
   end
 
-  it 'cannot add items that are disabled' do
+  it 'cannot add an item that are disabled' do
     visit categories_path
     Item.first.update_column('enabled', false)
     first(:button, 'Add to Cart').click
@@ -40,7 +48,15 @@ describe 'Shopping cart', type: :feature do
     expect(page).to have_content '$10.00'
   end
 
-  it 'can remove items from the cart' do
+  it 'can see the item quantity in the cart' do
+    visit categories_path
+    first(:button, 'Add to Cart').click
+    first(:button, 'Add to Cart').click
+    click_link 'View Cart'
+    within('td.quantity') { expect(page).to have_content '2' }
+  end
+
+  it 'can remove an item from the cart' do
     visit categories_path
     first(:button, 'Add to Cart').click
     click_link 'View Cart'
