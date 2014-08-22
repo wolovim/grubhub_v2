@@ -108,6 +108,20 @@ a.add-item-text:hover {
 	text-decoration: none;
 }
 
+// CHECKOUT PAGE
+#order-summary {
+	border: 3px solid #024;	
+	padding-bottom: 10px;
+}
+
+#order-title {
+	text-align: center;
+}
+
+.cart-total {
+	color: red;
+}
+
 // FOOTER //
 .footer {
 	clear: both;

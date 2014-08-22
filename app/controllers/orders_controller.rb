@@ -7,6 +7,20 @@ class OrdersController < ApplicationController
 		@order = Order.find(params[:id])
 	end
 
+	def new
+		@order = Order.new
+		@items = Item.where(id: session[:cart])
+	end
+
+	def create
+		@order = Order.find(params[:id])
+		if @order.create(order_params)
+			redirect_to order_path(@order)
+		else
+			render :new
+		end
+	end
+
 	def ordered
 	  @orders = Order.all_ordered
 		render :index

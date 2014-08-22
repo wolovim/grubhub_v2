@@ -1,0 +1,74 @@
+<h1>CHECKOUT PAGE!</h1>
+
+<!-- Show cart items summary -->
+<div class="row">
+<div class="col-md-1">
+</div>
+<div class="col-md-10">
+<div id="order-summary">
+	<span id="order-title"><h3>Order Summary</h3></span>
+	<table class="table table-striped order-table">
+		<tr>
+			<th>Title</th>
+			<th>Quantity</th>
+			<th>Unit Price</th>
+			<th>Subtotal</th>
+		</tr>
+		<% @items.each do |item| %>
+			<tr>
+			  <td><%= item.title %></td>
+			  <td>(quantity)</td>
+			  <td><%= item.price_in_dollars %></td>
+			  <td>(Subtotal)</td>
+		  </tr>
+	  <% end %>
+	  <tr>
+	  	<td></td>
+	  	<td></td>
+	  	<td>TOTAL:</td>
+	  	<td class="cart-total">(Calculate Total)</td>
+	  </tr>
+	</table>
+	<%= link_to "<< Edit cart", cart_path, class: "btn primary" %>
+</div>
+</div>
+<div class="col-md-1">
+</div>
+</div>
+
+<br/></br/>
+
+<%= simple_form_for (@order) do |f| %>
+<!-- Radio buttons for cash / credit -->
+<div class="row">
+	<div class="col-md-1">
+	</div>
+	<div class="col-md-5">
+		<div class="input-group">
+		  <span class="input-group-addon">
+		    <input type="radio"> Pickup
+		  </span>
+		  <span class="input-group-addon">
+		    <input type="radio"> Delivery
+		  </span>
+		</div><!-- /input-group -->
+	</div><!-- /col-md-6 -->
+
+		<!-- pickup or delivery -->
+	<div class="col-md-5">
+		<div class="input-group">
+		  <span class="input-group-addon">
+		    <input type="radio"> Cash
+		  </span>
+		  <span class="input-group-addon">
+		    <input type="radio"> Credit Card
+		  </span>
+		</div><!-- /input-group -->
+	</div><!-- /col-md-6 -->
+	<div class="col-md-1">
+	</div>
+</div><!-- /row -->
+
+<br/>
+<%= f.submit %>
+<% end %>
