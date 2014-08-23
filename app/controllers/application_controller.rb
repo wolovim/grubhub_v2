@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
+  def valid_nickname?(nickname)
+    (nickname.length > 2 && nickname.length < 32) || (nickname.length == 0)
+  end
 end

@@ -6,9 +6,9 @@ class UsersController<ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to root_path, notice: 'Registration successful, congrats you can use a keyboard.'
+    if valid_nickname?(params[:user][:nickname]) && @user.save
+        session[:user_id] = @user.id
+        redirect_to root_path, notice: 'Registration successful, congrats you can use a keyboard.'
     else
       render :new
     end

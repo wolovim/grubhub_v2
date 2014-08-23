@@ -13,6 +13,11 @@ describe '' do
       expect(User.count).to eq 1
     end
 
+    it 'cannot register with a nickname of < 2 || > 32 characters' do
+      register(nickname: 'a')
+      expect(page).to have_content "Nickname not saved, must be between 2 and 32 characters."
+    end
+
     it 'cannot register without an email' do
       register(email: nil)
       expect(page).to have_content "Email can't be blank"

@@ -30,4 +30,5 @@ module ApplicationHelper
   def completed?(order)
     order.status == 'completed'
   end
+
 end

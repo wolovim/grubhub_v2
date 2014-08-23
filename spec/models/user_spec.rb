@@ -37,4 +37,6 @@ describe User, type: :model do
 
   it { should have_secure_password }
 
+  it { should ensure_length_of(:nickname) }
+
 end
