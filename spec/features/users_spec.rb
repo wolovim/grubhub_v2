@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe '' do
-  context 'an unauthenticated user' do
+  context 'as a guest' do
     it 'can see a register link' do
       visit root_path
       expect(page).to have_link 'Register'
@@ -61,19 +61,47 @@ describe '' do
       visit admin_categories_path
       expect(current_path).to eq(login_path)
     end
+  end
+
+  context 'as a registered user' do
+
+    let(:order) { Order.create(user_id: 1, order_type: 'pickup', address_id: 7, status: "completed", total: 8000) }
+    let(:user2) { User.create(first_name: "Nan", last_name: "Hass", email: "yourmommy@aol.com",
+                  password: "password", password_confirmation: "password", role: :admin, nickname: "Nandozer") }
+
+    let(:order2) { Order.create(user_id: user2.id, order_type: 'delivery', address_id: 7, status: "paid", total: 8000) }
+
+    before(:each) do
+      register(first_name: 'Nando', last_name: 'Hasselhoff', email: 'yourmom@aol.com', password: '123', password_confirmation: '123')
+      login(email: 'yourmom@aol.com', password: '123')
+      user2
+      order
+      order2
+      visit root_path
+    end
 
     it 'can view their orders' do
-      register
       click_on "Account"
       click_on "My Orders"
       expect(page).to have_content "My Orders"
+      expect(page).to have_content "pickup"
+      expect(page).to have_content "completed"
+    end
+
+    it 'can not view other users orders' do
+      click_on "Account"
+      click_on "My Orders"
+      expect(page).to have_content "My Orders"
+      expect(page).to_not have_content "delivery"
+      expect(page).to_not have_content "paid"
     end
 
     it 'can view their user profile' do
-      register
       click_on "Account"
       click_on "Profile"
       expect(page).to have_content "Account Settings"
     end
+
+
   end
 end

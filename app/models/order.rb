@@ -19,6 +19,10 @@ class Order < ActiveRecord::Base
 		all.select { |order| order.status == 	'cancelled' }
 	end
 
+	def self.current_orders(current_user)
+		all.select { |order| order.user_id == current_user.id }
+	end
+
 	def update_status
 		self.status == 'ordered' ? self.status = 'paid' : self.status = 'completed'
 		self.save

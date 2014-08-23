@@ -1,20 +1,27 @@
-def register(email: 'yourmom123@aol.com',
+def register(first_name: 'Gen',
+             last_name: 'Casagrande',
+             email: 'yourmom123@aol.com',
              password: '123',
              password_confirmation: '123')
 
   visit root_path
   click_on('Register')
-  fill_in "Email", with: email
-  fill_in "Password" , with: password
+
+  fill_in "First name",            with: first_name
+  fill_in "Last name",             with: last_name
+  fill_in "Email",                 with: email
+  fill_in "Password" ,             with: password
   fill_in "Password confirmation", with: password_confirmation
   click_on "Create User"
 end
 
-def register_as_admin(email: 'yourdad123@aol.com',
+def register_as_admin(first_name: 'Gen',
+                      last_name: 'Casagrande',
+                      email: 'yourdad123@aol.com',
                       password: '123',
                       password_confirmation: '123')
 
-  register(email: email, password: password, password_confirmation: password_confirmation)
+  register(first_name: first_name, last_name: last_name, email: email, password: password, password_confirmation: password_confirmation)
   User.last.update_column(:role, 'admin')
 end
 
