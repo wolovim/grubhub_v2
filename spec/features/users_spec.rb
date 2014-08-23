@@ -125,8 +125,6 @@ describe '' do
       click_on "Cancel"
       click_on "Details"
       expect(page).to_not have_link("Cancel")
-      expect(page).to     have_content("Updated date:")
-      expect(page).to     have_content("Updated time:")
       expect(page).to     have_content(order.format_updated_date)
       expect(page).to     have_content(order.format_updated_time)
     end
