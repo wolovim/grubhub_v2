@@ -12,4 +12,9 @@ class User<ActiveRecord::Base
   has_many :user_addresses
   has_many :addresses, through: :user_addresses
 
+
+	def format_date
+		self.created_at.to_time.strftime("%m/%d/%Y")
+	end
+
 end

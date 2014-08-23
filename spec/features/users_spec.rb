@@ -81,7 +81,6 @@ describe '' do
     end
 
     it 'can view their orders' do
-      click_on "Account"
       click_on "My Orders"
       expect(page).to have_content "My Orders"
       expect(page).to have_content "pickup"
@@ -90,7 +89,6 @@ describe '' do
     end
 
     it 'can not view other users orders' do
-      click_on "Account"
       click_on "My Orders"
       expect(page).to have_content "My Orders"
       expect(page).to_not have_content "delivery"
@@ -98,20 +96,17 @@ describe '' do
     end
 
     it 'can view their user profile' do
-      click_on "Account"
-      click_on "Profile"
-      expect(page).to have_content "Account Settings"
+      click_on "Nando's Info"
+      expect(page).to have_content "Your Info"
     end
 
     it 'can link to a details page for each order' do
-      click_on "Account"
       click_on "My Orders"
       click_link 'Details'
       expect(current_path).to eq(order_path(order))
     end
 
     it 'can see all details of an individual order' do
-      click_on "Account"
       click_on "My Orders"
       click_link 'Details'
       expect(page).to have_content('Total:')
@@ -119,7 +114,6 @@ describe '' do
     end
 
     it 'can see updated order time when order is completed or cancelled' do
-      click_on "Account"
       click_on "My Orders"
       click_link "Details"
       click_on "Cancel"
@@ -135,7 +129,6 @@ describe '' do
       order_item = OrderItem.create(item_id: item.id,
                                     order_id: order.id, quantity: 5, unit_price: 8000)
 
-      click_on "Account"
       click_on "My Orders"
       click_link "Details"
       click_link 'Donut1'

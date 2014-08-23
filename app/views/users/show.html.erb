@@ -1,10 +1,7 @@
-<h1>Account Settings</h1>
-<%= simple_form_for @user do |f| %>
-	<br/><strong>Joined on:</strong> <%= @user.created_at %><br/><br/>
-	<%= f.input :first_name %>
-	<%= f.input :last_name %>
-	<%= f.input :nickname %>
-	<%= f.input :email %>
+<h1>Your Info</h1>
+	<br/><strong>Joined:</strong> <%= @user.format_date %><br/>
+	<br/><strong>Name: </strong> <%= @user.first_name + ' ' + @user.last_name %><br/>
+	<br/><strong>Nickname:</strong> <%= @user.nickname %><br/>
+	<br/><strong>Email:</strong> <%= @user.email %><br/>
 	<br/>
-	<%= f.button :submit, :class => 'btn-primary' %>
-<% end %>
+<%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %>

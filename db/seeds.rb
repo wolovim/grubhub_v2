@@ -58,7 +58,7 @@ User.create(first_name: "Mary", last_name: "Jones", email: "mary@aol.com",
 User.create(first_name: "Alice", last_name: "Anderson", email: "alice@aol.com",
   password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
 User.create(first_name: "Jane", last_name: "Rogers", email: "jane@aol.com",
-  password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
+  password: "password", password_confirmation: "password", role: :default)
 
 
 # #ORDER ITEMS
