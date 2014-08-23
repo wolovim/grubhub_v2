@@ -119,7 +119,11 @@ OrderItem.create(item_id: 3,
 
 #ORDERS
 Order.create(user_id: 1, order_type: 'delivery', address_id: 1, status: "ordered", total: 3372)
-Order.create(user_id: 2, order_type: 'delivery', address_id: 2, status: "ordered", total: 7375)
+Order.create(user_id: 2, order_type: 'delivery', address_id: 2, status: "ordered", total: 32)
+Order.create(user_id: 2, order_type: 'delivery', address_id: 2, status: "ordered", total: 98)
+Order.create(user_id: 2, order_type: 'delivery', address_id: 2, status: "ordered", total: 123)
+Order.create(user_id: 2, order_type: 'delivery', address_id: 2, status: "ordered", total: 8976)
+
 Order.create(user_id: 3, order_type: 'delivery', address_id: 3, status: "cancelled", total: 4205)
 Order.create(user_id: 4, order_type: 'delivery', address_id: 4, status: "cancelled", total: 4880)
 Order.create(user_id: 5, order_type: 'delivery', address_id: 5, status: "paid", total: 8000)
@@ -139,3 +143,11 @@ Address.create(street: '52 Park Ave', city: 'Denver', state: 'CO', zip: '80205')
 Address.create(street: '982 Curtis St', city: 'Denver', state: 'CO', zip: '80205')
 Address.create(street: '29 Wynkoop', city: 'Denver', state: 'CO', zip: '80205')
 Address.create(street: '10 Wewatta', city: 'Denver', state: 'CO', zip: '80205')
+
+UserAddress.create(user_id: 2, address_id: 2)
+UserAddress.create(user_id: 2, address_id: 3)
+UserAddress.create(user_id: 5, address_id: 5)
+UserAddress.create(user_id: 6, address_id: 6)
+UserAddress.create(user_id: 7, address_id: 7)
+UserAddress.create(user_id: 8, address_id: 8)
+UserAddress.create(user_id: 1, address_id: 1)

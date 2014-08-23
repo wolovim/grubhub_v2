@@ -1,0 +1,47 @@
+<%- model_class = Order -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dd><%= @order.customer_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:email_address) %>:</strong></dt>
+  <dd><%= @order.customer_email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:order_type) %>:</strong></dt>
+  <dd><%= @order.order_type %></dd>
+  <% if @order.delivery? %>
+    <dt><strong><%= model_class.human_attribute_name(:address_id) %>:</strong></dt>
+    <dd><%= @order.address %></dd>
+  <% end %>
+  <dt><strong><%= model_class.human_attribute_name(:items) %>:</strong></dt>
+  <% @order.order_items.each do |order_item| %>
+    <dd><%= link_to order_item.item_title, item_path(order_item.item) %> |
+      Quantity: <%= order_item.quantity %> |
+      Unit Price: <%= order_item.unit_price_dollars %> |
+      Subtotal: <%= order_item.subtotal %><br/></dd>
+  <% end %><br/>
+  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+  <dd><%= @order.status %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:total) %>:</strong></dt>
+  <dd><%= @order.total %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:order_date) %>:</strong></dt>
+  <dd><%= @order.format_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:order_time) %>:</strong></dt>
+  <dd><%= @order.format_time %></dd>
+  <% if !pending?(@order.status) %>
+    <dt><strong><%= model_class.human_attribute_name(:updated_date) %>:</strong></dt>
+    <dd><%= @order.format_updated_date %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:updated_time) %>:</strong></dt>
+    <dd><%= @order.format_updated_time %></dd>
+  <% end %>
+</dl>
+
+<div class="form-actions">
+  <% if pending?(@order.status) %>
+    <%= link_to t('.edit', :default => t("Cancel")),
+      order_cancel_path(@order),
+      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+      :class => 'btn btn-mini btn-danger' %>
+  <% end %>
+</div>

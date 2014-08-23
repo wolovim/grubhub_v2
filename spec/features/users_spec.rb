@@ -65,7 +65,7 @@ describe '' do
 
   context 'as a registered user' do
 
-    let(:order) { Order.create(user_id: 1, order_type: 'pickup', address_id: 7, status: "completed", total: 8000) }
+    let(:order) { Order.create(user_id: 1, order_type: 'pickup', address_id: 7, status: "ordered", total: 8000) }
     let(:user2) { User.create(first_name: "Nan", last_name: "Hass", email: "yourmommy@aol.com",
                   password: "password", password_confirmation: "password", role: :admin, nickname: "Nandozer") }
 
@@ -85,7 +85,8 @@ describe '' do
       click_on "My Orders"
       expect(page).to have_content "My Orders"
       expect(page).to have_content "pickup"
-      expect(page).to have_content "completed"
+      expect(page).to have_content "ordered"
+      expect(page).to have_link "Details"
     end
 
     it 'can not view other users orders' do
@@ -102,6 +103,47 @@ describe '' do
       expect(page).to have_content "Account Settings"
     end
 
+    it 'can link to a details page for each order' do
+      click_on "Account"
+      click_on "My Orders"
+      click_link 'Details'
+      expect(current_path).to eq(order_path(order))
+    end
 
+    it 'can see all details of an individual order' do
+      click_on "Account"
+      click_on "My Orders"
+      click_link 'Details'
+      expect(page).to have_content('Total:')
+      expect(page).to have_content(order.format_date)
+    end
+
+    it 'can see updated order time when order is completed or cancelled' do
+      click_on "Account"
+      click_on "My Orders"
+      click_link "Details"
+      click_on "Cancel"
+      click_on "Details"
+      expect(page).to_not have_link("Cancel")
+      expect(page).to     have_content("Updated date:")
+      expect(page).to     have_content("Updated time:")
+      expect(page).to     have_content(order.format_updated_date)
+      expect(page).to     have_content(order.format_updated_time)
+    end
+
+    it 'can view individual item details from an order' do
+      item = Item.create( title: "Donut1", price: 2400,
+                          description: "Good for one 'splorer.")
+      order_item = OrderItem.create(item_id: item.id,
+                                    order_id: order.id, quantity: 5, unit_price: 8000)
+
+      click_on "Account"
+      click_on "My Orders"
+      click_link "Details"
+      click_link 'Donut1'
+      expect(current_path).to eq(item_path(item))
+      expect(page).to have_content(item.title)
+      expect(page).to have_content(item.description)
+    end
   end
 end

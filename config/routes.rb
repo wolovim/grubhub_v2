@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  # resources :items
+  resources :items, only: [:show]
   resources :categories
   resources :order_items, only: [:destroy, :update]
   resources :users,  only: [:new, :create, :show]
   resources :addresses, only: [:new, :create, :index]
-  resource :cart, only: [:show, :update]
+  resource  :cart, only: [:show, :update]
 
   resources :orders do
     get '/update_status' => 'orders#update_status', as: :update_status

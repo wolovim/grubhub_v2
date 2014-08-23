@@ -4,5 +4,8 @@ class Address < ActiveRecord::Base
   validates :state,  presence: true
   validates :state,  length: { is: 2 }
   validates :zip,    presence: true
-  validates :zip,    length: { is: 5 }  
+  validates :zip,    length: { is: 5 }
+
+  has_many :user_addresses
+  has_many :users, through: :user_addresses
 end
