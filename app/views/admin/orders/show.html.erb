@@ -25,20 +25,21 @@
   <dd><%= @order.status %></dd>
   <dt><strong><%= model_class.human_attribute_name(:total) %>:</strong></dt>
   <dd><%= @order.total %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:order_date) %>:</strong></dt>
-  <dd><%= @order.format_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:order_time) %>:</strong></dt>
-  <dd><%= @order.format_time %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:submitted) %>:</strong></dt>
+  <dd><%= @order.format_date %> @ <%= @order.format_time %></dd>
+  <% if !pending?(@order.status) %>
+    <dt><strong><%= model_class.human_attribute_name(:updated) %>:</strong></dt>
+    <dd><%= @order.format_updated_date %> @ <%= @order.format_updated_time %></dd>
+  <% end %>
 </dl>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              admin_orders_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_admin_order_path(@order), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              admin_order_path(@order),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+              edit_admin_order_path(@order), :class => 'btn btn-primary' %>
+  <% if pending?(@order.status) %>
+    <%= link_to t('.edit', :default => t("Cancel")),
+                  admin_order_cancel_path(@order),
+                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                  :class => 'btn btn-mini btn-danger' %>
+  <% end %>
 </div>

@@ -22,15 +22,13 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:details) %></th>
+      <th></th>
       <th><%= model_class.human_attribute_name(:customer) %></th>
       <th><%= model_class.human_attribute_name(:order_type) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:total) %></th>
       <th><%= model_class.human_attribute_name(:order_date) %></th>
-      <th>Edit</th>
-      <th>Update Status</th>
-      <th>Cancel</th>
+
     </tr>
   </thead>
   <tbody>
@@ -45,7 +43,7 @@
         <% if pending?(order.status) %>
           <td>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_admin_order_path(order), :class => 'btn btn-mini btn-default' %>
+                        edit_admin_order_path(order), :class => 'btn btn-primary' %>
           </td>
           <td>
             <%= link_to t('.edit', :default => t(get_update_button(order.status))),

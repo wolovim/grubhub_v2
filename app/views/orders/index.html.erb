@@ -20,14 +20,14 @@
         <td><%= order.status %></td>
         <td><%= order.total %></td>
         <td><%= order.format_date %></td>
-        <% if pending?(order.status) %>
-          <td>
+        <td>
+          <% if pending?(order.status) %>
             <%= link_to t('.edit', :default => t("Cancel")),
-                        order_cancel_path(order),
-                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                        :class => 'btn btn-mini btn-danger' %>
-          </td>
-        <% end %>
+                          order_cancel_path(order),
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                          :class => 'btn btn-mini btn-danger' %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

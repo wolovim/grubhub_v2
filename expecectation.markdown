@@ -18,17 +18,8 @@ CHAD AND ANDREW WILL DO ALL THIS BELOW HERE
 Registered User (Non-Administrators)
 Allowed To:
 
-view their past orders with links to display each order
-
 on that order display page there are:
 
-items with quantity ordered and line-item subtotals
-
-links to each item description page
-
-the current status of the order
-
-order total price
 
 date/time order was submitted
 
