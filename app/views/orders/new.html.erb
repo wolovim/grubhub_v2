@@ -39,36 +39,90 @@
 <br/></br/>
 
 <%= simple_form_for (@order) do |f| %>
-<!-- Radio buttons for cash / credit -->
+
 <div class="row">
 	<div class="col-md-1">
 	</div>
 	<div class="col-md-5">
 		<div class="input-group">
 		  <span class="input-group-addon">
-		    <input type="radio"> Pickup
-		  </span>
-		  <span class="input-group-addon">
-		    <input type="radio"> Delivery
+			  <label class="radio-inline">
+				  <input type="radio" name="transportMethod" id="transport1" value="pickup"> Pickup
+				</label>
+			</span>
+			<span class="input-group-addon">
+				<label class="radio-inline">
+				  <input type="radio" name="transportMethod" id="transport2" value="delivery"> Delivery
+				</label>
 		  </span>
 		</div><!-- /input-group -->
-	</div><!-- /col-md-6 -->
-
-		<!-- pickup or delivery -->
+	</div><!-- /col-md-5 -->
+		
 	<div class="col-md-5">
 		<div class="input-group">
 		  <span class="input-group-addon">
-		    <input type="radio"> Cash
-		  </span>
-		  <span class="input-group-addon">
-		    <input type="radio"> Credit Card
+			  <label class="radio-inline">
+				  <input type="radio" name="paymentMethod" id="payment1" value="cash"> Cash
+				</label>
+			</span>
+			<span class="input-group-addon">
+				<label class="radio-inline">
+				  <input type="radio" name="paymentMethod" id="payment2" value="credit"> Credit Card
+				</label>
 		  </span>
 		</div><!-- /input-group -->
-	</div><!-- /col-md-6 -->
+	</div><!-- /col-md-5 -->
 	<div class="col-md-1">
 	</div>
 </div><!-- /row -->
 
+<div class="row">
+	<div class="col-md-1">
+	</div>
+	<!-- Address selection/creation -->
+	<div class="col-md-5">
+		<form role="form">
+			<div class="form-group">
+		    <label for="Street">Street</label>
+		    <input type="text" class="form-control" placeholder="1600 Pennsylvania Ave">
+		    <label for="Unit">Unit</label>
+		    <input type="text" class="form-control" placeholder="#205">
+		    <label for="City">City</label>
+		    <input type="text" class="form-control" placeholder="#Denver">
+		    <label for="State">State</label>
+		    <input type="text" class="form-control" placeholder="CO">
+		    <label for="Zip">Zip</label>
+		    <input type="text" class="form-control" placeholder="80204">
+		  </div>
+		</form>
+	</div>
+	
+	<!-- Credit card details -->
+	<div class="col-md-5">
+		<form role="form">
+			<div class="form-group">
+				<label for="CardCardNumber">Credit Card Number</label>
+				<input type="text" class="form-control" placeholder="1111222233334444">
+				<label for="ExpirationDate">Expiration Date</label>
+				<input type="text" class="form-control" placeholder="0117">
+				<label for="CVV">CVV</label>
+				<input type="text" class="form-control" placeholder="123">
+		  </div>
+		</form>
+	</div>
+	<div class="col-md-1">
+	</div>
+</div>
+
 <br/>
 <%= f.submit %>
 <% end %>
+
+<!-- 
+	Order schema: 
+		user_id 
+		order_type => pickup/if delivery, has address_id
+		address_id => selected/created here
+		status		 => if cash: ordered, if card: paid
+		total 
+-->
