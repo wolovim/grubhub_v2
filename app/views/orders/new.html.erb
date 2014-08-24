@@ -40,6 +40,30 @@
 
 <%= simple_form_for (@order) do |f| %>
 
+<script>
+$(document).ready(function(){
+  // do your checks of the radio buttons here and show/hide what you want to
+  $("#address-selector").hide();
+  $("#payment-selector").hide();
+
+	$("#pickup-radio").on("click", function() {
+	   $("#address-selector").slideUp();
+	});
+
+	$("#delivery-radio").on("click", function() {
+	   $("#address-selector").slideDown(); 
+	});
+
+	$("#cash-radio").on("click", function() {
+	   $("#payment-selector").slideUp();
+	});
+
+	$("#credit-radio").on("click", function() {
+	   $("#payment-selector").slideDown(); 
+	});
+});
+</script>
+
 <div class="row">
 	<div class="col-md-1">
 	</div>
@@ -47,12 +71,12 @@
 		<div class="input-group">
 		  <span class="input-group-addon">
 			  <label class="radio-inline">
-				  <input type="radio" name="transportMethod" id="transport1" value="pickup"> Pickup
+				  <input type="radio" name="transportMethod" id="pickup-radio" value="pickup"> Pickup
 				</label>
 			</span>
 			<span class="input-group-addon">
 				<label class="radio-inline">
-				  <input type="radio" name="transportMethod" id="transport2" value="delivery"> Delivery
+				  <input type="radio" name="transportMethod" id="delivery-radio" value="delivery"> Delivery
 				</label>
 		  </span>
 		</div><!-- /input-group -->
@@ -62,12 +86,12 @@
 		<div class="input-group">
 		  <span class="input-group-addon">
 			  <label class="radio-inline">
-				  <input type="radio" name="paymentMethod" id="payment1" value="cash"> Cash
+				  <input type="radio" name="paymentMethod" id="cash-radio" value="cash"> Cash
 				</label>
 			</span>
 			<span class="input-group-addon">
 				<label class="radio-inline">
-				  <input type="radio" name="paymentMethod" id="payment2" value="credit"> Credit Card
+				  <input type="radio" name="paymentMethod" id="credit-radio" value="credit"> Credit Card
 				</label>
 		  </span>
 		</div><!-- /input-group -->
@@ -81,58 +105,62 @@
 	</div>
 	<!-- Address selection/creation -->
 	<div class="col-md-5">
-		<div class="checkout-dropdown">
-			<div class="select-address">
-				<label class="radio">
-				  <input type="radio" name="addressOption" id="address1" value="saved-address"> Select a saved address
-				</label>
-				<select class="form-control">
-					<option value="Address 1">One</option>
-					<option value="Address 2">Two</option>
-					<option value="Address 3">Three</option>
-				</select>
-			</div>
-			<br/>
+		<div id="address-selector">
+			<div class="checkout-dropdown">
+				<div class="select-address">
+					<label class="radio">
+					  <input type="radio" name="addressOption" id="address1" value="saved-address"> Select a saved address
+					</label>
+					<select class="form-control">
+						<option value="Address 1">One</option>
+						<option value="Address 2">Two</option>
+						<option value="Address 3">Three</option>
+					</select>
+				</div>
+				<br/>
 
-			<p>-- OR --</p>
-			
-			<div class="create-address">
-				<label class="radio">
-				  <input type="radio" name="addressOption" id="address2" value="new-address"> Enter a new address
-				</label>
-				<form role="form">
-					<div class="form-group">
-				    <label for="Street">Street</label>
-				    <input type="text" class="form-control" placeholder="1600 Pennsylvania Ave">
-				    <label for="Unit">Unit</label>
-				    <input type="text" class="form-control" placeholder="#205">
-				    <label for="City">City</label>
-				    <input type="text" class="form-control" placeholder="Denver">
-				    <label for="State">State</label>
-				    <input type="text" class="form-control" placeholder="CO">
-				    <label for="Zip">Zip</label>
-				    <input type="text" class="form-control" placeholder="80204">
-				  </div>
-				</form>
-			</div>
-		</div><!-- /input-group -->
+				<p>-- OR --</p>
+				
+				<div class="create-address">
+					<label class="radio">
+					  <input type="radio" name="addressOption" id="address2" value="new-address"> Enter a new address
+					</label>
+					<form role="form">
+						<div class="form-group">
+					    <label for="Street">Street</label>
+					    <input type="text" class="form-control" placeholder="1600 Pennsylvania Ave">
+					    <label for="Unit">Unit</label>
+					    <input type="text" class="form-control" placeholder="#205">
+					    <label for="City">City</label>
+					    <input type="text" class="form-control" placeholder="Denver">
+					    <label for="State">State</label>
+					    <input type="text" class="form-control" placeholder="CO">
+					    <label for="Zip">Zip</label>
+					    <input type="text" class="form-control" placeholder="80204">
+					  </div>
+					</form>
+				</div><!-- /create-address -->
+			</div><!-- /checkout-dropdown -->
+		</div><!-- /#address-selector-->
 	</div>
 	
 	<!-- Credit card details -->
 	<div class="col-md-5">
-		<div class="checkout-dropdown">
-			<form role="form">
-				<div class="form-group">
-					<label for="CardCardNumber">Credit Card Number</label>
-					<input type="text" class="form-control" placeholder="1111222233334444">
-					<label for="ExpirationDate">Expiration Date</label>
-					<input type="text" class="form-control" placeholder="0117">
-					<label for="CVV">CVV</label>
-					<input type="text" class="form-control" placeholder="123">
-			  </div>
-			</form>
-		</div>
-	</div>
+		<div id="payment-selector">
+			<div class="checkout-dropdown">
+				<form role="form">
+					<div class="form-group">
+						<label for="CardCardNumber">Credit Card Number</label>
+						<input type="text" class="form-control" placeholder="1111222233334444">
+						<label for="ExpirationDate">Expiration Date</label>
+						<input type="text" class="form-control" placeholder="0117">
+						<label for="CVV">CVV</label>
+						<input type="text" class="form-control" placeholder="123">
+				  </div>
+				</form>
+			</div><!-- /checkout-dropdown -->
+		</div><!-- /#payment-selecetor -->
+	</div><!-- /col-md-5 -->
 	<div class="col-md-1">
 	</div>
 </div>
