@@ -1,10 +1,18 @@
-<div class="page-border">
-	<h2>LOG IN!</h2>
-	<%= form_tag(login_path, method: "post") do %>
-	  <%= label_tag(:email, "Email:") %>
-	  <%= text_field_tag(:email) %>
-	  <%= label_tag(:password, "Password:") %>
-	  <%= password_field_tag(:password) %>
-	  <%= submit_tag("Login") %>
-	<% end %>
+<div class="row">
+	<div class="col-md-4">
+	</div>
+	<div class="col-md-4">
+		<div class="login-reg-page">
+			<h2>LOG IN!</h2>
+			<%= form_tag(login_path, method: "post") do %>
+			  <%= label_tag(:email, "Email:") %><br/>
+			  <%= text_field_tag(:email) %><br/>
+			  <%= label_tag(:password, "Password:") %><br/>
+			  <%= password_field_tag(:password) %><br/><br/>
+			  <%= submit_tag("Login") %>
+			<% end %>
+		</div>
+	</div>
+	<div class="col-md-4">
+	</div>
 </div>

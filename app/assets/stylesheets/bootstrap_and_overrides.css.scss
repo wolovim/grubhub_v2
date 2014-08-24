@@ -41,6 +41,14 @@ $navbar-inverse-brand-color: #fff;
 	font-family: 'Aclonica', sans-serif;
 }
 
+// LOGIN / REGISTER
+.login-reg-page {
+	background-color: white;
+	border: 3px solid #024;
+	padding: 20px;
+	margin-top: 20px;
+}
+
 // CATEGORIES //
 .category-name {
 	font-weight: bold;
@@ -123,6 +131,7 @@ a.add-item-text:hover {
 	border: 3px solid #024;	
 	padding-bottom: 10px;
 	box-shadow: 10px 10px 5px #888;
+	background-color: white;
 }
 
 #order-title {
@@ -137,6 +146,7 @@ a.add-item-text:hover {
 	border: 2px solid black;
 	padding: 10px;
 	margin-top: 20px;
+	background-color: white;
 }
 
 .radio {
