@@ -1,3 +1,4 @@
+<div class="page-border">
 <%- model_class = Order -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
@@ -71,3 +72,4 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_admin_order_path,
             :class => 'btn btn-primary' %>
+</div>

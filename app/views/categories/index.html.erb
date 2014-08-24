@@ -1,36 +1,38 @@
-<div class="col-md-8">
-<h1>MENU!</h1>
-	<% @categories.each do |category| %>
-		<span class="category-name"><%= category.name %></span>
-		<div class="donuts transitions-enabled">
-			<% category.items.each do |item| %>
-				<% unless item.retired? %>
-					<div class="item-box">
-						<div class="item-box-description">
-							<strong><%= item.title %></strong><br/>
-							<%= item.description %><br/>
+<div class="main-menu">
+	<div class="col-md-8">
+	<h1>MENU!</h1>
+		<% @categories.each do |category| %>
+			<span class="category-name"><%= category.name %></span>
+			<div class="donuts transitions-enabled">
+				<% category.items.each do |item| %>
+					<% unless item.retired? %>
+						<div class="item-box">
+							<div class="item-box-description">
+								<strong><%= item.title %></strong><br/>
+								<%= item.description %><br/>
+							</div>
+							<div class="item-price">
+								<span class="only-price">
+									<span class="only">only:</span> <%= item.price_in_dollars %><br/>
+								</span>
+		            <%= form_tag(cart_path, method: "patch") do %>
+		              <%= hidden_field_tag :item_id, item.id %>
+		              <%= button_tag type: 'submit', class: 'btn btn-primary add-item' do %>
+		                <span class='glyphicon glyphicon-plus-sign'></span> Add to Cart
+		              <% end %>
+		            <% end %>
+							</div>
+							<%= image_tag item.image.url(:small), class: "item-image" %><br/>
 						</div>
-						<div class="item-price">
-							<span class="only-price">
-								<span class="only">only:</span> <%= item.price_in_dollars %><br/>
-							</span>
-	            <%= form_tag(cart_path, method: "patch") do %>
-	              <%= hidden_field_tag :item_id, item.id %>
-	              <%= button_tag type: 'submit', class: 'btn btn-primary add-item' do %>
-	                <span class='glyphicon glyphicon-plus-sign'></span> Add to Cart
-	              <% end %>
-	            <% end %>
-						</div>
-						<%= image_tag item.image.url(:small), class: "item-image" %><br/>
-					</div>
+					<% end %>
 				<% end %>
-			<% end %>
-		</div>
-	<% end %>
-</div>
-<div class="col-md-4">
-	<img src="/assets/tower_logo.png" style="padding-top: 45px" height="100%" width="100%"/>
-	<h3 style="text-align: center">Ivory Tower Donut Shop</h3>
-	<h4 style="text-align: center">You're probably not welcome here.</h4>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias deleniti, error nulla non porro, unde officiis.</p>
+			</div>
+		<% end %>
+	</div>
+	<div class="col-md-4">
+		<img src="/assets/tower_logo.png" style="padding-top: 45px" height="100%" width="100%"/>
+		<h3 style="text-align: center">Ivory Tower Donut Shop</h3>
+		<h4 style="text-align: center">You're probably not welcome here.</h4>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias deleniti, error nulla non porro, unde officiis.</p>
+	</div>
 </div>

@@ -15,7 +15,7 @@
 	<% else %>
 		<%= render 'layouts/navbar' %>
 	<% end %>
-	
+
 	<div class="container">
 	  <% flash.each do |name, msg| %>
 	    <%= content_tag :div, msg, :class => "alert flash #{name}" %>
