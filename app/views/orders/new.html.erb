@@ -62,6 +62,19 @@ $(document).ready(function(){
 	$("#credit-radio").on("click", function() {
 	   $("#payment-selector").slideDown(); 
 	});
+
+	$("#saved-address-selector").hide();
+	$("#new-address-form").hide();
+
+	$("#saved-address-radio").on("click", function () {
+		$("#saved-address-selector").slideDown();
+		$("#new-address-form").slideUp();
+	});
+
+	$("#new-address-radio").on("click", function () {
+		$("#new-address-form").slideDown();
+		$("#saved-address-selector").slideUp();
+	});
 });
 </script>
 
@@ -110,13 +123,15 @@ $(document).ready(function(){
 			<div class="checkout-dropdown">
 				<div class="select-address">
 					<label class="radio">
-					  <input type="radio" name="addressOption" id="address1" value="saved-address"> Select a saved address
+					  <input type="radio" name="addressOption" id="saved-address-radio" value="saved-address"> Select a saved address
 					</label>
-					<select class="form-control">
-						<option value="Address 1">One</option>
-						<option value="Address 2">Two</option>
-						<option value="Address 3">Three</option>
-					</select>
+					<div id="saved-address-selector">
+						<select class="form-control">
+							<option value="Address 1">One</option>
+							<option value="Address 2">Two</option>
+							<option value="Address 3">Three</option>
+						</select>
+					</div>
 				</div>
 				<br/>
 
@@ -124,22 +139,24 @@ $(document).ready(function(){
 				
 				<div class="create-address">
 					<label class="radio">
-					  <input type="radio" name="addressOption" id="address2" value="new-address"> Enter a new address
+					  <input type="radio" name="addressOption" id="new-address-radio" value="new-address"> Enter a new address
 					</label>
-					<form role="form">
-						<div class="form-group">
-					    <label for="Street">Street</label>
-				    <input type="text" class="form-control" placeholder="1600 Pennsylvania Ave">
-					    <label for="Unit">Unit</label>
-					    <input type="text" class="form-control" placeholder="#205">
-					    <label for="City">City</label>
-					    <input type="text" class="form-control" placeholder="Denver">
-					    <label for="State">State</label>
-					    <input type="text" class="form-control" placeholder="CO">
-					    <label for="Zip">Zip</label>
-					    <input type="text" class="form-control" placeholder="80204">
-					  </div>
-					</form>
+					<div id="new-address-form">
+						<form role="form">
+							<div class="form-group">
+						    <label for="Street">Street</label>
+					    <input type="text" class="form-control" placeholder="1600 Pennsylvania Ave">
+						    <label for="Unit">Unit</label>
+						    <input type="text" class="form-control" placeholder="#205">
+						    <label for="City">City</label>
+						    <input type="text" class="form-control" placeholder="Denver">
+						    <label for="State">State</label>
+						    <input type="text" class="form-control" placeholder="CO">
+						    <label for="Zip">Zip</label>
+						    <input type="text" class="form-control" placeholder="80204">
+						  </div>
+						</form>
+					</div>
 				</div><!-- /create-address -->
 			</div><!-- /checkout-dropdown -->
 		</div><!-- /#address-selector-->
