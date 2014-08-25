@@ -2,7 +2,8 @@ def register(first_name: 'Gen',
              last_name: 'Casagrande',
              email: 'yourmom123@aol.com',
              password: '123',
-             password_confirmation: '123')
+             password_confirmation: '123',
+             nickname: 'gen')
 
   visit root_path
   click_on('Register')
@@ -12,6 +13,7 @@ def register(first_name: 'Gen',
   fill_in "Email",                 with: email
   fill_in "Password" ,             with: password
   fill_in "Password confirmation", with: password_confirmation
+  fill_in 'Nickname',              with: nickname
   click_on "Create User"
 end
 
