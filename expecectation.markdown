@@ -13,9 +13,8 @@ Checkout (until they log in)
 -------------------------------------------------
 
 *************************************************
-CHAD AND ANDREW WILL DO ALL THIS BELOW HERE
-*************************************************
-ALL DONE!
-**************************************************
+Your project must be "live" on the web for your evaluation. We recommend you deploy it on Heroku
 
-**************************************************
+Your README file on GitHub should contain a link to your live site
+
+On the production site, the URL path /code should redirect the user to the GitHub repository
