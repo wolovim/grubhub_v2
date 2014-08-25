@@ -33,6 +33,7 @@ end
 
 group :test do
   gem 'simplecov', require: false
+  gem 'nyan-cat-formatter'
 end
 
 gem 'simple_form'
