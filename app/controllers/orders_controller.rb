@@ -8,8 +8,12 @@ class OrdersController < ApplicationController
 	end
 
 	def new
-		@order = Order.new
-		@items = Item.where(id: session[:cart])
+		if current_user
+			@order = Order.new
+			@items = Item.where(id: session[:cart])
+		else
+			redirect_to login_path, notice: 'Please login to continue checkout'
+		end
 	end
 
 	def create
