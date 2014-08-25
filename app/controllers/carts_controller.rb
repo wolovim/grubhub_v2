@@ -11,7 +11,11 @@ class CartsController < ApplicationController
       current_quantity = current_cart[item_id] || 0
       current_cart.store(item_id, current_quantity + quantity)
       if current_quantity + quantity > 0
-        flash[:success] = 'Added to your cart. (You can afford that?)'
+        if current_quantity == 0
+          flash[:success] = 'Added to your cart. (You can afford that?)'
+        else
+          flash[:success] = 'Updated quantity for item.'
+        end
       else
         current_cart.delete(item_id)
         flash[:success] = "'#{item.title}' has been removed from your cart."
