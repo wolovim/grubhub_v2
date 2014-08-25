@@ -9,7 +9,6 @@ Increase the quantity of a item in my cart
 -------------------------------------------------
 MARC WILL DO:
 -------------------------------------------------
-Checkout (until they log in)
 Your project must be "live" on the web for your evaluation. We recommend you deploy it on Heroku
 -------------------------------------------------
 
