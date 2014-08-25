@@ -12,11 +12,23 @@
       <% @items.each do |item| %>
         <tr>
           <td><%= item.title %></td>
-          <td class="quantity"><%= item_quantity(item.id) %></td>
-          <td><%= item.price_in_dollars %></td>
-          <td>(Subtotal)</td>
+          <td class="quantity">
+            <%= form_for(:cart, url: cart_path, method: :patch, html: { class: 'increment' }) do |f| %>
+              <%= f.hidden_field :item_id, value: item.id %>
+              <%= f.hidden_field :quantity, value: 1 %>
+              <%= f.submit '+' %>
+            <% end %>
+            <%= form_for(:cart, url: cart_path, method: :patch, html: { class: 'decrement' }) do |f| %>
+              <%= f.hidden_field :item_id, value: item.id %>
+              <%= f.hidden_field :quantity, value: -1 %>
+              <%= f.submit '-' %>
+            <% end %>
+            <%= item_quantity(item.id) %>
+          </td>
+          <td><%= price_in_dollars(item.price) %></td>
+          <td><%= item_subtotal(item.id, item.price) %></td>
           <td>
-            <%= form_for(:cart, method: :delete) do |f| %>
+            <%= form_for(:cart, url: cart_path, method: :delete) do |f| %>
               <%= f.hidden_field :item_id, value: item.id %>
               <%= f.submit "Remove", class: "btn btn-danger" %>
             <% end %>

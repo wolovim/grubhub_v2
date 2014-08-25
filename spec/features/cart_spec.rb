@@ -64,4 +64,50 @@ describe 'Shopping cart', type: :feature do
     expect(page).to have_content "'A Donut' has been removed from your cart."
     expect(page).to_not have_content '$10.00'
   end
+
+  it 'can increase the quantity of an item' do
+    visit categories_path
+    first(:button, 'Add to Cart').click
+    click_link 'View Cart'
+
+    within('form.increment') {
+      click_button '+'
+    }
+
+    within('td.quantity') { expect(page).to have_content '2' }
+  end
+
+  it 'can decrease the quantity of an item' do
+    visit categories_path
+    first(:button, 'Add to Cart').click
+    first(:button, 'Add to Cart').click
+    click_link 'View Cart'
+
+    within('form.decrement') {
+      click_button '-'
+    }
+
+    within('td.quantity') { expect(page).to have_content '1' }
+  end
+
+  it 'can remove an item by decreasing the quantity to 0' do
+    visit categories_path
+    first(:button, 'Add to Cart').click
+    click_link 'View Cart'
+
+    within('form.decrement') {
+      click_button '-'
+    }
+
+    expect(page).to have_content "'A Donut' has been removed from your cart."
+    expect(page).to_not have_content '$10.00'
+  end
+
+  it 'can see the subtotal' do
+    visit categories_path
+    first(:button, 'Add to Cart').click
+    first(:button, 'Add to Cart').click
+    click_link 'View Cart'
+    expect(page).to have_content '$20.00'
+  end
 end

@@ -13,14 +13,15 @@
 							</div>
 							<div class="item-price">
 								<span class="only-price">
-									<span class="only">only:</span> <%= item.price_in_dollars %><br/>
+									<span class="only">only:</span> <%= price_in_dollars(item.price) %><br/>
 								</span>
-		            <%= form_tag(cart_path, method: "patch") do %>
-		              <%= hidden_field_tag :item_id, item.id %>
-		              <%= button_tag type: 'submit', class: 'btn btn-primary add-item' do %>
+                <%= form_for(:cart, url: cart_path, method: :put) do |f| %>
+                  <%= f.hidden_field :item_id, value: item.id %>
+                  <%= f.hidden_field :quantity, value: 1 %>
+                  <%= button_tag type: 'submit', class: 'btn btn-primary add-item' do %>
 		                <span class='glyphicon glyphicon-plus-sign'></span> Add to Cart
-		              <% end %>
-		            <% end %>
+                  <% end %>
+                <% end %>
 							</div>
 							<%= image_tag item.image.url(:small), class: "item-image" %><br/>
 						</div>
