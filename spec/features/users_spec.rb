@@ -61,6 +61,13 @@ describe '' do
       visit admin_categories_path
       expect(current_path).to eq(login_path)
     end
+
+    it 'cannot register with a nickname of 1 character or greater than 32 characters' do
+      visit root_path
+      click_link 'Register'
+      register(nickname: 'o')
+      expect(page).to have_content('1 error prohibited this user from being saved')
+    end
   end
 
   context 'as a registered user' do
