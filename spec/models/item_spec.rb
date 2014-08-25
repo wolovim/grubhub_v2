@@ -7,22 +7,15 @@ RSpec.describe Item, type: :model  do
 		expect(item).to be_valid
 	end
 
-	it 'is invalid without a name' do
-		item.title = nil
-		expect(item).not_to be_valid
-	end
+	it { should validate_presence_of(:title) }
 
-	it 'is invalid without a description' do
-		item.description = nil
-		expect(item).not_to be_valid
-	end
+	it { should validate_presence_of(:description) }
 
-	it 'is invalid without a price' do
-		item.price = nil
-		expect(item).not_to be_valid
-	end
+	it { should validate_presence_of(:price)}
 
-	it 'has an array of categories' do 
+	it { should validate_uniqueness_of(:title) }
+
+	it 'has an array of categories' do
 		expect(item.categories).to eq([])
 	end
 end
