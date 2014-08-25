@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
 	def new
 		if current_user
 			@order = Order.new
-			@items = Item.where(id: session[:cart])
+      @items = Item.where(id: session[:cart].keys)
 		else
 			redirect_to login_path, notice: 'Please login to continue checkout'
 		end
