@@ -14,4 +14,6 @@ RSpec.describe Address, :type => :model do
 
   it { should ensure_length_of(:state).is_equal_to 2 }
 
+  it { should ensure_length_of(:zip).is_equal_to 5 }
+  
 end
