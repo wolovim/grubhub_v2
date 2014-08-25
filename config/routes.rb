@@ -46,5 +46,6 @@ Rails.application.routes.draw do
   end
 
   get '/admin', to: redirect('admin/orders#index')
+  get '/code', to: redirect('https://github.com/MarcGarreau/grubhub_v2')
 
 end
