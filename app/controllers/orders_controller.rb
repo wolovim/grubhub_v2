@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
 
 	def new
 		@order = Order.new
-		@items = Item.where(id: session[:cart])
+    @items = Item.where(id: session[:cart].keys)
 	end
 
 	def create
