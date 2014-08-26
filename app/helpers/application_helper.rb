@@ -34,4 +34,12 @@ module ApplicationHelper
   def completed?(order)
     order.status == 'completed'
   end
+
+	def format_date(date)
+		date.to_time.strftime("%m/%d/%Y")
+	end
+
+	def format_time(time)
+		time.to_time.strftime("%I:%M %p")
+	end
 end

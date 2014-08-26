@@ -1,4 +1,5 @@
 require 'rails_helper'
+include ApplicationHelper
 
 describe '' do
   context 'as a guest' do
@@ -140,7 +141,8 @@ describe '' do
       item = Item.create( title: "Donut1", price: 2400,
                           description: "Good for one 'splorer.")
       order_item = OrderItem.create(item_id: item.id,
-                                    order_id: order.id, quantity: 5, unit_price: 8000)
+                                    order_id: order.id, quantity: 5,
+                                    unit_price: 8000)
 
       click_on "Account"
       click_on "My Orders"
@@ -149,6 +151,24 @@ describe '' do
       expect(current_path).to eq(item_path(item))
       expect(page).to have_content(item.title)
       expect(page).to have_content(item.description)
+    end
+
+    it 'can view profile page' do
+      user = User.find(1)
+      click_on 'Account'
+      click_on 'Profile'
+      expect(current_path). to eq(user_path(user))
+    end
+
+    it 'can view date joined, first name, last name, email, and nickname the edit page' do
+      user = User.find(1)
+      click_on 'Account'
+      click_on 'Profile'
+      expect(page).to have_content(format_date(user.created_at))
+      expect(page).to have_content(user.first_name)
+      expect(page).to have_content(user.last_name)
+      expect(page).to have_content(user.email)
+      expect(page).to have_content(user.nickname)
     end
   end
 end
