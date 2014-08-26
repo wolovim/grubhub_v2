@@ -1,7 +1,10 @@
 class Order < ActiveRecord::Base
-	validates :user_id, :order_type, :address_id, :status, :total, presence: true
+	validates :user_id, :order_type, :status, :total, presence: true
+  validates :address_id, presence: true, if: :delivery?
 	has_many :order_items
 	has_many :items, through: :order_items
+
+  before_validation :set_default_values
 
 	def self.all_ordered
 		all.select { |order| order.status == 	'ordered' }
@@ -22,6 +25,22 @@ class Order < ActiveRecord::Base
 	def self.current_orders(current_user)
 		all.select { |order| order.user_id == current_user.id }
 	end
+
+  def self.new_with_items(params, cart)
+    order = new(params)
+    items = Item.where(id: cart.keys)
+    cart.each do |item, quantity|
+      order.order_items.new(item_id: item,
+                            quantity: quantity,
+                            unit_price: items.detect { |x| x.id == item.to_i }.price)
+    end
+    order
+  end
+
+  def set_default_values
+    self.status ||= 'ordered'
+    self.total ||= 0
+  end
 
 	def update_status
 		self.status == 'ordered' ? self.status = 'paid' : self.status = 'completed'
@@ -50,7 +69,7 @@ class Order < ActiveRecord::Base
 
 	def total
 		pretax_total = self.order_items.inject(0) { |sum, order_item| sum + order_item.quantity * order_item.unit_price }
-		"$" + sprintf("%.2f", (pretax_total += pretax_total* 0.07) / 100)
+		"$" + sprintf("%.2f", (pretax_total += pretax_total * 0.07) / 100)
 	end
 
 	def delivery?

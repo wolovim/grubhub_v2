@@ -2,10 +2,6 @@ class OrderItem < ActiveRecord::Base
 	belongs_to :order
 	belongs_to :item
 
-	def item
-		Item.find(self.item_id)
-	end
-
 	def item_title
 		item.title
 	end

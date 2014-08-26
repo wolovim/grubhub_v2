@@ -2,173 +2,167 @@
 
 <!-- Show cart items summary -->
 <div class="row">
-<div class="col-md-1">
-</div>
-<div class="col-md-10">
-<div id="order-summary">
-	<span id="order-title"><h3>Order Summary</h3></span>
-	<table class="table table-striped order-table">
-		<tr>
-			<th>Title</th>
-			<th>Quantity</th>
-			<th>Unit Price</th>
-			<th>Subtotal</th>
-		</tr>
-		<% @items.each do |item| %>
-			<tr>
-			  <td><%= item.title %></td>
-        <td><%= item_quantity(item.id) %></td>
-			  <td><%= price_in_dollars(item.price) %></td>
-        <td><%= price_in_dollars(item_subtotal(item.id, item.price)) %></td>
-		  </tr>
-	  <% end %>
-	  <tr>
-	  	<td></td>
-	  	<td></td>
-	  	<td>TOTAL:</td>
-      <td class="cart-total"><%= price_in_dollars(calculate_total) %></td>
-	  </tr>
-	</table>
-	<%= link_to "<< Edit cart", cart_path, class: "btn primary" %>
-</div>
-</div>
-<div class="col-md-1">
-</div>
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <div id="order-summary">
+      <span id="order-title"><h3>Order Summary</h3></span>
+      <table class="table table-striped order-table">
+        <tr>
+          <th>Title</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Subtotal</th>
+        </tr>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.title %></td>
+            <td><%= item_quantity(item.id) %></td>
+            <td><%= price_in_dollars(item.price) %></td>
+            <td><%= price_in_dollars(item_subtotal(item.id, item.price)) %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>TOTAL:</td>
+          <td class="cart-total"><%= price_in_dollars(calculate_total) %></td>
+        </tr>
+      </table>
+      <%= link_to "<< Edit cart", cart_path, class: "btn primary" %>
+    </div>
+  </div>
+  <div class="col-md-1">
+  </div>
 </div>
 
 <br/></br/>
 
-<%= simple_form_for (@order) do |f| %>
+<%= simple_form_for(@order) do |f| %>
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-5">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <label class="radio-inline">
+            <%= f.radio_button :order_type, :pickup %> Pickup
+          </label>
+        </span>
+        <span class="input-group-addon">
+          <label class="radio-inline">
+            <%= f.radio_button :order_type, :delivery %> Delivery
+          </label>
+        </span>
+      </div><!-- /input-group -->
+    </div><!-- /col-md-5 -->
 
-<!-- pickup / delivery radio buttons -->
-<div class="row">
-	<div class="col-md-1">
-	</div>
-	<div class="col-md-5">
-		<div class="input-group">
-		  <span class="input-group-addon">
-			  <label class="radio-inline">
-				  <input type="radio" name="transportMethod" id="pickup-radio" value="pickup"> Pickup
-				</label>
-			</span>
-			<span class="input-group-addon">
-				<label class="radio-inline">
-				  <input type="radio" name="transportMethod" id="delivery-radio" value="delivery"> Delivery
-				</label>
-		  </span>
-		</div><!-- /input-group -->
-	</div><!-- /col-md-5 -->
-		
-	<!-- cash / credit radio buttons -->
-	<div class="col-md-5">
-		<div class="input-group">
-		  <span class="input-group-addon">
-			  <label class="radio-inline">
-				  <input type="radio" name="paymentMethod" id="cash-radio" value="cash"> Cash
-				</label>
-			</span>
-			<span class="input-group-addon">
-				<label class="radio-inline">
-				  <input type="radio" name="paymentMethod" id="credit-radio" value="credit"> Credit Card
-				</label>
-		  </span>
-		</div><!-- /input-group -->
-	</div><!-- /col-md-5 -->
-	<div class="col-md-1">
-	</div>
-</div><!-- /row -->
+    <div class="col-md-5">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <label class="radio-inline">
+            <input type="radio" name="paymentMethod" id="cash-radio" value="cash"> Cash
+          </label>
+        </span>
+        <span class="input-group-addon">
+          <label class="radio-inline">
+            <input type="radio" name="paymentMethod" id="credit-radio" value="credit"> Credit Card
+          </label>
+        </span>
+      </div><!-- /input-group -->
+    </div><!-- /col-md-5 -->
+    <div class="col-md-1">
+    </div>
+  </div><!-- /row -->
 
-<div class="row">
-	<div class="col-md-1">
-	</div>
-	<!-- Address selection/creation -->
-	<div class="col-md-5">
-		<div id="address-selector">
-			<div class="checkout-dropdown">
-				<div class="select-address">
-					<label class="radio">
-					  <input type="radio" name="addressOption" id="saved-address-radio" value="saved-address"> Select a saved address
-					</label>
-					<div id="saved-address-selector">
-						<select class="form-control">
-							<option value="Address 1">One</option>
-							<option value="Address 2">Two</option>
-							<option value="Address 3">Three</option>
-						</select>
-					</div>
-				</div>
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <!-- Address selection/creation -->
+    <div class="col-md-5">
+      <div id="address-selector">
+        <div class="checkout-dropdown">
+          <div class="select-address">
+            <label class="radio">
+              <input type="radio" name="addressOption" id="saved-address-radio" value="saved-address"> Select a saved address
+            </label>
+            <div id="saved-address-selector">
+              <select class="form-control">
+                <option value="Address 1">One</option>
+                <option value="Address 2">Two</option>
+                <option value="Address 3">Three</option>
+              </select>
+            </div>
+          </div>
 
-				<p>-- OR --</p>
-				
-				<div class="create-address">
-					<label class="radio">
-					  <input type="radio" name="addressOption" id="new-address-radio" value="new-address"> Enter a new address
-					</label>
-					<div id="new-address-form">
-						<form role="form">
-							<div class="form-group">
-						    <label for="Street">Street</label>
-					    <input type="text" class="form-control" placeholder="1600 Pennsylvania Ave">
-						    <label for="Unit">Unit</label>
-						    <input type="text" class="form-control" placeholder="#205">
-						    <label for="City">City</label>
-						    <input type="text" class="form-control" placeholder="Denver">
-						    <label for="State">State</label>
-						    <input type="text" class="form-control" placeholder="CO">
-						    <label for="Zip">Zip</label>
-						    <input type="text" class="form-control" placeholder="80204">
-						  </div>
-						</form>
-					</div>
-				</div><!-- /create-address -->
-			</div><!-- /checkout-dropdown -->
-		</div><!-- /#address-selector-->
-	</div>
-	
-	<!-- Credit card details -->
-	<div class="col-md-5">
-		<div id="payment-selector">
-			<div class="checkout-dropdown">
-				<form role="form">
-					<div class="form-group">
-						<label for="CardCardNumber">Credit Card Number</label>
-						<input type="text" class="form-control" placeholder="1111222233334444">
-						<label for="ExpirationDate">Expiration Date</label>
-						<input type="text" class="form-control" placeholder="0117">
-						<label for="CVV">CVV</label>
-						<input type="text" class="form-control" placeholder="123">
-				  </div>
-				</form>
-			</div><!-- /checkout-dropdown -->
-		</div><!-- /#payment-selecetor -->
-	</div><!-- /col-md-5 -->
-	<div class="col-md-1">
-	</div>
-</div>
+          <p>-- OR --</p>
 
-<br/>
+          <div class="create-address">
+            <label class="radio">
+              <input type="radio" name="addressOption" id="new-address-radio" value="new-address"> Enter a new address
+            </label>
+            <div id="new-address-form">
+              <div class="form-group">
+                <label for="Street">Street</label>
+                <input type="text" class="form-control" placeholder="1600 Pennsylvania Ave">
+                <label for="Unit">Unit</label>
+                <input type="text" class="form-control" placeholder="#205">
+                <label for="City">City</label>
+                <input type="text" class="form-control" placeholder="Denver">
+                <label for="State">State</label>
+                <input type="text" class="form-control" placeholder="CO">
+                <label for="Zip">Zip</label>
+                <input type="text" class="form-control" placeholder="80204">
+              </div>
+            </div>
+          </div><!-- /create-address -->
+        </div><!-- /checkout-dropdown -->
+      </div><!-- /#address-selector-->
+    </div>
 
-<div class="row">
-	<div class="col-md-4">
-	</div>
+    <!-- Credit card details -->
+    <div class="col-md-5">
+      <div id="payment-selector">
+        <div class="checkout-dropdown">
+          <div class="form-group">
+            <label for="CardCardNumber">Credit Card Number</label>
+            <input type="text" class="form-control" placeholder="1111222233334444">
+            <label for="ExpirationDate">Expiration Date</label>
+            <input type="text" class="form-control" placeholder="0117">
+            <label for="CVV">CVV</label>
+            <input type="text" class="form-control" placeholder="123">
+          </div>
+        </div><!-- /checkout-dropdown -->
+      </div><!-- /#payment-selecetor -->
+    </div><!-- /col-md-5 -->
+    <div class="col-md-1">
+    </div>
+  </div>
 
-	<div class="col-md-4">
-		<div class="create-order">
-			<p id="create-order-text">Double-check your order details, then:</p>
-			<%= f.submit %>
-		</div>
-	</div>
+  <br/>
 
-	<div class="col-md-4">
-	</div>
-</div>
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+
+    <div class="col-md-4">
+      <div class="create-order">
+        <p id="create-order-text">Double-check your order details, then:</p>
+        <%= f.submit %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+    </div>
+  </div>
+>>>>>>> A user can now checkout with pickup and cash
 <% end %>
 
 <!-- 
-	Order schema: 
-		user_id 
-		order_type => pickup/if delivery, has address_id
-		address_id => selected/created here
-		status		 => if cash: ordered, if card: paid
-		total 
+Order schema: 
+user_id 
+order_type => pickup/if delivery, has address_id
+address_id => selected/created here
+status		 => if cash: ordered, if card: paid
+total 
 -->

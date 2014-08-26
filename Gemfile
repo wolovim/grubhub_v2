@@ -27,7 +27,6 @@ group :development, :test do
 	gem 'sqlite3'
 	gem 'rspec-rails'
 	gem 'capybara'
-	gem 'capybara-webkit'
 	gem 'shoulda-matchers', require: false
 	gem 'launchy'
 end
@@ -35,6 +34,7 @@ end
 group :test do
   gem 'simplecov', require: false
   gem 'nyan-cat-formatter'
+  gem 'poltergeist'
 end
 
 gem 'simple_form'

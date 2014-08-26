@@ -26,7 +26,7 @@
             <%= item_quantity(item.id) %>
           </td>
           <td><%= price_in_dollars(item.price) %></td>
-          <td><%= item_subtotal(item.id, item.price) %></td>
+          <td><%= price_in_dollars(item_subtotal(item.id, item.price)) %></td>
           <td>
             <%= form_for(:cart, url: cart_path, method: :delete) do |f| %>
               <%= f.hidden_field :item_id, value: item.id %>

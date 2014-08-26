@@ -18,10 +18,13 @@ class OrdersController < ApplicationController
 	end
 
 	def create
-		@order = Order.find(params[:id])
-		if @order.create(order_params)
+    @order = current_user.orders.new_with_items(order_params, current_cart)
+
+		if @order.save
+      flash[:success] = 'Your order has been received.'
 			redirect_to order_path(@order)
 		else
+      @items = Item.where(id: session[:cart].keys)
 			render :new
 		end
 	end
@@ -80,6 +83,6 @@ class OrdersController < ApplicationController
 	private
 
 	def order_params
-		params.require(:order).permit(:user_id, :order_type, :address_id, :status, :total)
+		params.require(:order).permit(:order_type, :address_id)
 	end
 end

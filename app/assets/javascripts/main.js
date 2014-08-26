@@ -7,11 +7,11 @@ $(document).ready(function(){
   $("#address-selector").hide();
   $("#payment-selector").hide();
 
-	$("#pickup-radio").on("click", function() {
+	$("#order_order_type_pickup").on("click", function() {
 	   $("#address-selector").slideUp();
 	});
 
-	$("#delivery-radio").on("click", function() {
+	$("#order_order_type_delivery").on("click", function() {
 	   $("#address-selector").slideDown(); 
 	});
 
