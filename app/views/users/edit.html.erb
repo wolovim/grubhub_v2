@@ -1,0 +1,14 @@
+<h1>Account Settings</h1>
+<%= form_for @user do |f| %>
+	<br/><strong>Joined on:</strong> <%= format_date(@user.created_at) %><br/><br/>
+	<%= f.label 		 :first_name %><br/>
+	<%= f.text_field :first_name %><br/>
+	<%= f.label 		 :last_name %><br/>
+	<%= f.text_field :last_name %><br/>
+	<%= f.label 	   :nickname %><br/>
+	<%= f.text_field :nickname %><br/>
+	<%= f.label 		 :email %><br/>
+	<%= f.text_field :email %><br/>
+	<br/>
+	<%= f.submit :class => 'btn btn-primary' %>
+<% end %>
