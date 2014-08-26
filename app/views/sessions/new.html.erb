@@ -9,7 +9,7 @@
 			  <%= text_field_tag(:email) %><br/>
 			  <%= label_tag(:password, "Password:") %><br/>
 			  <%= password_field_tag(:password) %><br/><br/>
-			  <%= submit_tag("Login") %>
+			  <%= submit_tag("Login") %> or <%= link_to "Register", new_user_path, class: "btn btn-danger" %>
 			<% end %>
 		</div>
 	</div>
