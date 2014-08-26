@@ -8,9 +8,10 @@
 					<% unless item.retired? %>
 						<div class="item-box">
 							<div class="item-box-description">
-								<strong><%= item.title %></strong><br/>
-								<%= item.description %><br/>
+								<span class="item-title"><strong><%= item.title %></strong></span><br/>
+								<span class="item-description"><%= item.description %></span><br/>
 							</div>
+							<%= image_tag item.image.url(:small), class: "item-image" %><br/>
 							<div class="item-price">
 								<span class="only-price">
 									<span class="only">only:</span> <%= price_in_dollars(item.price) %><br/>
@@ -23,7 +24,6 @@
                   <% end %>
                 <% end %>
 							</div>
-							<%= image_tag item.image.url(:small), class: "item-image" %><br/>
 						</div>
 					<% end %>
 				<% end %>
