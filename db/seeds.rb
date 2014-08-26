@@ -13,7 +13,7 @@ Item.create( title: "The Mangler", price: 2400,
   description: "One bite, all the mangles. Just like mom used to make",
   category_ids: ["1"])
 Item.create( title: "The Enola Gay", price: 500,
-  description: "Droppin' bombs in your mouth. You probably don't get the reference",
+  description: "Droppin' bombs in your mouth.",
   category_ids: ["1", "4"])
 Item.create( title: "The BroNut", price: 19000,
   description: "Comes with 5lbs of Whey Protien and a BowFlex.", category_ids: ["1"])
