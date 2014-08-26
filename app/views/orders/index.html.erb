@@ -19,7 +19,7 @@
         <td><%= order.order_type %></td>
         <td><%= order.status %></td>
         <td><%= order.total %></td>
-        <td><%= order.format_date %></td>
+        <td><%= format_date(order.updated_at) %></td>
         <td>
           <% if pending?(order.status) %>
             <%= link_to t('.edit', :default => t("Cancel")),

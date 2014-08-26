@@ -108,7 +108,7 @@ describe '' do
     it 'can view their user profile' do
       click_on "Account"
       click_on "Profile"
-      expect(page).to have_content "Account Settings"
+      expect(page).to have_content "Your Info"
     end
 
     it 'can link to a details page for each order' do
@@ -123,7 +123,7 @@ describe '' do
       click_on "My Orders"
       click_link 'Details'
       expect(page).to have_content('Total:')
-      expect(page).to have_content(order.format_date)
+      expect(page).to have_content(format_date(order.created_at))
     end
 
     it 'can see updated order time when order is completed or cancelled' do
@@ -133,8 +133,8 @@ describe '' do
       click_on "Cancel"
       click_on "Details"
       expect(page).to_not have_link("Cancel")
-      expect(page).to     have_content(order.format_updated_date)
-      expect(page).to     have_content(order.format_updated_time)
+      expect(page).to     have_content(format_date(order.updated_at))
+      expect(page).to     have_content(format_time(order.updated_at))
     end
 
     it 'can view individual item details from an order' do
