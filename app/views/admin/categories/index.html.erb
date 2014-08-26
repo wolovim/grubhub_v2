@@ -7,18 +7,19 @@
 			<% category.items.each do |item| %>
 				<div class="item-box">
 					<div class="item-box-description">
-						<strong><%= item.title %></strong><br/>
-						<%= item.description %><br/>
+						<span class="item-title"><%= item.title %></span><br/>
+						<span class="item-description"><%= item.description %></span><br/>
 					</div>
+					<%= image_tag item.image.url(:small), class: "item-image" %>
 					<div class="item-price">
 						<span class="only-price">
-							<span class="only">only:</span> <%= item.price_in_dollars %><br/>
+							<span class="only">only:</span> <%= item.price_in_dollars %>
 						</span>
-						<button type="button" class="btn btn-primary add-item" href="#">
+						<button type="button" class="btn btn-primary add-item-btn" href="#">
 							<span class='glyphicon glyphicon-plus-sign'></span> Add to Cart
 						</button>
 					</div>
-					<%= image_tag item.image.url(:small), class: "item-image" %><br/>
+					
 					<!-- <div class="add-item-box">
 						<a class="add-item-text" href="#">Add A New Donut!</a>
 					</div> -->
@@ -27,5 +28,5 @@
 		</div> <!-- /.donuts -->
 	<% end %>
 
-		<br/><br/>
+	<br/><br/>
 	<%= button_to 'Add Category', new_admin_category_path, method: :get %>

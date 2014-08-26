@@ -1,16 +1,17 @@
 <div class="main-menu">
 	<div class="col-md-8">
-	<h1>MENU!</h1>
+	<div id="main-menu-title"><h1>- BEHOLD, THE MENU! -</h1></div>
 		<% @categories.each do |category| %>
-			<span class="category-name"><%= category.name %></span>
+			<span class="category-name">- <%= category.name %> -</span>
 			<div class="donuts transitions-enabled">
 				<% category.items.each do |item| %>
 					<% unless item.retired? %>
 						<div class="item-box">
 							<div class="item-box-description">
-								<strong><%= item.title %></strong><br/>
-								<%= item.description %><br/>
+								<span class="item-title"><strong><%= item.title %></strong></span><br/>
+								<span class="item-description"><%= item.description %></span><br/>
 							</div>
+							<%= image_tag item.image.url(:small), class: "item-image" %><br/>
 							<div class="item-price">
 								<span class="only-price">
 									<span class="only">only:</span> <%= price_in_dollars(item.price) %><br/>
@@ -23,7 +24,6 @@
                   <% end %>
                 <% end %>
 							</div>
-							<%= image_tag item.image.url(:small), class: "item-image" %><br/>
 						</div>
 					<% end %>
 				<% end %>
