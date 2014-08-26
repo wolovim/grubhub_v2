@@ -10,6 +10,11 @@ module GrubhubV2
   class Application < Rails::Application
 
     config.assets.paths << Rails.root.join("vendor","assets", "fonts")
+
+    config.assets.precompile += [
+        'application.css.scss', 'bootstrap_and_overrides.css.scss'
+    ]
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
