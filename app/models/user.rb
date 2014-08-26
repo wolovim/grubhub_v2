@@ -9,8 +9,7 @@ class User<ActiveRecord::Base
   validates :email,                 uniqueness: true
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   validates :nickname,
-            length: { minimum: 2, maximum: 32,
-            message: 'must be between 2 and 32 characters' }, allow_blank: true
+            length: { minimum: 2, maximum: 32 }, allow_blank: true
 
   has_many :user_addresses
   has_many :addresses, through: :user_addresses
