@@ -160,7 +160,7 @@ describe '' do
       expect(current_path). to eq(user_path(user))
     end
 
-    it 'can view date joined, first name, last name, email, and nickname the edit page' do
+    it 'can view date joined, first name, last name, email, and nickname' do
       user = User.find(1)
       click_on 'Account'
       click_on 'Profile'
@@ -169,6 +169,18 @@ describe '' do
       expect(page).to have_content(user.last_name)
       expect(page).to have_content(user.email)
       expect(page).to have_content(user.nickname)
+    end
+
+    it 'can edit account info' do
+      user = User.find(1)
+      click_on 'Account'
+      click_on 'Profile'
+      click_on 'Edit'
+      fill_in 'First name', with: 'Carlos'
+      click_on 'Update User'
+      expect(current_path).to eq(user_path(user))
+      expect(page).not_to have_content('Nando')
+      expect(page).to have_content('Carlos')
     end
   end
 end
