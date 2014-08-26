@@ -1,42 +1,47 @@
 # CATEGORIES
-Category.create(name: "Snobby")
-Category.create(name: "Rude")
-Category.create(name: "Pretentious")
-Category.create(name: "Arrogant")
+Category.create(name: "Your Mom's Favorites")
+Category.create(name: "Donut's of Lore")
+Category.create(name: "You Probably Can't Afford")
+Category.create(name: "These Donuts Are Above You")
+Category.create(name: "Donuts We Wont Sell You")
+Category.create(name: "Donuts We Wont Even Show You")
 
 #ITEMS
 
-#SNOBBY
-Item.create( title: "Donut1", price: 2400,
-  description: "Good for one 'splorer.", category_ids: ["1"])
-Item.create( title: "Donut2", price: 500,
-  description: "Farm fresh and ready to consume.", category_ids: ["1"])
-Item.create( title: "Donut3", price: 19000,
-  description: "Great for a snack!", category_ids: ["1"])
+#Moms Favs
+Item.create( title: "The Mangler", price: 2400,
+  description: "One bite, all the mangles. Just like mom used to make",
+  category_ids: ["1"])
+Item.create( title: "The Enola Gay", price: 500,
+  description: "Droppin' bombs in your mouth.",
+  category_ids: ["1", "4"])
+Item.create( title: "The BroNut", price: 19000,
+  description: "Comes with 5lbs of Whey Protien and a BowFlex.", category_ids: ["1"])
 
-#RUDE
-Item.create( title: "Donut4", price: 7500,
-  description: "Plain ol' get-up for simple folk.", category_ids: ["2"])
-Item.create( title: "Donut5", price: 2500,
-  description: "Good fer fendin' off 'coons and der sharp claws.", category_ids: ["2"])
-Item.create( title: "Donut6", price: 2500,
-  description: "It gets rainy on the trail. Better bring a poncho.", category_ids: ["2"])
+#Lore
+Item.create( title: "Unicorn Bitty", price: 7500,
+  description: "Made from real bits of unicorn.", category_ids: ["2"])
+Item.create( title: "Sauron's Delight", price: 2500,
+  description: "Only the fires of Mordor could digest this.", category_ids: ["2","5"])
+Item.create( title: "Cheweybacha", price: 2500,
+  description: "RRrRRRRr Rrrrr rrrRR RrRRrr!", category_ids: ["2"])
 
-#PRETENTIOUS
-Item.create( title: "Donut7", price: 1500,
-  description: "Big ol' gun, and loads of fun!", category_ids: ["3"])
-Item.create( title: "Donut8", price: 5000,
-  description: "Great for fightin' off vermits!", category_ids: ["3"])
-Item.create( title: "Donut9", price: 8910,
-  description: "Bandits ain't gonna be stealin' none of you'ns rations.", category_ids: ["3"])
+#Afford Expensive
+Item.create( title: "Diamond Mine", price: 177000,
+  description: "One diamond in every bite", category_ids: ["3"])
+Item.create( title: "Lucky Louvre", price: 0,
+  description: "Made from priceless ground artifacts", category_ids: ["3","5"])
+Item.create( title: "Benji Bite", price: 8910,
+  description: "$100 bills, ground into meal, fried to perfection", category_ids: ["3"])
 
-#ARROGANT
-Item.create( title: "Donut10", price: 980,
-  description: "Good fer fur.", category_ids: ["3", "4"])
-Item.create( title: "Donut11", price: 2500,
-  description: "Never git bit by a slippery snake 'gin!", category_ids: ["4"])
-Item.create( title: "Donut12", price: 620,
-  description: "West is where yer headed, so's ya know.", category_ids: ["4"])
+#Above you
+Item.create( title: "You're Fat", price: 980,
+  description: "Should you really buy this?", category_ids: ["3", "4"])
+Item.create( title: "Gorgeous", price: 2500,
+  description: "Unlike your face", category_ids: ["4"])
+Item.create( title: "The Harvard", price: 620,
+  description: "Has read more books than you", category_ids: ["4"])
+
 
 # #RETIRED
 # Item.create( title: "Donut13", price: 3000,
@@ -59,6 +64,14 @@ User.create(first_name: "Alice", last_name: "Anderson", email: "alice@aol.com",
   password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
 User.create(first_name: "Jane", last_name: "Rogers", email: "jane@aol.com",
   password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
+User.create(first_name: "Rachel", last_name: "Warbelow", email: "demo+rachel@jumpstartlab.com",
+  password: "password", password_confirmation: "password", role: :default)
+User.create(first_name: "Jeff", last_name: "Casimir", email: "demo+jeff@jumpstartlab.com",
+  password: "password", password_confirmation: "password", role: :default, nickname: 'j3')
+User.create(first_name: "Jorge", last_name: "Tellez", email: "demo+jorge@jumpstartlab.com",
+  password: "password", password_confirmation: "password", role: :default, nickname: 'novohispano')
+User.create(first_name: "Josh", last_name: "Cheek", email: "demo+josh@jumpstartlab.com",
+  password: "password", password_confirmation: "password", role: :admin, nickname: 'josh')
 
 
 # #ORDER ITEMS

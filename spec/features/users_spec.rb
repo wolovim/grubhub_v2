@@ -177,10 +177,34 @@ describe '' do
       click_on 'Profile'
       click_on 'Edit'
       fill_in 'First name', with: 'Carlos'
+      fill_in 'Password', with: '123'
+      fill_in 'Password confirmation', with: '123'
       click_on 'Update User'
       expect(current_path).to eq(user_path(user))
       expect(page).not_to have_content('Nando')
       expect(page).to have_content('Carlos')
+    end
+
+    it 'cannot ad a nickame of 1 characer' do
+      click_on 'Account'
+      click_on 'Profile'
+      click_on 'Edit'
+      fill_in 'Password', with: '123'
+      fill_in 'Password confirmation', with: '123'
+      fill_in 'Nickname', with: 'a'
+      click_on 'Update User'
+      expect(page).to have_content 'minimum is 2 characters'
+    end
+
+    it 'cannot ad a nickame of > 32 characers' do
+      click_on 'Account'
+      click_on 'Profile'
+      click_on 'Edit'
+      fill_in 'Password', with: '123'
+      fill_in 'Password confirmation', with: '123'
+      fill_in 'Nickname', with: (0..33).map{'a'}.join
+      click_on 'Update User'
+      expect(page).to have_content 'maximum is 32 characters'
     end
   end
 end
