@@ -38,22 +38,6 @@ class Order < ActiveRecord::Base
 		self.save
 	end
 
-	def format_date
-		self.created_at.to_time.strftime("%m/%d/%Y")
-	end
-
-	def format_updated_date
-		self.updated_at.to_time.strftime("%m/%d/%Y")
-	end
-
-	def format_time
-		self.created_at.to_time.strftime("%I:%M %p")
-	end
-
-	def format_updated_time
-		self.updated_at.to_time.strftime("%I:%M %p")
-	end
-
 	def customer_name
 		user = User.find(self.user_id)
 		user.first_name + ' ' + user.last_name
