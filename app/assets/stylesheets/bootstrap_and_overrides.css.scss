@@ -50,10 +50,22 @@ $navbar-inverse-brand-color: #fff;
 }
 
 // CATEGORIES //
+#main-menu-title {
+	display: block;
+	text-align: center;
+	font-size: 25px;
+}
+
 .category-name {
+	display: block;
+	text-align: center;
+	margin: 25px 0 15px 0;
 	font-weight: bold;
 	font-size: 1.5em;
-	color: #024;
+	color: white;
+	width: 100%;
+	background-color: #024;
+	box-shadow: 10px 10px 5px #888;
 }
 
 .donuts {

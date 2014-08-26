@@ -1,8 +1,8 @@
 <div class="main-menu">
 	<div class="col-md-8">
-	<h1>MENU!</h1>
+	<div id="main-menu-title"><h1>- BEHOLD, THE MENU! -</h1></div>
 		<% @categories.each do |category| %>
-			<span class="category-name"><%= category.name %></span>
+			<span class="category-name">- <%= category.name %> -</span>
 			<div class="donuts transitions-enabled">
 				<% category.items.each do |item| %>
 					<% unless item.retired? %>
