@@ -1,4 +1,3 @@
-
 <h1>CHECKOUT PAGE!</h1>
 
 <!-- Show cart items summary -->
@@ -41,43 +40,7 @@
 
 <%= simple_form_for (@order) do |f| %>
 
-<script>
-$(document).ready(function(){
-  // do your checks of the radio buttons here and show/hide what you want to
-  $("#address-selector").hide();
-  $("#payment-selector").hide();
-
-	$("#pickup-radio").on("click", function() {
-	   $("#address-selector").slideUp();
-	});
-
-	$("#delivery-radio").on("click", function() {
-	   $("#address-selector").slideDown(); 
-	});
-
-	$("#cash-radio").on("click", function() {
-	   $("#payment-selector").slideUp();
-	});
-
-	$("#credit-radio").on("click", function() {
-	   $("#payment-selector").slideDown(); 
-	});
-
-	$("#saved-address-selector").hide();
-	$("#new-address-form").hide();
-
-	$("#saved-address-radio").on("click", function () {
-		$("#saved-address-selector").slideDown();
-		$("#new-address-form").slideUp();
-	});
-
-	$("#new-address-radio").on("click", function () {
-		$("#new-address-form").slideDown();
-		$("#saved-address-selector").slideUp();
-	});
-});
-</script>
-
+<!-- pickup / delivery radio buttons -->
 <div class="row">
 	<div class="col-md-1">
 	</div>
@@ -96,6 +59,7 @@ $(document).ready(function(){
 		</div><!-- /input-group -->
 	</div><!-- /col-md-5 -->
 		
+	<!-- cash / credit radio buttons -->
 	<div class="col-md-5">
 		<div class="input-group">
 		  <span class="input-group-addon">
@@ -133,7 +97,6 @@ $(document).ready(function(){
 						</select>
 					</div>
 				</div>
-				<br/>
 
 				<p>-- OR --</p>
 				

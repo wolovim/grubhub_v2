@@ -12,7 +12,8 @@ class OrdersController < ApplicationController
 			@order = Order.new
       @items = Item.where(id: session[:cart].keys)
 		else
-			redirect_to login_path, notice: 'Please login to continue checkout'
+			flash[:error] = "Please login or register to continue checkout"
+			redirect_to login_path
 		end
 	end
 
