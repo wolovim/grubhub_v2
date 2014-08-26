@@ -17,16 +17,16 @@
 		<% @items.each do |item| %>
 			<tr>
 			  <td><%= item.title %></td>
-			  <td>(quantity)</td>
-			  <td><%= item.price_in_dollars %></td>
-			  <td>(Subtotal)</td>
+        <td><%= item_quantity(item.id) %></td>
+			  <td><%= price_in_dollars(item.price) %></td>
+        <td><%= price_in_dollars(item_subtotal(item.id, item.price)) %></td>
 		  </tr>
 	  <% end %>
 	  <tr>
 	  	<td></td>
 	  	<td></td>
 	  	<td>TOTAL:</td>
-	  	<td class="cart-total">(Calculate Total)</td>
+      <td class="cart-total"><%= price_in_dollars(calculate_total) %></td>
 	  </tr>
 	</table>
 	<%= link_to "<< Edit cart", cart_path, class: "btn primary" %>
