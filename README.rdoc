@@ -1,1 +1,1 @@
-live site link: ivorytowerdonuts.herokuapp.com
+{Link label}[http://ivorytowerdonuts.herokuapp.com]
