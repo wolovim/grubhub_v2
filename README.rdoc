@@ -1,1 +1,1 @@
-live site link: ivorytowerdonuts.herokuapp.com
+{Ivory Tower Donuts}[http://ivorytowerdonuts.herokuapp.com]

@@ -2,10 +2,13 @@
 <div class="page-header">
   <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
 </div>
-<%= simple_form_for @item, url: admin_item_path(@item) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :price %>
+<%= form_for @item, url: admin_item_path(@item) do |f| %>
+  <%= f.label      :title %><br/>
+  <%= f.text_field :title %><br/>
+  <%= f.label      :description %><br/>
+  <%= f.text_area :description %><br/>
+  <%= f.label      :price %><br/>
+  <%= f.text_field      :price %><br/>
   Add Category:
   <% categories.each do |category| %>
     |<%= link_to t('.add', :default => t(category.name)),
@@ -19,8 +22,8 @@
   <%= f.label :image %>
   <%= f.file_field :image %>
   <div class="form-actions">
-  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= f.submit :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                admin_items_path, :class => 'btn' %>
+                admin_items_path, :class => 'btn btn-danger' %>
   </div>
 <% end %>
