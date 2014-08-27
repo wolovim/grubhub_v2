@@ -27,7 +27,7 @@
   <dd><%= @order.total %></dd>
   <dt><strong><%= model_class.human_attribute_name(:submitted) %>:</strong></dt>
   <dd><%= format_date(@order.created_at) %> @ <%= format_time(@order.created_at) %></dd>
-  <% if !pending?(@order.status) %>
+  <% if !@order.pending? %>
     <dt><strong><%= model_class.human_attribute_name(:updated) %>:</strong></dt>
     <dd><%= format_date(@order.updated_at) %> @ <%= format_time(@order.updated_at) %></dd>
   <% end %>
@@ -36,7 +36,7 @@
 <div class="form-actions">
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_admin_order_path(@order), :class => 'btn btn-primary' %>
-  <% if pending?(@order.status) %>
+  <% if @order.pending? %>
     <%= link_to t('.edit', :default => t("Cancel")),
                   admin_order_cancel_path(@order),
                   :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },

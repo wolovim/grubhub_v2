@@ -14,7 +14,7 @@
     <%= f.label      :price %><br/>
     <%= f.text_field :price %><br/>
     Add Category:
-    <% categories.each do |category| %>
+    <% @categories.each do |category| %>
       |<%= link_to t('.add', :default => t(category.name)),
                admin_item_add_category_path(@item, category), :class => 'btn' %> |
     <% end %></br>

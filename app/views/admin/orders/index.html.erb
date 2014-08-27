@@ -41,7 +41,7 @@
         <td><%= order.status %></td>
         <td><%= order.total %></td>
         <td><%= format_date(order.created_at) %></td>
-        <% if pending?(order.status) %>
+        <% if order.pending? %>
           <td>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
                         edit_admin_order_path(order), :class => 'btn btn-primary' %>
