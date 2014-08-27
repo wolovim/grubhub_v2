@@ -4,7 +4,7 @@
 @import url(http://fonts.googleapis.com/css?family=Aclonica);
 $font-family-sans-serif: 'Aclonica', sans-serif;
 
-//FLASH MSG
+// FLASH MSG //
 div.flash.success { border: 2px solid green; color: green;}
 div.flash.error   { border: 2px solid red; 	 color: red;}
 
@@ -21,11 +21,6 @@ $body-bg: #eee;
 	border: 3px solid #024;
 	padding: 20px;
 	margin-top: 20px;
-}
-
-.center {
-	display: block;
-	text-align: center;
 }
 
 // NAVBAR //
@@ -46,7 +41,7 @@ $navbar-inverse-brand-color: #fff;
 	font-family: 'Aclonica', sans-serif;
 }
 
-// LOGIN / REGISTER
+// LOGIN / REGISTER //
 .login-reg-page {
 	box-shadow: 10px 10px 5px #888;
 	margin-top: 20px;
@@ -159,12 +154,36 @@ a.add-item-text:hover {
 	text-align: center;
 }
 
-// CART
-.inline {
-	display: block;
+// CART //
+#my-cart-title {
+	text-align: center;
 }
 
-// CHECKOUT PAGE
+.quantity-buttons {
+	// display: inline-block;
+	// width: 20px;
+	// text-align: center;
+}
+
+.quantity-button {
+	margin: 3px;
+	padding: 0;
+	display: inline;
+}
+
+.inline {
+	display: inline;
+}
+
+#cart-total {
+	color: red;
+}
+
+#checkout-button {
+	text-align:center;
+}
+
+// CHECKOUT PAGE //
 #order-summary {
 	border: 3px solid #024;	
 	padding-bottom: 10px;
@@ -203,7 +222,7 @@ a.add-item-text:hover {
 	text-align: center;
 }
 
-// ADMIN: _FORM
+// ADMIN: _FORM //
 .form-title {
 	font-size: 18px;
 }
