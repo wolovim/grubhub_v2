@@ -5,6 +5,8 @@ RSpec.describe OrderItem, type: :model  do
   let(:order) { Order.create(user_id: 1, order_type: "delivery", address_id: 3, status: "ordered", total: 3300) }
   let(:order_item) { OrderItem.create(item_id: item.id, quantity: 2, unit_price: 30, order_id: order.id) }
 
+  it {should validate_numericality_of(:unit_price)}
+
   it 'can return item title' do
     expect(order_item.item_title).to eq('Chocolate')
   end
