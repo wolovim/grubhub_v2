@@ -2,6 +2,9 @@
 <%- model_class = Item -%>
 <div class="page-header">
   <h1><%=t '.title', :default => "ITEMS!" %></h1>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_admin_item_path,
+            :class => 'btn btn-primary' %>
 </div>
 <table class="table table-striped">
   <thead>
@@ -34,7 +37,7 @@
                         :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                         :class => 'btn btn-mini btn-warning' %>
           <% end %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <%= link_to t('.destroy', :default => t("Delete")),
                       admin_item_path(item),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
@@ -45,7 +48,4 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_admin_item_path,
-            :class => 'btn btn-primary' %>
 </div>
