@@ -22,8 +22,4 @@ class Item < ActiveRecord::Base
 		self.enabled = !enabled
 		self.save
 	end
-
-	def unit_price_decimal
-		sprintf("%.2f", price / 100.00)
-	end
 end
