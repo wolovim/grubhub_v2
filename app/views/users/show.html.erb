@@ -5,7 +5,7 @@
   </div>
   <dl class="dl-horizontal">
     <dt><strong>Glutton Since: </strong></dt>
-    <dd><%= format_date(@user.created_at) %></dd>
+    <dd><%= @user.created_date %></dd>
     <dt><strong><%= model_class.human_attribute_name(:first_name) %>:</strong></dt>
     <dd><%= @user.first_name %></dd>
     <dt><strong><%= model_class.human_attribute_name(:last_name) %>:</strong></dt>

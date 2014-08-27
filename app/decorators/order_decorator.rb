@@ -1,4 +1,4 @@
-class OrderDecorator < Draper::Decorator
+class OrderDecorator < ApplicationDecorator
   decorates_association :user
   decorates_association :address
   decorates_association :order_items

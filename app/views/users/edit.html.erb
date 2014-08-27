@@ -6,7 +6,7 @@
 	<% end %>
 
 	<%= form_for(@user, method: :put) do |f| %>
-		<br/><strong>Joined on:</strong> <%= format_date(@user.created_at) %><br/><br/>
+		<br/><strong>Joined on:</strong> <%= @user.created_at %><br/><br/>
 		<%= f.label 		     :first_name %><br/>
 		<%= f.text_field     :first_name %><br/>
 		<%= f.label 		     :last_name %><br/>
