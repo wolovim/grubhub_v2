@@ -1,7 +1,11 @@
 module ApplicationHelper
 	def price_in_dollars(price)
-		'$' + sprintf("%.2f", price / 100.00)
+		'$' + price_in_decimal(price)
 	end
+
+  def price_in_decimal(price)
+    sprintf("%.2f", price / 100.00)
+  end
 
   def get_update_button(status)
     status == 'ordered' ? 'Mark as Paid' : 'Mark as Completed'
