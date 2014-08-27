@@ -3,14 +3,21 @@
 	</div>
 	<div class="col-md-4">
 		<div class="login-reg-page">
-			<h2>Log In</h2>
-			<%= form_tag(login_path, method: "post") do %>
-			  <%= label_tag(:email, "Email:") %><br/>
-			  <%= text_field_tag(:email) %><br/>
-			  <%= label_tag(:password, "Password:") %><br/>
-			  <%= password_field_tag(:password) %><br/><br/>
-			  <%= submit_tag("Login") %> or <%= link_to "Register", new_user_path, class: "btn btn-danger" %>
-			<% end %>
+			<div class="panel panel-default">
+				<div class="panel-heading"><h2>LOG IN!</h2></div>
+				<div class="panel-body">
+					<%= form_tag(login_path, method: "post") do %>
+					  <%= label_tag(:email, "Email:") %><br/>
+					  <%= text_field_tag(:email) %><br/>
+					  <%= label_tag(:password, "Password:") %><br/>
+					  <%= password_field_tag(:password) %><br/><br/>
+					  <%= submit_tag "Login", class: "btn btn-primary" %>
+					<% end %>
+				</div>
+				<div class="panel-footer">
+					<i>Not a user yet?</i> <%= link_to "Register", new_user_path, class: "btn btn-danger" %>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="col-md-4">

@@ -3,36 +3,40 @@
   </div>
   <div class="col-md-4">
     <div class="login-reg-page">
-      <h2>NEW USER!</h2>
+      <div class="panel panel-default">
+        <div class="panel-heading"><h2>NEW USER!</h2></div>
+        <div class="panel-body">
+          <% if @user.errors.any? %>
+            <div id="error-explanation">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <%= form_for @user do |f| %>
-      <% if @user.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-            <ul>
-            <% @user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-            </ul>
-          </div>
-      <% end %>
-        <%= f.label          :first_name %><br/>
-        <%= f.text_field     :first_name %><br/>
-        <%= f.label          :last_name %><br/>
-        <%= f.text_field     :last_name %><br/>
-        <%= f.label          :nickname %><br/>
-        <%= f.text_field     :nickname %><br/>
-        <%= f.label          :email %><br/>
-        <%= f.text_field     :email %><br/>
-        <%= f.label          :password %><br/>
-        <%= f.password_field :password %><br/>
-        <%= f.label          :password_confirmation %><br/>
-        <%= f.password_field :password_confirmation %><br/><br/>
-        <%= f.submit "Create User" %>
-      <% end %>
-      <br/>
-      <i>Already a user?</i> <%= link_to "Login", login_path, class: "btn btn-primary" %>
+              <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <%= form_for @user do |f| %>
+            <%= f.label          :first_name %><br/>
+            <%= f.text_field     :first_name %><br/>
+            <%= f.label          :last_name %><br/>
+            <%= f.text_field     :last_name %><br/>
+            <%= f.label          :nickname %><br/>
+            <%= f.text_field     :nickname %><br/>
+            <%= f.label          :email %><br/>
+            <%= f.text_field     :email %><br/>
+            <%= f.label          :password %><br/>
+            <%= f.password_field :password %><br/>
+            <%= f.label          :password_confirmation %><br/>
+            <%= f.password_field :password_confirmation %><br/><br/>
+            <%= f.submit "Create User", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+        <div class="panel-footer">
+          <i>Already have an account?</i> <%= link_to "Login", login_path, class: "btn btn-default" %>
+        </div>
+      </div>
     </div>
   </div>
   <div class="col-md-4">
