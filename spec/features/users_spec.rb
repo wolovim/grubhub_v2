@@ -53,7 +53,7 @@ describe 'user experience' do
 
     it 'gives me confirmation after successful registration' do
       register
-      expect(page).to have_content "Registration successful, congrats you can use a keyboard."
+      expect(page).to have_content "Registration successful"
     end
 
     it 'cannot backdoor to admin pages' do

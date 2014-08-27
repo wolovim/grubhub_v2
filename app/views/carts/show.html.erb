@@ -13,17 +13,21 @@
         <tr>
           <td><%= item.title %></td>
           <td class="quantity">
-            <%= form_for(:cart, url: cart_path, method: :patch, html: { class: 'increment' }) do |f| %>
-              <%= f.hidden_field :item_id, value: item.id %>
-              <%= f.hidden_field :quantity, value: 1 %>
-              <%= f.submit '+' %>
-            <% end %>
-            <%= form_for(:cart, url: cart_path, method: :patch, html: { class: 'decrement' }) do |f| %>
-              <%= f.hidden_field :item_id, value: item.id %>
-              <%= f.hidden_field :quantity, value: -1 %>
-              <%= f.submit '-' %>
-            <% end %>
-            <%= item_quantity(item.id) %>
+            <div style="display: inline;">
+              <%= form_for(:cart, url: cart_path, method: :patch, html: { class: 'decrement' }) do |f| %>
+                <%= f.hidden_field :item_id, value: item.id %>
+                <%= f.hidden_field :quantity, value: -1 %>
+                <%= f.submit '-', class: "btn btn-default" %>
+              <% end %>
+          
+              <%= item_quantity(item.id) %>
+          
+              <%= form_for(:cart, url: cart_path, method: :patch, html: { class: 'increment' }) do |f| %>
+                <%= f.hidden_field :item_id, value: item.id %>
+                <%= f.hidden_field :quantity, value: 1 %>
+                <%= f.submit '+', class: "btn btn-default" %>
+              <% end %>
+            </div>
           </td>
           <td><%= item.unit_price %></td>
           <td><%= item_subtotal(item.id, item.price) %></td>
@@ -36,6 +40,6 @@
         </tr>
       <% end %>
     </table>
-    <%= link_to "Checkout", new_order_path, class: 'btn btn-success' %>
+    <%= link_to "Checkout", new_order_path, class: 'btn btn-success center' %>
   </div>
 </div>
