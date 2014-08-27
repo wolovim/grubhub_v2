@@ -16,7 +16,7 @@
     Add Category:
     <% @categories.each do |category| %>
       |<%= link_to t('.add', :default => t(category.name)),
-               admin_item_add_category_path(@item, category), :class => 'btn' %> |
+               admin_item_add_category_path(@item, category), :class => 'btn btn-primary' %> |
     <% end %></br>
     <% @item.categories.each do |category| %>
       <%= category.name %>

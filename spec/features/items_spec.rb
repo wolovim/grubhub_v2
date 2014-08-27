@@ -82,7 +82,7 @@ describe 'when viewing the items' do
 			expect(page).to have_content 'blank'
 		end
 
-		it'cannot create an item without a title' do
+		it'cannot create an item without a description' do
 			visit new_admin_item_path
 			fill_in "Title", with: "Poopers"
 			fill_in "Description", with: ""
@@ -138,7 +138,7 @@ describe 'when viewing the items' do
 			expect(page).to have_content 'blank'
 		end
 
-		it 'cannot update an item without a description' do
+		it 'cannot update an item without a price' do
 			item = Item.create(title: "OMG Donut", description: "Just like, wow.", price: 1800)
 			visit edit_admin_item_path(item)
 			fill_in "Title", with: "Poopers"

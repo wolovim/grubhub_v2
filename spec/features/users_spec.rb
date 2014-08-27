@@ -1,7 +1,7 @@
 require 'rails_helper'
 include ApplicationHelper
 
-describe '' do
+describe 'user experience' do
   context 'as a guest' do
     it 'can see a register link' do
       visit root_path
