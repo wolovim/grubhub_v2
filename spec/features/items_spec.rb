@@ -72,6 +72,36 @@ describe 'when viewing the items' do
 			expect(page).to have_content "It's pretty fancy"
 		end
 
+		it	'cannot create an item without a title' do
+			visit new_admin_item_path
+			fill_in "Title", with: ""
+			fill_in "Description", with: "It's pretty fancy"
+			fill_in "Price", with: "800"
+			click_button "Create Item"
+			expect(current_path).to eq(admin_items_path)
+			expect(page).to have_content 'blank'
+		end
+
+		it	'cannot create an item without a title' do
+			visit new_admin_item_path
+			fill_in "Title", with: "Poopers"
+			fill_in "Description", with: ""
+			fill_in "Price", with: "800"
+			click_button "Create Item"
+			expect(current_path).to eq(admin_items_path)
+			expect(page).to have_content 'blank'
+		end
+
+		it	'cannot create an item without a price' do
+			visit new_admin_item_path
+			fill_in "Title", with: "Poopers"
+			fill_in "Description", with: ""
+			fill_in "Price", with: ""
+			click_button "Create Item"
+			expect(current_path).to eq(admin_items_path)
+			expect(page).to have_content 'blank'
+		end
+
 		it 'can update an item' do
 			item = Item.create(title: "OMG Donut", description: "Just like, wow.", price: 1800)
 			visit edit_admin_item_path(item)
@@ -84,6 +114,39 @@ describe 'when viewing the items' do
 			expect(page).to have_content "It's pretty fancy"
 			expect(page).not_to have_content 'OMG Donut'
 			expect(page).not_to have_content "Just like, wow."
+		end
+
+		it 'cannot update an item without a title' do
+			item = Item.create(title: "OMG Donut", description: "Just like, wow.", price: 1800)
+			visit edit_admin_item_path(item)
+			fill_in "Title", with: ""
+			fill_in "Description", with: "It's pretty fancy"
+			fill_in "Price", with: "800"
+			click_button "Update Item"
+			expect(current_path).to eq(admin_item_path(item))
+			expect(page).to have_content 'blank'
+		end
+
+		it 'cannot update an item without a description' do
+			item = Item.create(title: "OMG Donut", description: "Just like, wow.", price: 1800)
+			visit edit_admin_item_path(item)
+			fill_in "Title", with: "Poopers"
+			fill_in "Description", with: ""
+			fill_in "Price", with: "800"
+			click_button "Update Item"
+			expect(current_path).to eq(admin_item_path(item))
+			expect(page).to have_content 'blank'
+		end
+
+		it 'cannot update an item without a description' do
+			item = Item.create(title: "OMG Donut", description: "Just like, wow.", price: 1800)
+			visit edit_admin_item_path(item)
+			fill_in "Title", with: "Poopers"
+			fill_in "Description", with: "Tasty"
+			fill_in "Price", with: "	"
+			click_button "Update Item"
+			expect(current_path).to eq(admin_item_path(item))
+			expect(page).to have_content 'blank'
 		end
 
 		it 'can delete and item' do
