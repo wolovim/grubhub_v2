@@ -148,12 +148,12 @@ describe 'when viewing the orders' do
       order.save
       visit admin_orders_path
       click_link 'Details'
-      expect(page).to have_content('1 Blake St, Denver, CO, 80000')
+      expect(page).to have_content('1 Blake St, Denver, CO 80000')
     end
 
     it 'does not show address for pickup orders' do
       click_link 'Details'
-      expect(page).not_to have_content('1 Blake St, Denver, CO, 80000')
+      expect(page).not_to have_content('1 Blake St, Denver, CO 80000')
     end
 	end
 end
