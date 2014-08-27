@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.current_orders(current_user)
+    @orders = Order.current_orders(current_user).decorate
   end
 
   def show
