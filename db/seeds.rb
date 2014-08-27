@@ -11,36 +11,46 @@ Category.create(name: "Donuts We Wont Even Show You")
 #Moms Favs
 Item.create( title: "The Mangler", price: 2400,
   description: "One bite, all the mangles. Just like mom used to make.",
-  category_ids: ["1"])
+  category_ids: ["1"], image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
 Item.create( title: "The Enola Gay", price: 500,
   description: "Droppin' bombs in your mouth.",
-  category_ids: ["1", "4"])
+  category_ids: ["1", "4"], image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
 Item.create( title: "The BroNut", price: 19000,
-  description: "Comes with 5lbs of Whey Protien and a BowFlex.", category_ids: ["1"])
+  description: "Comes with 5lbs of Whey Protien and a BowFlex.", category_ids: ["1"], 
+  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
 
 #Lore
 Item.create( title: "Unicorn Bitty", price: 7500,
-  description: "Made from real bits of unicorn.", category_ids: ["2"])
+  description: "Made from real bits of unicorn.", category_ids: ["2"], 
+  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
 Item.create( title: "Sauron's Delight", price: 2500,
-  description: "Only the fires of Mordor could digest this.", category_ids: ["2","5"])
+  description: "Only the fires of Mordor could digest this.", category_ids: ["2","5"], 
+  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
 Item.create( title: "Chewybacca", price: 2500,
-  description: "RRrRRGLRRr GLRrrrr rrrGHRR RrRRrr!", category_ids: ["2"])
+  description: "RRrRRGLRRr GLRrrrr rrrGHRR RrRRrr!", category_ids: ["2"], 
+  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
 
 #Afford Expensive
 Item.create( title: "Diamond Mine", price: 177000,
-  description: "One diamond in every bite.", category_ids: ["3"])
+  description: "One diamond in every bite.", category_ids: ["3"], 
+  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
 Item.create( title: "Lucky Louvre", price: 0,
-  description: "Made from priceless ground artifacts.", category_ids: ["3","5"])
+  description: "Made from priceless ground artifacts.", category_ids: ["3","5"], 
+  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
 Item.create( title: "Benji Bite", price: 8910,
-  description: "$100 bills, ground into meal, fried to perfection.", category_ids: ["3"])
+  description: "$100 bills, ground into meal, fried to perfection.", category_ids: ["3"], 
+  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
 
 #Above you
 Item.create( title: "Fronut", price: 980,
-  description: "Free afro pick with purchase.", category_ids: ["3", "4"])
+  description: "Free afro pick with purchase.", category_ids: ["3", "4"], 
+  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
 Item.create( title: "Gorgeous", price: 2500,
-  description: "Unlike your face.", category_ids: ["4"])
+  description: "Unlike your face.", category_ids: ["4"], 
+  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
 Item.create( title: "The Harvard", price: 620,
-  description: "Has read more books than you.", category_ids: ["4"])
+  description: "Has read more books than you.", category_ids: ["4"], 
+  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
 
 
 # #RETIRED
