@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
 	validates :title, :description, :price, presence: true
 	validates :title, uniqueness: true
+	validates_numericality_of :price, greater_than_or_equal_to: 0
 	has_many :item_categories
 	has_many :categories, through: :item_categories
 	has_many :orders, through: :order_items

@@ -15,6 +15,8 @@ RSpec.describe Item, type: :model  do
 
 	it { should validate_uniqueness_of(:title) }
 
+	it {should validate_numericality_of(:price)}
+
 	it 'has an array of categories' do
 		expect(item.categories).to eq([])
 	end
