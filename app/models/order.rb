@@ -31,19 +31,24 @@ class Order < ActiveRecord::Base
   end
 
 	def update_status
-		self.status == 'ordered' ? self.status = 'paid' : self.status = 'completed'
-		self.save
+    if ordered?
+      update_attribute(:status, 'paid')
+    else
+      update_attribute(:status, 'completed')
+    end
 	end
 
 	def cancel
-		self.status = 'cancelled'
-		self.save
+    update_attribute(:status, 'cancelled')
 	end
 
 	def remove_item(item_id)
-		self.items = items.reject { |item| item.id == item_id.to_i }
-		self.save
+    update_attribute(:items, reject_from_items(item_id))
 	end
+
+  def ordered?
+    status == 'ordered'
+  end
 
 	def delivery?
 		order_type == 'delivery'
@@ -55,5 +60,11 @@ class Order < ActiveRecord::Base
 
   def pickup_or_existing_address
     pickup? || address_id
+  end
+
+  private
+
+  def reject_from_items(item_id)
+    items.reject { |item| item.id == item_id.to_i }
   end
 end

@@ -10,8 +10,7 @@ class Item < ActiveRecord::Base
 	validates_attachment :image, content_type: {content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]}
 
 	def remove_category(category_id)
-		self.categories = categories.reject { |category| category.id == category_id.to_i}
-		self.save
+    update_attribute(:categories, reject_from_categories(category_id))
 	end
 
 	def retired?
@@ -19,7 +18,12 @@ class Item < ActiveRecord::Base
 	end
 
 	def retire
-		self.enabled = !enabled
-		self.save
+    update_attribute(:enabled, !enabled)
 	end
+
+  private
+
+  def reject_from_categories(category_id)
+	  categories.reject { |category| category.id == category_id.to_i}
+  end
 end
