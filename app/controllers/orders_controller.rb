@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = Order.find(params[:id]).decorate
   end
 
   def new
@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
       @order = Order.new
       @order.address = Address.new
       @items = Item.where(id: session[:cart].keys)
-      @addresses = current_user.addresses
+      @addresses = current_user.addresses.decorate
 		else
 			flash[:error] = "Please login or register to continue checkout"
 			redirect_to login_path

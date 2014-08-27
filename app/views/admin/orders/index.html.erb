@@ -36,7 +36,7 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= link_to 'Details', admin_order_path(order) %></td>
-        <td><%= order.customer_name %></td>
+        <td><%= order.user_name %></td>
         <td><%= order.order_type %></td>
         <td><%= order.status %></td>
         <td><%= order.total %></td>
