@@ -49,6 +49,14 @@ class Order < ActiveRecord::Base
   def ordered?
     status == 'ordered'
   end
+  
+  def paid?
+    status == 'paid'
+  end
+
+  def pending?
+    ordered? || paid?
+  end
 
 	def delivery?
 		order_type == 'delivery'

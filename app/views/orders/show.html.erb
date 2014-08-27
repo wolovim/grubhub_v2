@@ -27,14 +27,14 @@
   <dd><%= @order.total %></dd>
   <dt><strong><%= model_class.human_attribute_name(:order_date) %>:</strong></dt>
   <dd><%= format_date(@order.created_at) %> @ <%= format_time(@order.created_at) %></dd>
-  <% if !pending?(@order.status) %>
+  <% if !@order.pending? %>
     <dt><strong><%= model_class.human_attribute_name(:updated_date) %>:</strong></dt>
     <dd><%= format_date(@order.updated_at) %> @ <%= format_time(@order.updated_at) %></dd>
   <% end %>
 </dl>
 
 <div class="form-actions">
-  <% if pending?(@order.status) %>
+  <% if @order.pending? %>
     <%= link_to t('.edit', :default => t("Cancel")),
       order_cancel_path(@order),
       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
