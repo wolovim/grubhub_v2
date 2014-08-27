@@ -47,7 +47,7 @@ describe 'when viewing the orders' do
 			order.status = 'paid'
 			order.save
 			visit admin_orders_path
-			click_link('Mark As Completed')
+			click_link('Mark as Completed')
 			expect(current_path).to eq(admin_orders_path)
 			expect(page).to have_content('completed')
 			expect(page).not_to have_content('paid')
@@ -55,7 +55,7 @@ describe 'when viewing the orders' do
 
 		it 'can change status to completed' do
 			visit admin_orders_path
-			click_link('Mark As Paid')
+			click_link('Mark as Paid')
 			expect(current_path).to eq(admin_orders_path)
 			expect(page).to have_content('paid')
 			expect(page).not_to have_content('ordered')

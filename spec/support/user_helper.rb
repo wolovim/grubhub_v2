@@ -37,3 +37,11 @@ end
 def login_as_admin(email: 'yourdad123@aol.com', password: '123')
   login(email: email, password: password)
 end
+
+def format_date(date)
+  date.to_time.strftime("%m/%d/%Y")
+end
+
+def format_time(date)
+  date.to_time.strftime("%I:%M %p")
+end

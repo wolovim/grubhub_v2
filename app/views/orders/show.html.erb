@@ -26,10 +26,10 @@
   <dt><strong><%= model_class.human_attribute_name(:total) %>:</strong></dt>
   <dd><%= @order.total %></dd>
   <dt><strong><%= model_class.human_attribute_name(:order_date) %>:</strong></dt>
-  <dd><%= format_date(@order.created_at) %> @ <%= format_time(@order.created_at) %></dd>
+  <dd><%= @order.created_date %> @ <%= @order.created_time %></dd>
   <% if !@order.pending? %>
     <dt><strong><%= model_class.human_attribute_name(:updated_date) %>:</strong></dt>
-    <dd><%= format_date(@order.updated_at) %> @ <%= format_time(@order.updated_at) %></dd>
+    <dd><%= @order.updated_date %> @ <%= @order.updated_time %></dd>
   <% end %>
 </dl>
 
