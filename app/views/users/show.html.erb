@@ -1,18 +1,20 @@
-<%- model_class = User -%>
-<div class="page-header">
-  <h1>Your Info</h1>
-</div>
-<dl class="dl-horizontal">
-  <dt><strong>Glutton Since: </strong></dt>
-  <dd><%= format_date(@user.created_at) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:first_name) %>:</strong></dt>
-  <dd><%= @user.first_name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:last_name) %>:</strong></dt>
-  <dd><%= @user.last_name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:nickname) %>:</strong></dt>
-  <dd><%= @user.nickname %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
-  <dd><%= @user.email %></dd>
-</dl>
+<div class="page-border">
+  <%- model_class = User -%>
+  <div class="page-header">
+    <h1>My Info</h1>
+  </div>
+  <dl class="dl-horizontal">
+    <dt><strong>Glutton Since: </strong></dt>
+    <dd><%= format_date(@user.created_at) %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:first_name) %>:</strong></dt>
+    <dd><%= @user.first_name %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:last_name) %>:</strong></dt>
+    <dd><%= @user.last_name %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:nickname) %>:</strong></dt>
+    <dd><%= @user.nickname %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+    <dd><%= @user.email %></dd>
+  </dl>
 
-<%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %>
+  <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %>
+</div>

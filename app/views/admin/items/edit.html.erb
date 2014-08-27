@@ -1,29 +1,31 @@
-<%- model_class = Item -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
-</div>
-<%= form_for @item, url: admin_item_path(@item) do |f| %>
-  <%= f.label      :title %><br/>
-  <%= f.text_field :title %><br/>
-  <%= f.label      :description %><br/>
-  <%= f.text_area :description %><br/>
-  <%= f.label      :price %><br/>
-  <%= f.text_field      :price %><br/>
-  Add Category:
-  <% categories.each do |category| %>
-    |<%= link_to t('.add', :default => t(category.name)),
-             admin_item_add_category_path(@item, category), :class => 'btn' %> |
-  <% end %></br>
-  <% @item.categories.each do |category| %>
-    <%= category.name %>
-    <%= link_to t('.delete', :default => t("helpers.links.delete")),
-                admin_item_delete_category_path(@item, category), :class => 'btn' %> <br/>
-  <% end %>
-  <%= f.label :image %>
-  <%= f.file_field :image %>
-  <div class="form-actions">
-  <%= f.submit :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                admin_items_path, :class => 'btn btn-danger' %>
+<div class="page-border">
+  <%- model_class = Item -%>
+  <div class="page-header">
+    <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
   </div>
-<% end %>
+  <%= form_for @item, url: admin_item_path(@item) do |f| %>
+    <%= f.label      :title %><br/>
+    <%= f.text_field :title %><br/>
+    <%= f.label      :description %><br/>
+    <%= f.text_area :description %><br/>
+    <%= f.label      :price %><br/>
+    <%= f.text_field      :price %><br/>
+    Add Category:
+    <% categories.each do |category| %>
+      |<%= link_to t('.add', :default => t(category.name)),
+               admin_item_add_category_path(@item, category), :class => 'btn' %> |
+    <% end %></br>
+    <% @item.categories.each do |category| %>
+      <%= category.name %>
+      <%= link_to t('.delete', :default => t("helpers.links.delete")),
+                  admin_item_delete_category_path(@item, category), :class => 'btn btn-default' %> <br/>
+    <% end %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <div class="form-actions">
+    <%= f.submit :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  admin_items_path, :class => 'btn btn-danger' %>
+    </div>
+  <% end %>
+</div>
