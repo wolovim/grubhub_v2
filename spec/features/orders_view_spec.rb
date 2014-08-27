@@ -8,7 +8,7 @@ describe 'when viewing the orders' do
 
 	context 'as an admin' do
     let(:address) { Address.create(street: '1 Blake St', city: 'Denver', state: 'CO', zip: '80000') }
-		let(:order)  { Order.create(user_id: 1, order_type: "pickup", address_id: 1, status: "ordered", total: 2200) }
+		let(:order)  { Order.create(user_id: 1, order_type: "pickup", address_id: 1, status: "ordered") }
 		let(:item) { Item.create(title: 'The Awesome Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4300) }
 		let(:order_item) { OrderItem.create(order_id: order.id, item_id: item.id, quantity: 2, unit_price: 210) }
 
@@ -95,7 +95,7 @@ describe 'when viewing the orders' do
 		end
 
 		it 'filters by ordered status' do
-			order2 =  Order.create(user_id: 1, order_type: "delivery", address_id: 2, status: "paid", total: 2200)
+			order2 =  Order.create(user_id: 1, order_type: "delivery", address_id: 2, status: "paid")
 			item2 = Item.create(title: 'The Paid Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4300)
 			order_item2 = OrderItem.create(order_id: order2.id, item_id: item2.id, quantity: 2, unit_price: 210)
 			click_link('Ordered')
@@ -107,7 +107,7 @@ describe 'when viewing the orders' do
 			order.status = 'completed'
 			order.save
 			visit admin_orders_path
-			order2 =  Order.create(user_id: 1, order_type: "delivery", address_id: 2, status: "paid", total: 2200)
+			order2 =  Order.create(user_id: 1, order_type: "delivery", address_id: 2, status: "paid")
 			item2 = Item.create(title: 'The Paid Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4300)
 			order_item2 = OrderItem.create(order_id: order2.id, item_id: item2.id, quantity: 2, unit_price: 210)
 			click_link('Paid')
@@ -116,7 +116,7 @@ describe 'when viewing the orders' do
 		end
 
 		it 'filters by completed status' do
-			order2 =  Order.create(user_id: 1, order_type: "delivery", address_id: 2, status: "completed", total: 2200)
+			order2 =  Order.create(user_id: 1, order_type: "delivery", address_id: 2, status: "completed")
 			item2 = Item.create(title: 'The Paid Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4300)
 			order_item2 = OrderItem.create(order_id: order2.id, item_id: item2.id, quantity: 2, unit_price: 210)
 			click_link('Completed')
@@ -125,7 +125,7 @@ describe 'when viewing the orders' do
 		end
 
 		it 'filters by cancelled status' do
-			order2 =  Order.create(user_id: 1, order_type: "delivery", address_id: 2, status: "cancelled", total: 2200)
+			order2 =  Order.create(user_id: 1, order_type: "delivery", address_id: 2, status: "cancelled")
 			item2 = Item.create(title: 'The Paid Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4300)
 			order_item2 = OrderItem.create(order_id: order2.id, item_id: item2.id, quantity: 2, unit_price: 210)
 			click_link('Cancelled')

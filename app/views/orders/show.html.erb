@@ -28,7 +28,7 @@
     <dd><%= @order.current_wait_time %></dd>
   <% end %>
   <dt><strong><%= model_class.human_attribute_name(:total) %>:</strong></dt>
-  <dd><%= @order.total %></dd>
+  <dd><%= @order.total_dollars %></dd>
   <dt><strong><%= model_class.human_attribute_name(:order_date) %>:</strong></dt>
   <dd><%= @order.created_date %> @ <%= @order.created_time %></dd>
   <% if !@order.pending? %>

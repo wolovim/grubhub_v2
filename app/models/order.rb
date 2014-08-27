@@ -27,7 +27,10 @@ class Order < ActiveRecord::Base
 
   def set_default_values
     self.status ||= 'ordered'
-    self.total ||= 0
+  end
+
+  def total
+    @total ||= order_items.inject(0) { |sum, order_item| sum += (order_item.unit_price * order_item.quantity) }
   end
 
 	def update_status

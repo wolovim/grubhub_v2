@@ -109,9 +109,6 @@ describe 'Checking out', type: :feature do
           expect(page).to have_content '$30.00'
         end
       end
-
-      it 'can pick an existing address' do
-      end
     end
   end
 end

@@ -39,8 +39,8 @@
         <td><%= order.user_name %></td>
         <td><%= order.order_type %></td>
         <td><%= order.status %></td>
-        <td><%= order.total %></td>
-        <td><%= order.created_at %></td>
+        <td><%= order.total_dollars %></td>
+        <td><%= order.created_date %></td>
         <% if order.pending? %>
           <td>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),

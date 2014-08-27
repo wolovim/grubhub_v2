@@ -19,7 +19,7 @@
   <%= f.text_field :order_type %><br/><br/>
   <span class="form-title"><%= f.label :status %></span><br/>
   <%= f.text_field :status %><br/><br/>
-  <span class="form-title">Total: <%= @order.total %></span><br/><br/>
+  <span class="form-title">Total: <%= @order.total_dollars %></span><br/><br/>
   <div class="form-actions">
     <%= f.submit 'Update Order', :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("Back")),

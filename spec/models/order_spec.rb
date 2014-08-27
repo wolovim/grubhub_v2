@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model  do
-	let(:order) { Order.new(user_id: 1, order_type: "delivery", address_id: 3, status: "ordered", total: 3300) }
+	let(:order) { Order.new(user_id: 1, order_type: "delivery", address_id: 3, status: "ordered") }
 
 	it 'is valid' do
 		expect(order).to be_valid
@@ -31,7 +31,7 @@ RSpec.describe Order, type: :model  do
 
 	it 'can update the status from paid to completed' do
 		order2 = Order.new(user_id: 2, order_type: "delivery", address_id: 4,
-			status: "paid", total: 300)
+			status: "paid")
 		order2.update_status
 		expect(order2.status).to eq('completed')
 	end

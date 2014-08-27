@@ -5,7 +5,7 @@ class ItemDecorator < Draper::Decorator
     categories.map { |c| c.name }.join(', ')
   end
 
-  def unit_price
+  def unit_price_dollars
     h.price_in_dollars(price)
   end
 end
