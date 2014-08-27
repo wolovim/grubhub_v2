@@ -7,24 +7,10 @@ module ApplicationHelper
     status == 'ordered' ? 'Mark as Paid' : 'Mark as Completed'
   end
 
-  #def pending?(status)
-  #  status == 'ordered' || status == 'paid'
-  #end
-
   def orders_by_status(status)
     count = 0
     Order.all.each { |order| count += 1 if order.status == status }
     count
-  end
-
-  def current_user_order(status)
-    count = 0
-    Order.current_orders(current_user).each { |order| count += 1 if order.status == status }
-    count
-  end
-
-  def completed?(order)
-    order.status == 'completed'
   end
 
 	def format_date(date)
