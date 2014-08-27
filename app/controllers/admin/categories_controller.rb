@@ -1,7 +1,7 @@
 class Admin::CategoriesController < AdminController
 
 	def index
-		@categories = Category.all
+    @categories = Category.all.decorate
 	end
 
 	def edit

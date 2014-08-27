@@ -23,6 +23,7 @@ class Admin::ItemsController < AdminController
 
 	def edit
 		@item = Item.find(params[:id])
+    @categories = Category.all
 	end
 
 	def update
