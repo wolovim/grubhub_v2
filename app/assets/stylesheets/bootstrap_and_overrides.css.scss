@@ -23,6 +23,11 @@ $body-bg: #eee;
 	margin-top: 20px;
 }
 
+.center {
+	display: block;
+	text-align: center;
+}
+
 // NAVBAR //
 $navbar-height: 75px;
 $navbar-inverse-bg: #024;
@@ -152,6 +157,11 @@ a.add-item-text:hover {
 	width: 350px;
 	display: block;
 	text-align: center;
+}
+
+// CART
+.inline {
+	display: block;
 }
 
 // CHECKOUT PAGE

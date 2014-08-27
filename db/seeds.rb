@@ -11,46 +11,36 @@ Category.create(name: "Donuts We Wont Even Show You")
 #Moms Favs
 Item.create( title: "The Mangler", price: 2400,
   description: "One bite, all the mangles. Just like mom used to make.",
-  category_ids: ["1"], image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
+  category_ids: ["1"])
 Item.create( title: "The Enola Gay", price: 500,
   description: "Droppin' bombs in your mouth.",
   category_ids: ["1", "4"], image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
 Item.create( title: "The BroNut", price: 19000,
-  description: "Comes with 5lbs of Whey Protien and a BowFlex.", category_ids: ["1"], 
-  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
+  description: "Comes with 5lbs of Whey Protien and a BowFlex.", category_ids: ["1"])
 
 #Lore
 Item.create( title: "Unicorn Bitty", price: 7500,
-  description: "Made from real bits of unicorn.", category_ids: ["2"], 
-  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
+  description: "Made from real bits of unicorn.", category_ids: ["2"])
 Item.create( title: "Sauron's Delight", price: 2500,
-  description: "Only the fires of Mordor could digest this.", category_ids: ["2","5"], 
-  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
+  description: "Only the fires of Mordor could digest this.", category_ids: ["2","5"])
 Item.create( title: "Chewybacca", price: 2500,
-  description: "RRrRRGLRRr GLRrrrr rrrGHRR RrRRrr!", category_ids: ["2"], 
-  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
+  description: "RRrRRGLRRr GLRrrrr rrrGHRR RrRRrr!", category_ids: ["2"])
 
 #Afford Expensive
 Item.create( title: "Diamond Mine", price: 177000,
-  description: "One diamond in every bite.", category_ids: ["3"], 
-  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
+  description: "One diamond in every bite.", category_ids: ["3"])
 Item.create( title: "Lucky Louvre", price: 0,
-  description: "Made from priceless ground artifacts.", category_ids: ["3","5"], 
-  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
+  description: "Made from priceless ground artifacts.", category_ids: ["3","5"])
 Item.create( title: "Benji Bite", price: 8910,
-  description: "$100 bills, ground into meal, fried to perfection.", category_ids: ["3"], 
-  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
+  description: "$100 bills, ground into meal, fried to perfection.", category_ids: ["3"])
 
 #Above you
 Item.create( title: "Fronut", price: 980,
-  description: "Free afro pick with purchase.", category_ids: ["3", "4"], 
-  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
+  description: "Free afro pick with purchase.", category_ids: ["3", "4"])
 Item.create( title: "Gorgeous", price: 2500,
-  description: "Unlike your face.", category_ids: ["4"], 
-  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
+  description: "Unlike your face.", category_ids: ["4"])
 Item.create( title: "The Harvard", price: 620,
-  description: "Has read more books than you.", category_ids: ["4"], 
-  image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
+  description: "Has read more books than you.", category_ids: ["4"])
 
 
 # #RETIRED
@@ -156,21 +146,13 @@ Order.create(user_id: 8, order_type: 'pickup', address_id: 8, status: "completed
 Order.create(user_id: 2, order_type: 'pickup', address_id: 9, status: "ordered", total: 4844)
 Order.create(user_id: 3, order_type: 'pickup', address_id: 10, status: "paid", total: 4600)
 
-Address.create(street: '1510 Blake St', city: 'Denver', state: 'CO', zip: '80205')
-Address.create(street: '198 Araphoe St', city: 'Denver', state: 'CO', zip: '80205')
-Address.create(street: '3273 Lawrence St', city: 'Denver', state: 'CO', zip: '80205')
-Address.create(street: '98 California St', city: 'Denver', state: 'CO', zip: '80205')
-Address.create(street: '101 Stout St', city: 'Denver', state: 'CO', zip: '80205')
-Address.create(street: '23 Colfax Ave', city: 'Denver', state: 'CO', zip: '80205')
-Address.create(street: '52 Park Ave', city: 'Denver', state: 'CO', zip: '80205')
-Address.create(street: '982 Curtis St', city: 'Denver', state: 'CO', zip: '80205')
-Address.create(street: '29 Wynkoop', city: 'Denver', state: 'CO', zip: '80205')
-Address.create(street: '10 Wewatta', city: 'Denver', state: 'CO', zip: '80205')
-
-UserAddress.create(user_id: 2, address_id: 2)
-UserAddress.create(user_id: 2, address_id: 3)
-UserAddress.create(user_id: 5, address_id: 5)
-UserAddress.create(user_id: 6, address_id: 6)
-UserAddress.create(user_id: 7, address_id: 7)
-UserAddress.create(user_id: 8, address_id: 8)
-UserAddress.create(user_id: 1, address_id: 1)
+Address.create(street: '1510 Blake St', city: 'Denver', state: 'CO', zip: '80205', user_id: 2)
+Address.create(street: '198 Araphoe St', city: 'Denver', state: 'CO', zip: '80205', user_id: 2)
+Address.create(street: '3273 Lawrence St', city: 'Denver', state: 'CO', zip: '80205', user_id: 3)
+Address.create(street: '98 California St', city: 'Denver', state: 'CO', zip: '80205', user_id: 4)
+Address.create(street: '101 Stout St', city: 'Denver', state: 'CO', zip: '80205', user_id: 5)
+Address.create(street: '23 Colfax Ave', city: 'Denver', state: 'CO', zip: '80205', user_id: 6)
+Address.create(street: '52 Park Ave', city: 'Denver', state: 'CO', zip: '80205', user_id: 7)
+Address.create(street: '982 Curtis St', city: 'Denver', state: 'CO', zip: '80205', user_id: 9)
+Address.create(street: '29 Wynkoop', city: 'Denver', state: 'CO', zip: '80205', user_id: 8)
+Address.create(street: '10 Wewatta', city: 'Denver', state: 'CO', zip: '80205', user_id: 3)
