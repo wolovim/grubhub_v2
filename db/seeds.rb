@@ -42,28 +42,7 @@ Item.create( title: "Gorgeous", price: 2500,
 Item.create( title: "The Harvard", price: 620,
   description: "Has read more books than you.", category_ids: ["4"])
 
-
-# #RETIRED
-# Item.create( title: "Donut13", price: 3000,
-#   description: "Classy coat for the classy gent.", category_ids: ["1"], retired: true)
-
 # USERS
-User.create(first_name: "Nando", last_name: "Hasselhoff", email: "yourmom@aol.com",
-  password: "password", password_confirmation: "password", role: :admin, nickname: "Nandozer")
-User.create(first_name: "Joe", last_name: "Shmoe", email: "yourdad@aol.com",
-  password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
-User.create(first_name: "John", last_name: "Smith", email: "joe@aol.com",
-  password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
-User.create(first_name: "Tom", last_name: "Davis", email: "tom@aol.com",
-  password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
-User.create(first_name: "George", last_name: "Thomas", email: "george@aol.com",
-  password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
-User.create(first_name: "Mary", last_name: "Jones", email: "mary@aol.com",
-  password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
-User.create(first_name: "Alice", last_name: "Anderson", email: "alice@aol.com",
-  password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
-User.create(first_name: "Jane", last_name: "Rogers", email: "jane@aol.com",
-  password: "password", password_confirmation: "password", role: :default, nickname: "Guy")
 User.create(first_name: "Rachel", last_name: "Warbelow", email: "demo+rachel@jumpstartlab.com",
   password: "password", password_confirmation: "password", role: :default)
 User.create(first_name: "Jeff", last_name: "Casimir", email: "demo+jeff@jumpstartlab.com",
@@ -74,7 +53,7 @@ User.create(first_name: "Josh", last_name: "Cheek", email: "demo+josh@jumpstartl
   password: "password", password_confirmation: "password", role: :admin, nickname: 'josh')
 
 
-# #ORDER ITEMS
+##ORDER ITEMS
 ##1
 OrderItem.create(item_id: 1,
   order_id: 1, quantity: 3, unit_price: 2400)
@@ -136,7 +115,6 @@ Order.create(user_id: 2, order_type: 'delivery', address_id: 2, status: "ordered
 Order.create(user_id: 2, order_type: 'delivery', address_id: 2, status: "ordered")
 Order.create(user_id: 2, order_type: 'delivery', address_id: 2, status: "ordered")
 Order.create(user_id: 2, order_type: 'delivery', address_id: 2, status: "ordered")
-
 Order.create(user_id: 3, order_type: 'delivery', address_id: 3, status: "cancelled")
 Order.create(user_id: 4, order_type: 'delivery', address_id: 4, status: "cancelled")
 Order.create(user_id: 5, order_type: 'delivery', address_id: 5, status: "paid")
