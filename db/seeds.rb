@@ -14,7 +14,7 @@ Item.create( title: "The Mangler", price: 2400,
   category_ids: ["1"])
 Item.create( title: "The Enola Gay", price: 500,
   description: "Droppin' bombs in your mouth.",
-  category_ids: ["1", "4"], image: File.open("#{Rails.root}/app/assets/images/donut1.jpg"))
+  category_ids: ["1", "4"])
 Item.create( title: "The BroNut", price: 19000,
   description: "Comes with 5lbs of Whey Protien and a BowFlex.", category_ids: ["1"])
 
