@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
     if current_user
       @order = Order.new
       @order.address = Address.new
-      @items = Item.where(id: session[:cart].keys)
+      @items = Item.where(id: session[:cart].keys).decorate
       @addresses = current_user.addresses.decorate
 		else
 			flash[:error] = "Please login or register to continue checkout"

@@ -3,15 +3,15 @@ class OrderItemDecorator < Draper::Decorator
 
   delegate :title, to: :item, prefix: true
 
-	def unit_price_dollars
-    "$" + sprintf("%.2f", unit_price_decimal)
-	end
-
 	def unit_price_decimal
-		sprintf("%.2f", unit_price / 100.00)
+    h.price_in_decimal(object.unit_price)
 	end
+  
+  def unit_price
+    h.price_in_dollars(object.unit_price)
+  end
 
 	def subtotal
-		"$" + sprintf("%.2f", (unit_price * quantity).to_f / 100)
+    h.price_in_dollars(object.unit_price * quantity)
 	end
 end

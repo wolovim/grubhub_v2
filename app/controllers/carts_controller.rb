@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   def show
-    @items = Item.where(id: session[:cart].keys)
+    @items = Item.where(id: session[:cart].keys).decorate
   end
 
   def update

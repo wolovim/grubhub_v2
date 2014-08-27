@@ -8,8 +8,8 @@
     <%= f.button :submit, :class => 'btn-primary' %>
     <br/><br/>
     <%= link_to t('.edit', :default => t("Remove")),
-                         admin_order_item_path(order_item),
-                         method: :delete, :class => 'btn btn-mini btn-danger' %>
+      admin_order_item_path(order_item),
+      method: :delete, :class => 'btn btn-mini btn-danger' %>
   <% end %>
   <br/><br/>
 <% end %>
@@ -23,6 +23,6 @@
   <div class="form-actions">
     <%= f.submit 'Update Order', :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("Back")),
-                admin_orders_path, :class => 'btn' %>
+      admin_orders_path, :class => 'btn' %>
   </div>
 <% end %>

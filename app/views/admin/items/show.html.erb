@@ -12,7 +12,7 @@
     <dt><strong><%= model_class.human_attribute_name(:categories) %>:</strong></dt>
     <dd><%= @item.display_categories %></dd>
     <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
-    <dd><%= @item.price_in_dollars %></dd>
+    <dd><%= @item.unit_price %></dd>
     <dt><strong>Image:</strong></dt>
     <dd><%= image_tag @item.image.url(:small) %></dd>
   </dl>

@@ -18,15 +18,15 @@
           <tr>
             <td><%= item.title %></td>
             <td><%= item_quantity(item.id) %></td>
-            <td><%= price_in_dollars(item.price) %></td>
-            <td><%= price_in_dollars(item_subtotal(item.id, item.price)) %></td>
+            <td><%= item.unit_price %></td>
+            <td><%= item_subtotal(item.id, item.price) %></td>
           </tr>
         <% end %>
         <tr>
           <td></td>
           <td></td>
           <td>TOTAL:</td>
-          <td class="cart-total"><%= price_in_dollars(calculate_total) %></td>
+          <td class="cart-total"><%= calculate_total %></td>
         </tr>
       </table>
       <%= link_to "<< Edit cart", cart_path, class: "btn primary" %>
