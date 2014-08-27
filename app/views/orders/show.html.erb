@@ -23,6 +23,10 @@
   <% end %><br/>
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
   <dd><%= @order.status %></dd>
+  <% if @order.pickup? && @order.pending? %>
+    <dt><strong><%= model_class.human_attribute_name(:estimated_time) %>:</strong></dt>
+    <dd><%= @order.current_wait_time %></dd>
+  <% end %>
   <dt><strong><%= model_class.human_attribute_name(:total) %>:</strong></dt>
   <dd><%= @order.total_dollars %></dd>
   <dt><strong><%= model_class.human_attribute_name(:order_date) %>:</strong></dt>

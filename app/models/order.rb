@@ -52,7 +52,7 @@ class Order < ActiveRecord::Base
   def ordered?
     status == 'ordered'
   end
-  
+
   def paid?
     status == 'paid'
   end
@@ -71,6 +71,24 @@ class Order < ActiveRecord::Base
 
   def pickup_or_existing_address
     pickup? || address_id
+  end
+
+  def total_wait_time
+    # each paid order causes 4 min delay
+    num_paid = Order.all.select {|o| o.status == 'paid'}.count
+    # order is delayed by 10 minutes for each additional six items
+    order_size_delay = items.count / 6
+    # 12 mins is default wait time
+    minutes = 12 + num_paid * 4 + order_size_delay * 10
+  end
+
+  def current_wait_time
+    wait_time = total_wait_time - (Time.now - created_at) / 60
+    if wait_time > 0
+      "#{wait_time.round} minutes until ready for pickup"
+    else
+      "ready for pickup"
+    end
   end
 
   private

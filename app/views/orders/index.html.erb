@@ -9,6 +9,7 @@
         <th><%= model_class.human_attribute_name(:details) %></th>
         <th><%= model_class.human_attribute_name(:order_type) %></th>
         <th><%= model_class.human_attribute_name(:status) %></th>
+        <th><%= model_class.human_attribute_name(:estimated_time) %></th>
         <th><%= model_class.human_attribute_name(:total) %></th>
         <th><%= model_class.human_attribute_name(:order_date) %></th>
       </tr>
@@ -19,6 +20,10 @@
           <td><%= link_to 'Details', order_path(order) %></td>
           <td><%= order.order_type %></td>
           <td><%= order.status %></td>
+          <% if order.pickup? && order.pending? %>
+            <td><%= order.current_wait_time %></td>
+          <% else %><td></td>
+          <% end %>
           <td><%= order.total_dollars %></td>
           <td><%= order.updated_at %></td>
           <td>

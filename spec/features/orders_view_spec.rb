@@ -156,4 +156,31 @@ describe 'when viewing the orders' do
       expect(page).not_to have_content('1 Blake St, Denver, CO 80000')
     end
 	end
+
+  context 'as a registered user' do
+    let(:address) { Address.create(street: '1 Blake St', city: 'Denver', state: 'CO', zip: '80000') }
+    let(:order)  { Order.create(user_id: 2, order_type: "pickup", address_id: 1, status: "ordered", total: 2200) }
+    let(:item) { Item.create(title: 'The Awesome Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4300) }
+    let(:order_item) { OrderItem.create(order_id: order.id, item_id: item.id, quantity: 2, unit_price: 210) }
+
+    before(:each) do
+      click_on 'Logout'
+      register
+      login
+      order
+      item
+      order_item
+      address
+      visit orders_path
+    end
+
+    it 'shows estimated time until order will be ready on my orders page' do
+      expect(page).to have_content(order.current_wait_time)
+    end
+
+    it 'shows estimatedd time until order will be ready on order details page' do
+      visit order_path(order)
+      expect(page).to have_content(order.current_wait_time)
+    end
+  end
 end
