@@ -103,16 +103,13 @@
             </label>
             <div id="new-address-form">
               <div class="form-group">
-                <label for="Street">Street</label>
-                <input type="text" class="form-control" placeholder="1600 Pennsylvania Ave">
-                <label for="Unit">Unit</label>
-                <input type="text" class="form-control" placeholder="#205">
-                <label for="City">City</label>
-                <input type="text" class="form-control" placeholder="Denver">
-                <label for="State">State</label>
-                <input type="text" class="form-control" placeholder="CO">
-                <label for="Zip">Zip</label>
-                <input type="text" class="form-control" placeholder="80204">
+                <%= f.simple_fields_for :address do |a| %>
+                  <%= a.input :street, input_html: { class: 'form-control' } %>
+                  <%= a.input :unit, input_html: { class: 'form-control' } %>
+                  <%= a.input :city, input_html: { class: 'form-control' } %>
+                  <%= a.input :state, input_html: { class: 'form-control' } %>
+                  <%= a.input :zip, input_html: { class: 'form-control' } %>
+                <% end %>
               </div>
             </div>
           </div><!-- /create-address -->

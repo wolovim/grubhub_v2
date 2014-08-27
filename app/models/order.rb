@@ -1,8 +1,11 @@
 class Order < ActiveRecord::Base
-	validates :user_id, :order_type, :status, :total, presence: true
-  validates :address_id, presence: true, if: :delivery?
+	validates :user_id, :order_type, :total, presence: true
+
 	has_many :order_items
 	has_many :items, through: :order_items
+  belongs_to :user
+  belongs_to :address
+  accepts_nested_attributes_for :address, reject_if: :pickup?
 
   before_validation :set_default_values
 
@@ -76,9 +79,7 @@ class Order < ActiveRecord::Base
 		order_type == 'delivery'
 	end
 
-	def address
-		data = Address.find(self.address_id)
-		location = [data[:street], data[:city], data[:state], data[:zip]]
-		location.join(', ')
-	end
+  def pickup?
+    !delivery?
+  end
 end

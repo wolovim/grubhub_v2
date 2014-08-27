@@ -11,8 +11,7 @@ class User<ActiveRecord::Base
   validates :nickname,
             length: { minimum: 2, maximum: 32 }, allow_blank: true
 
-  has_many :user_addresses
-  has_many :addresses, through: :user_addresses
+  has_many :addresses
   has_many :orders
 
 

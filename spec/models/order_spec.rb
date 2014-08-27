@@ -11,10 +11,6 @@ RSpec.describe Order, type: :model  do
 
 	it { should validate_presence_of(:order_type) }
 
-	it { should validate_presence_of(:address_id) }
-
-	it { should validate_presence_of(:status) }
-
 	it 'has an array of order items' do
 		expect(order.order_items).to eq([])
 	end

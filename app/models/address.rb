@@ -6,6 +6,6 @@ class Address < ActiveRecord::Base
   validates :zip,    presence: true
   validates :zip,    length: { is: 5 }
 
-  has_many :user_addresses
-  has_many :users, through: :user_addresses
+  belongs_to :user
+  has_many :orders
 end
