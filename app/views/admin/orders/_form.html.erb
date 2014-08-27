@@ -1,7 +1,7 @@
 <% @order.order_items.each do |order_item| %>
-  <%= order_item.item_title %>
-  <%= simple_form_for order_item do |f| %>
-    <%= f.input :quantity %>
+  <%= order_item.item_title %><br/>
+  <%= simple_form_for order_item, url: admin_order_item_path(order_item) do |f| %>
+    <br/><%= f.input :quantity %>
     <%= f.input :unit_price, :input_html => { :value => order_item.unit_price_decimal }, as: :decimal %>
     <%= f.button :submit, :class => 'btn-primary' %>
   <% end %>
@@ -10,12 +10,14 @@
                          method: :delete, :class => 'btn btn-mini btn-danger' %>
 <% end %><br/><br/>
 
-<%= simple_form_for @order, url: admin_order_path(@order) do |f| %>
-  <%= f.input :order_type %>
-  <%= f.input :status %><br/>
+<%= form_for @order, url: admin_order_path(@order) do |f| %>
+  <%= f.label :order_type %><br/>
+  <%= f.text_field :order_type %><br/>
+  <%= f.label :status %><br/>
+  <%= f.text_field :status %><br/>
   Total: <%= @order.total %>
   <div class="form-actions">
-    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= f.submit 'Update Order', :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("Back")),
                 admin_orders_path, :class => 'btn' %>
   </div>
