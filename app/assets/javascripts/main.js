@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 	// "Sticky" sidebar on main menu
 	$("#sticker").sticky({ topSpacing: 80 });
-	
+
   // Checkout form: hide/show delivery address & credit card form
   $("#address-selector").hide();
   $("#payment-selector").hide();
