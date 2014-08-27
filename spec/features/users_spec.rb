@@ -108,7 +108,7 @@ describe '' do
     it 'can view their user profile' do
       click_on "Account"
       click_on "Profile"
-      expect(page).to have_content "Your Info"
+      expect(page).to have_content "My Info"
     end
 
     it 'can link to a details page for each order' do

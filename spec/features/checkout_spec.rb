@@ -28,7 +28,7 @@ describe 'Checking out', type: :feature do
     let(:address) { 
       user.addresses.create(
         street: '123 Fake St.', unit: '#307', city: 'Broomfield', state: 'CO', zip: 80021
-      )
+      ).decorate
     }
 
     it 'sees the cart items' do

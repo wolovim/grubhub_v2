@@ -1,23 +1,24 @@
-<%- model_class = Item -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
-  <% @item.errors.full_messages.each do |m| %>
-    <%= m %><br/>
+<div class="page-border">
+  <%- model_class = Item -%>
+  <div class="page-header">
+    <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+    <% @item.errors.full_messages.each do |m| %>
+      <%= m %><br/>
+    <% end %>
+  </div>
+  <%= form_for @item, url: admin_items_path, method: :post do |f| %>
+    <%= f.label       :title %><br/>
+    <%= f.text_field  :title %><br/>
+    <%= f.label       :description %><br/>
+    <%= f.text_field  :description %><br/>
+    <%= f.label       :price %><br/>
+    <%= f.text_field  :price %><br/>
+    <%= f.label       :image %><br/>
+    <%= f.file_field  :image %><br/>
+    <div class="form-actions">
+    <%= f.submit %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  admin_items_path, :class => 'btn' %>
+    </div>
   <% end %>
 </div>
-
-<%= form_for @item, url: admin_items_path, method: :post do |f| %>
-  <%= f.label       :title %><br/>
-  <%= f.text_field  :title %><br/>
-  <%= f.label       :description %><br/>
-  <%= f.text_field  :description %><br/>
-  <%= f.label       :price %><br/>
-  <%= f.text_field  :price %><br/>
-  <%= f.label :image %><br/>
-  <%= f.file_field :image %><br/>
-  <div class="form-actions">
-  <%= f.submit %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                admin_items_path, :class => 'btn' %>
-  </div>
-<% end %>

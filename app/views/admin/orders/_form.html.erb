@@ -1,21 +1,25 @@
 <% @order.order_items.each do |order_item| %>
-  <%= order_item.item_title %><br/>
+  <span class="form-title"><%= order_item.item_title %></span><br/>
+
   <%= simple_form_for order_item, url: admin_order_item_path(order_item) do |f| %>
-    <br/><%= f.input :quantity %>
-    <%= f.input :unit_price, :input_html => { :value => order_item.unit_price_decimal }, as: :decimal %>
+    <br/>
+    <%= f.input :quantity %>
+    <%= f.input :unit_price, :input_html => { :value => order_item.unit_price_decimal }, as: :decimal %><br/>
     <%= f.button :submit, :class => 'btn-primary' %>
-  <% end %>
-  <%= link_to t('.edit', :default => t("Remove")),
+    <br/><br/>
+    <%= link_to t('.edit', :default => t("Remove")),
                          admin_order_item_path(order_item),
                          method: :delete, :class => 'btn btn-mini btn-danger' %>
-<% end %><br/><br/>
+  <% end %>
+  <br/><br/>
+<% end %>
 
 <%= form_for @order, url: admin_order_path(@order) do |f| %>
-  <%= f.label :order_type %><br/>
-  <%= f.text_field :order_type %><br/>
-  <%= f.label :status %><br/>
-  <%= f.text_field :status %><br/>
-  Total: <%= @order.total %>
+  <span class="form-title"><%= f.label :order_type %></span><br/>
+  <%= f.text_field :order_type %><br/><br/>
+  <span class="form-title"><%= f.label :status %></span><br/>
+  <%= f.text_field :status %><br/><br/>
+  <span class="form-title">Total: <%= @order.total %></span><br/><br/>
   <div class="form-actions">
     <%= f.submit 'Update Order', :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("Back")),

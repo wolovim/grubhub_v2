@@ -2,35 +2,35 @@ class Admin::OrdersController < AdminController
   before_action :check_admin, only: [:index]
 
 	def index
-		@orders = Order.all
+    @orders = Order.all.decorate
 	end
 
 	def show
-		@order = Order.find(params[:id])
+    @order = Order.find(params[:id]).decorate
 	end
 
 	def ordered
-	  @orders = Order.all_ordered
+    @orders = Order.ordered.decorate
 		render :index
 	end
 
 	def paid
-		@orders = Order.all_paid
+    @orders = Order.paid.decorate
 		render :index
 	end
 
 	def completed
-		@orders = Order.all_completed
+    @orders = Order.completed.decorate
 		render :index
 	end
 
 	def cancelled
-		@orders = Order.all_cancelled
+    @orders = Order.cancelled.decorate
 		render :index
 	end
 
 	def edit
-		@order = Order.find(params[:id])
+    @order = Order.find(params[:id]).decorate
 	end
 
 	def update
