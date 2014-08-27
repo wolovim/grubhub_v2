@@ -25,7 +25,7 @@
           <% else %><td></td>
           <% end %>
           <td><%= order.total_dollars %></td>
-          <td><%= order.updated_at %></td>
+          <td><%= order.updated_date %></td>
           <td>
             <% if order.pending? %>
               <%= link_to t('.edit', :default => t("Cancel")),
