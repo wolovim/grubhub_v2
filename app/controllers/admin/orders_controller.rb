@@ -30,7 +30,7 @@ class Admin::OrdersController < AdminController
 	end
 
 	def edit
-		@order = Order.find(params[:id])
+    @order = Order.find(params[:id]).decorate
 	end
 
 	def update
