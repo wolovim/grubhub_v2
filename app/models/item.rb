@@ -9,14 +9,6 @@ class Item < ActiveRecord::Base
 	has_attached_file :image, styles: {:small => "150x150>", :thumb => "100x100>"}, default_url: "/assets/images/missing-donut.jpg"
 	validates_attachment :image, content_type: {content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]}
 
-	def display_categories
-		self.categories.map { |c| c.name }.join(', ')
-	end
-
-	def price_in_dollars
-		'$' + sprintf("%.2f", price / 100.00)
-	end
-
 	def remove_category(category_id)
 		self.categories = categories.reject { |category| category.id == category_id.to_i}
 		self.save

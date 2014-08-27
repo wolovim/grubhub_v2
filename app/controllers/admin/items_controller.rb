@@ -1,11 +1,11 @@
 class Admin::ItemsController < AdminController
 	def index
-		@items = Item.all
+    @items = Item.all.decorate
 		@categories = Category.all
 	end
 
 	def show
-		@item = Item.find(params[:id])
+    @item = Item.find(params[:id]).decorate
 	end
 
 	def new
