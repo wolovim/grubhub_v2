@@ -10,7 +10,7 @@ Category.create(name: "Donuts We Wont Even Show You")
 
 #Moms Favs
 Item.create( title: "The Mangler", price: 2400,
-  description: "One bite, all the mangles. Just like mom used to make",
+  description: "One bite, all the mangles. Just like mom used to make.",
   category_ids: ["1"])
 Item.create( title: "The Enola Gay", price: 500,
   description: "Droppin' bombs in your mouth.",
@@ -23,24 +23,24 @@ Item.create( title: "Unicorn Bitty", price: 7500,
   description: "Made from real bits of unicorn.", category_ids: ["2"])
 Item.create( title: "Sauron's Delight", price: 2500,
   description: "Only the fires of Mordor could digest this.", category_ids: ["2","5"])
-Item.create( title: "Cheweybacha", price: 2500,
-  description: "RRrRRRRr Rrrrr rrrRR RrRRrr!", category_ids: ["2"])
+Item.create( title: "Chewybacca", price: 2500,
+  description: "RRrRRGLRRr GLRrrrr rrrGHRR RrRRrr!", category_ids: ["2"])
 
 #Afford Expensive
 Item.create( title: "Diamond Mine", price: 177000,
-  description: "One diamond in every bite", category_ids: ["3"])
+  description: "One diamond in every bite.", category_ids: ["3"])
 Item.create( title: "Lucky Louvre", price: 0,
-  description: "Made from priceless ground artifacts", category_ids: ["3","5"])
+  description: "Made from priceless ground artifacts.", category_ids: ["3","5"])
 Item.create( title: "Benji Bite", price: 8910,
-  description: "$100 bills, ground into meal, fried to perfection", category_ids: ["3"])
+  description: "$100 bills, ground into meal, fried to perfection.", category_ids: ["3"])
 
 #Above you
-Item.create( title: "You're Fat", price: 980,
-  description: "Should you really buy this?", category_ids: ["3", "4"])
+Item.create( title: "Fronut", price: 980,
+  description: "Free afro pick with purchase.", category_ids: ["3", "4"])
 Item.create( title: "Gorgeous", price: 2500,
-  description: "Unlike your face", category_ids: ["4"])
+  description: "Unlike your face.", category_ids: ["4"])
 Item.create( title: "The Harvard", price: 620,
-  description: "Has read more books than you", category_ids: ["4"])
+  description: "Has read more books than you.", category_ids: ["4"])
 
 
 # #RETIRED
