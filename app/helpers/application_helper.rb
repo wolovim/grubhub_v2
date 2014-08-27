@@ -10,4 +10,8 @@ module ApplicationHelper
   def orders_by_status(status)
     Order.where(status: status).size
   end
+
+	def categories
+		Category.all
+	end
 end
