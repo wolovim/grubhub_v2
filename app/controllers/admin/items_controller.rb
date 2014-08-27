@@ -27,7 +27,8 @@ class Admin::ItemsController < AdminController
 
 	def update
 		@item = Item.find(params[:id])
-		if @item.update(item_params)
+		new_params = update_item_params(item_params)
+		if @item.update(new_params)
 			redirect_to admin_items_path
 		else
 			render :edit
@@ -63,5 +64,10 @@ class Admin::ItemsController < AdminController
 
 	def item_params
 		params.require(:item).permit(:title, :description, :price, :image)
+	end
+
+	def update_item_params(params)
+		params[:price] = (params[:price].to_d * 100).to_i
+		params
 	end
 end

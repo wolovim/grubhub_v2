@@ -1,6 +1,7 @@
 class OrderItem < ActiveRecord::Base
 	belongs_to :order
 	belongs_to :item
+	validates_numericality_of :unit_price, greater_than_or_equal_to: 0
 
 	def item_title
 		item.title
@@ -16,11 +17,5 @@ class OrderItem < ActiveRecord::Base
 
 	def unit_price_dollars
 		"$" + sprintf("%.2f", unit_price_decimal)
-	end
-
-	def update(params)
-		self.unit_price = (params[:unit_price].to_d * 100).to_i
-		self.quantity = params[:quantity]
-		self.save
 	end
 end
