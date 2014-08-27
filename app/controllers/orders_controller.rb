@@ -26,8 +26,8 @@ class OrdersController < ApplicationController
       flash[:success] = 'Your order has been received.'
       redirect_to order_path(@order)
     else
-      @addresses = current_user.addresses
-      @items = Item.where(id: session[:cart].keys)
+      @addresses = current_user.addresses.decorate
+      @items = Item.where(id: session[:cart].keys).decorate
       render :new
     end
   end

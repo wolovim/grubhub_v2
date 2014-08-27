@@ -7,7 +7,7 @@ class OrderItemDecorator < Draper::Decorator
     h.price_in_decimal(object.unit_price)
 	end
   
-  def unit_price
+  def unit_price_dollars
     h.price_in_dollars(object.unit_price)
   end
 

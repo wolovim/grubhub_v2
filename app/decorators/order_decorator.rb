@@ -12,6 +12,10 @@ class OrderDecorator < ApplicationDecorator
       class: 'btn btn-mini btn-success'
   end
 
+  def total_dollars
+    h.price_in_dollars(total)
+  end
+
   private
 
   def text_for_update
