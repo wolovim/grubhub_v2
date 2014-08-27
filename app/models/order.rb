@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
 	has_many :items, through: :order_items
   belongs_to :user
   belongs_to :address
-  accepts_nested_attributes_for :address, reject_if: :pickup?
+  accepts_nested_attributes_for :address, reject_if: :pickup_or_existing_address
 
   before_validation :set_default_values
 
@@ -81,5 +81,9 @@ class Order < ActiveRecord::Base
 
   def pickup?
     !delivery?
+  end
+
+  def pickup_or_existing_address
+    pickup? || address_id
   end
 end

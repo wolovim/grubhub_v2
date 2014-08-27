@@ -14,12 +14,22 @@ describe 'Checking out', type: :feature do
       register
       login
 
+      address
+
       visit categories_path
       first(:button, 'Add to Cart').click
       first(:button, 'Add to Cart').click
       first(:button, 'Add to Cart').click
+
       visit new_order_path
     end
+
+    let(:user) { User.first }
+    let(:address) { 
+      user.addresses.create(
+        street: '123 Fake St.', unit: '#307', city: 'Broomfield', state: 'CO', zip: 80021
+      )
+    }
 
     it 'sees the cart items' do
       expect(page).to have_content 'A Donut'
@@ -69,7 +79,21 @@ describe 'Checking out', type: :feature do
 
           expect(page).to have_content 'Your order has been received.'
           expect(page).to have_content '$30.00'
-          expect(user.addresses.count).to eq 1
+          expect(user.addresses.count).to eq 2
+        end
+
+        it 'can select an existing address' do
+          visit new_order_path
+
+          choose 'Delivery'
+          choose 'Select a saved address'
+          select '123 Fake St. #307, Broomfield, CO 80021'
+          choose 'Cash'
+          click_button 'Create Order'
+
+          expect(page).to have_content 'Your order has been received.'
+          expect(page).to have_content '$30.00'
+          expect(page).to have_content address
         end
       end
 

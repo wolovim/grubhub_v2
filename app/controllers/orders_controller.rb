@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
       @order = Order.new
       @order.address = Address.new
       @items = Item.where(id: session[:cart].keys)
+      @addresses = current_user.addresses
 		else
 			flash[:error] = "Please login or register to continue checkout"
 			redirect_to login_path
@@ -19,12 +20,13 @@ class OrdersController < ApplicationController
 	end
 
   def create
-    @order = current_user.orders.new_with_items(nested_params_with_user_id, current_cart)
+    @order = current_user.orders.new_with_items(merged_params, current_cart)
 
     if @order.save
       flash[:success] = 'Your order has been received.'
       redirect_to order_path(@order)
     else
+      @addresses = current_user.addresses
       @items = Item.where(id: session[:cart].keys)
       render :new
     end
@@ -84,10 +86,10 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:order_type, address_attributes: [:street, :unit, :city, :state, :zip])
+    params.require(:order).permit(:order_type, :address_id, address_attributes: [:street, :unit, :city, :state, :zip])
   end
 
-  def nested_params_with_user_id
+  def merged_params
     adjusted_params = order_params
     if adjusted_params['address_attributes'].any? { |_, v| !v.empty? }
       adjusted_params['address_attributes']['user_id'] = current_user.id

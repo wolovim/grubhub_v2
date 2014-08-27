@@ -8,4 +8,14 @@ class Address < ActiveRecord::Base
 
   belongs_to :user
   has_many :orders
+
+  def to_s
+    str = ""
+    str << street
+    str << " #{unit}" if !unit.empty?
+    str << ", #{city}"
+    str << ", #{state}"
+    str << " #{zip}"
+    str
+  end
 end

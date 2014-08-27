@@ -87,10 +87,11 @@
               <input type="radio" name="addressOption" id="saved-address-radio" value="saved-address"> Select a saved address
             </label>
             <div id="saved-address-selector">
-              <select class="form-control">
-                <option value="Address 1">One</option>
-                <option value="Address 2">Two</option>
-                <option value="Address 3">Three</option>
+              <select class="form-control" name="order[address_id]" id="order_address_id">
+                <option value="" selected>Select an address</option>
+                <% @addresses.each do |address| %>
+                  <option value="<%= address.id %>"><%= address.to_s %></option>
+                <% end %>
               </select>
             </div>
           </div>
@@ -152,7 +153,6 @@
     <div class="col-md-4">
     </div>
   </div>
->>>>>>> A user can now checkout with pickup and cash
 <% end %>
 
 <!-- 
