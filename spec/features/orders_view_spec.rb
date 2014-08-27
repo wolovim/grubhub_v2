@@ -159,7 +159,7 @@ describe 'when viewing the orders' do
 
   context 'as a registered user' do
     let(:address) { Address.create(street: '1 Blake St', city: 'Denver', state: 'CO', zip: '80000') }
-    let(:order)  { Order.create(user_id: 2, order_type: "pickup", address_id: 1, status: "ordered", total: 2200) }
+    let(:order)  { Order.create(user_id: 2, order_type: "pickup", address_id: 1, status: "ordered") }
     let(:item) { Item.create(title: 'The Awesome Donut', description: 'Clearly, the best donut you\'ve ever had.', price: 4300) }
     let(:order_item) { OrderItem.create(order_id: order.id, item_id: item.id, quantity: 2, unit_price: 210) }
 

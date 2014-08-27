@@ -46,16 +46,16 @@ RSpec.describe Order, type: :model  do
 	end
 
 	it 'can calculate total wait time' do
-		example = Order.create(user_id: 1, order_type: "delivery", address_id: 3, status: "paid", total: 3300)
-		example2 = Order.create(user_id: 2, order_type: "pickup", address_id: 4, status: "ordered", total: 3300)
+		example = Order.create(user_id: 1, order_type: "delivery", address_id: 3, status: "paid")
+		example2 = Order.create(user_id: 2, order_type: "pickup", address_id: 4, status: "ordered")
 
 		time = example2.total_wait_time
 		expect(16).to eq(time)
 	end
 
 	it 'can calculate current wait time' do
-		example = Order.create(user_id: 1, order_type: "delivery", address_id: 3, status: "paid", total: 3300)
-		example2 = Order.create(user_id: 2, order_type: "pickup", address_id: 4, status: "ordered", total: 3300)
+		example = Order.create(user_id: 1, order_type: "delivery", address_id: 3, status: "paid")
+		example2 = Order.create(user_id: 2, order_type: "pickup", address_id: 4, status: "ordered")
 
 		time = example2.current_wait_time
 		expect('16 minutes until ready for pickup').to eq(time)
