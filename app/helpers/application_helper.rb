@@ -14,4 +14,8 @@ module ApplicationHelper
 	def categories
 		Category.all
 	end
+
+	def display_name(user)
+		user.nickname ? user.nickname : user.first_name
+	end
 end

@@ -17,6 +17,7 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav navbar-right">
 		      <% if current_user %>
+						<p class='navbar-text'>Welcome, <%= display_name(current_user) %></p>
 		      	<li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
