@@ -17,10 +17,4 @@ class OrderItem < ActiveRecord::Base
 	def unit_price_dollars
 		"$" + sprintf("%.2f", unit_price_decimal)
 	end
-
-	def update(params)
-		self.unit_price = (params[:unit_price].to_d * 100).to_i
-		self.quantity = params[:quantity]
-		self.save
-	end
 end
