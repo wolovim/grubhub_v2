@@ -19,7 +19,7 @@
           <td><%= link_to 'Details', order_path(order) %></td>
           <td><%= order.order_type %></td>
           <td><%= order.status %></td>
-          <td><%= order.total %></td>
+          <td><%= order.total_dollars %></td>
           <td><%= order.updated_at %></td>
           <td>
             <% if order.pending? %>

@@ -18,13 +18,13 @@
   <% @order.order_items.each do |order_item| %>
     <dd><%= link_to order_item.item_title, admin_item_path(order_item.item) %> |
       Quantity: <%= order_item.quantity %> |
-      Unit Price: <%= order_item.unit_price %> |
+      Unit Price: <%= order_item.unit_price_dollars %> |
       Subtotal: <%= order_item.subtotal %><br/></dd>
   <% end %><br/>
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
   <dd><%= @order.status %></dd>
   <dt><strong><%= model_class.human_attribute_name(:total) %>:</strong></dt>
-  <dd><%= @order.total %></dd>
+  <dd><%= @order.total_dollars %></dd>
   <dt><strong><%= model_class.human_attribute_name(:submitted) %>:</strong></dt>
   <dd><%= @order.created_date %> @ <%= @order.created_time %></dd>
   <% if !@order.pending? %>

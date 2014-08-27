@@ -30,7 +30,7 @@
               <% end %>
             </div>
           </td>
-          <td><%= item.unit_price %></td>
+          <td><%= item.unit_price_dollars %></td>
           <td><%= item_subtotal(item.id, item.price) %></td>
           <td>
             <%= form_for(:cart, url: cart_path, method: :delete) do |f| %>

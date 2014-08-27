@@ -21,6 +21,7 @@ group :production do
 end
 
 group :development do
+  gem 'better_errors'
   gem 'bullet'
 end
 

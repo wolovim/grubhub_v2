@@ -14,7 +14,7 @@
 							<%= image_tag item.image.url(:small), class: "item-image" %><br/>
 							<div class="item-price">
 								<span class="only-price">
-									<span class="only">only:</span> <%= item.unit_price %><br/>
+									<span class="only">only:</span> <%= item.unit_price_dollars %><br/>
 								</span>
                 <%= form_for(:cart, url: cart_path, method: :put) do |f| %>
                   <%= f.hidden_field :item_id, value: item.id %>
