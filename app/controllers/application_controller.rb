@@ -16,11 +16,27 @@ class ApplicationController < ActionController::Base
     current_user && current_user.role == 'admin'
   end
 
+  def check_user
+    unless current_user
+      login_with_flash
+    end
+  end
+
   def check_admin
     unless is_admin?
-      flash[:error] = 'You must be logged in to access that.'
-      session[:last_page] = request.path
-      redirect_to login_path
+      login_with_flash
     end
+  end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
+  private
+
+  def login_with_flash
+    flash[:error] = 'You must be logged in to access that.'
+    session[:last_page] = request.path
+    redirect_to login_path
   end
 end

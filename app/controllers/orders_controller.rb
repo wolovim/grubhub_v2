@@ -4,7 +4,13 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id]).decorate
+    @order = Order.find_by(id: params[:id], user: current_user)
+
+    if @order
+      @order = @order.decorate
+    else
+      not_found
+    end
   end
 
   def new
