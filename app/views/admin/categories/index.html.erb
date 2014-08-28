@@ -1,32 +1,28 @@
 <h1>CATEGORIES!</h1>
-	<% @categories.each do |category| %>
-		<span class="category-name"><%= category.name %></span>
-		<%= link_to "Edit", edit_admin_category_path(category) %>
-		<%= link_to "Delete", admin_category_path(category), method: :delete %><br/>
-		<div class="donuts transitions-enabled">
-			<% category.items.each do |item| %>
-				<div class="item-box">
-					<div class="item-box-description">
-						<span class="item-title"><%= item.title %></span><br/>
-						<span class="item-description"><%= item.description %></span><br/>
-					</div>
-					<%= image_tag item.image.url(:small), class: "item-image" %>
-					<div class="item-price">
-						<span class="only-price">
-							<span class="only">only:</span> <%= item.unit_price_dollars %>
-						</span>
-						<button type="button" class="btn btn-primary add-item-btn" href="#">
-							<span class='glyphicon glyphicon-plus-sign'></span> Add to Cart
-						</button>
-					</div>
-					
-					<!-- <div class="add-item-box">
-						<a class="add-item-text" href="#">Add A New Donut!</a>
-					</div> -->
-				</div>
-			<% end %>
-		</div> <!-- /.donuts -->
-	<% end %>
+<% @categories.each do |category| %>
+  <span class="category-name"><%= category.name %></span>
+  <%= link_to "Edit", edit_admin_category_path(category) %>
+  <%= link_to "Delete", admin_category_path(category), method: :delete %><br/>
+  <div class="donuts transitions-enabled">
+    <% category.items.each do |item| %>
+      <div class="item-box">
+        <div class="item-box-description">
+          <span class="item-title"><%= item.title %></span><br/>
+          <span class="item-description"><%= item.description %></span><br/>
+        </div>
+        <%= image_tag item.image.url(:small), class: "item-image" %>
+        <div class="item-price">
+          <span class="only-price">
+            <span class="only">only:</span> <%= item.unit_price_dollars %>
+          </span>
+          <button type="button" class="btn btn-primary add-item-btn" href="#">
+            <span class='glyphicon glyphicon-plus-sign'></span> Add to Cart
+          </button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
 
-	<br/><br/>
-	<%= button_to 'Add Category', new_admin_category_path, method: :get %>
+<br/><br/>
+<%= button_to 'Add Category', new_admin_category_path, method: :get %>

@@ -1,15 +1,13 @@
 <%- model_class = Item -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%= @item.title %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @item.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dt><strong>Description:</strong></dt>
   <dd><%= @item.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:categories) %>:</strong></dt>
+  <dt><strong>Categories:</strong></dt>
   <dd><%= @item.display_categories %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
+  <dt><strong>Price:</strong></dt>
   <dd><%= @item.unit_price_dollars %></dd>
 </dl>

@@ -4,12 +4,12 @@
   </div>
   <% if @item.errors.any? %>
     <div id="error-explanation">
-      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
 
       <ul>
-      <% @item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -23,9 +23,8 @@
     <%= f.label       :image %><br/>
     <%= f.file_field  :image %><br/>
     <div class="form-actions">
-    <%= f.submit "Create Item", class: "btn btn-primary" %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  admin_items_path, :class => 'btn btn-danger' %>
+      <%= f.submit "Create Item", class: "btn btn-primary" %>
+      <%= link_to 'Cancel', admin_items_path, :class => 'btn btn-danger' %>
     </div>
   <% end %>
 </div>

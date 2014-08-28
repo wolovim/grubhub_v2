@@ -49,12 +49,12 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:order_type, :address_id, address_attributes: [:street, :unit, :city, :state, :zip])
+    params.require(:order).permit(:order_type, :payment_type, :address_id, address_attributes: [:street, :unit, :city, :state, :zip])
   end
 
   def merged_params
     adjusted_params = order_params
-    if adjusted_params['address_attributes'].any? { |_, v| !v.empty? }
+    if adjusted_params['address_attributes']
       adjusted_params['address_attributes']['user_id'] = current_user.id
     end
     adjusted_params

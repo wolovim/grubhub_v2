@@ -1,10 +1,10 @@
 module ApplicationHelper
 	def price_in_dollars(price)
-		'$' + price_in_decimal(price)
+		'$' + price_in_decimal(price) if price
 	end
 
   def price_in_decimal(price)
-    sprintf("%.2f", price / 100.00)
+    sprintf("%.2f", price / 100.00) if price
   end
 
   def orders_by_status(status)

@@ -67,8 +67,8 @@ class Admin::ItemsController < AdminController
     update_params(safe_params)
 	end
 
-	def update_params(params)
-		params[:price] = (params[:price].to_d * 100).to_i
-		params
+	def update_params(columns)
+    columns[:price] = (columns[:price].to_d * 100).to_i unless columns[:price].empty?
+		columns
 	end
 end

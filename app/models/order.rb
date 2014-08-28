@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
   before_validation :set_default_values
-	validates :user_id, :order_type, presence: true
+	validates :user_id, :order_type, :payment_type, presence: true
 
 	has_many :order_items
 	has_many :items, through: :order_items

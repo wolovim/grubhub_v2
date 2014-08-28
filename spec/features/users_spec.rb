@@ -73,11 +73,11 @@ describe 'user experience' do
 
   context 'as a registered user' do
 
-    let(:order) { Order.create(user_id: 1, order_type: 'pickup', address_id: 7, status: "ordered") }
+    let(:order) { Order.create(user_id: 1, order_type: 'pickup', payment_type: 'cash', address_id: 7, status: "ordered") }
     let(:user2) { User.create(first_name: "Nan", last_name: "Hass", email: "yourmommy@aol.com",
                   password: "password", password_confirmation: "password", role: :admin, nickname: "Nandozer") }
 
-    let(:order2) { Order.create(user_id: user2.id, order_type: 'delivery', address_id: 7, status: "paid") }
+    let(:order2) { Order.create(user_id: user2.id, order_type: 'delivery', payment_type: 'cash', address_id: 7, status: "paid") }
     before(:each) do
       register(first_name: 'Nando', last_name: 'Hasselhoff', email: 'yourmom@aol.com', password: '123', password_confirmation: '123')
       login(email: 'yourmom@aol.com', password: '123')

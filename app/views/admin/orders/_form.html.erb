@@ -7,8 +7,7 @@
     <%= f.input :unit_price, input_html: { value: order_item.unit_price_decimal }, as: :decimal %><br/>
     <%= f.button :submit, :class => 'btn-primary' %>
     <br/><br/>
-    <%= link_to t('.edit', :default => t("Remove")),
-      admin_order_item_path(order_item),
+    <%= link_to 'Remove', admin_order_item_path(order_item),
       method: :delete, :class => 'btn btn-mini btn-danger' %>
   <% end %>
   <br/><br/>
@@ -22,7 +21,6 @@
   <span class="form-title">Total: <%= @order.total_dollars %></span><br/><br/>
   <div class="form-actions">
     <%= f.submit 'Update Order', :class => 'btn-primary' %>
-    <%= link_to t('.cancel', :default => t("Back")),
-      admin_orders_path, :class => 'btn' %>
+    <%= link_to 'Cancel', admin_orders_path, :class => 'btn' %>
   </div>
 <% end %>

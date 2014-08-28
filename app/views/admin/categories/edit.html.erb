@@ -1,6 +1,8 @@
 <div class="page-border">
 	<%= form_for @category, url: admin_category_path(@category) do |f| %>
-		<span class="form-title"><%= f.label      :name %></span><br/>
+    <span class="form-title">
+      <%= f.label :name %>
+    </span><br/>
 		<%= f.text_field :name %><br/><br/>
 		<%= f.submit class: 'btn btn-primary'%>
 	<% end %>

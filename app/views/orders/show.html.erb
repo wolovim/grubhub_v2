@@ -1,47 +1,45 @@
-<%- model_class = Order -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1>Order &#35;<%= @order.id %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dt><strong>Name:</strong></dt>
   <dd><%= @order.user_name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:email_address) %>:</strong></dt>
+  <dt><strong>Email Address:</strong></dt>
   <dd><%= @order.user_email %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:order_type) %>:</strong></dt>
+  <dt><strong>Order Type:</strong></dt>
   <dd><%= @order.order_type %></dd>
   <% if @order.delivery? %>
-    <dt><strong><%= model_class.human_attribute_name(:address_id) %>:</strong></dt>
+    <dt><strong>Address:</strong></dt>
     <dd><%= @order.address %></dd>
   <% end %>
-  <dt><strong><%= model_class.human_attribute_name(:items) %>:</strong></dt>
+  <dt><strong>Items:</strong></dt>
   <% @order.order_items.each do |order_item| %>
     <dd><%= link_to order_item.item_title, item_path(order_item.item) %> |
-      Quantity: <%= order_item.quantity %> |
-      Unit Price: <%= order_item.unit_price_dollars %> |
-      Subtotal: <%= order_item.subtotal %><br/></dd>
+    Quantity: <%= order_item.quantity %> |
+    Unit Price: <%= order_item.unit_price_dollars %> |
+    Subtotal: <%= order_item.subtotal %><br/></dd>
   <% end %><br/>
-  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+  <dt><strong>Order Status:</strong></dt>
   <dd><%= @order.status %></dd>
   <% if @order.pickup? && @order.pending? %>
-    <dt><strong><%= model_class.human_attribute_name(:estimated_time) %>:</strong></dt>
+    <dt><strong>Estimated Time:</strong></dt>
     <dd><%= @order.current_wait_time %></dd>
   <% end %>
-  <dt><strong><%= model_class.human_attribute_name(:total) %>:</strong></dt>
+  <dt><strong>Total:</strong></dt>
   <dd><%= @order.total_dollars %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:order_date) %>:</strong></dt>
+  <dt><strong>Order Date:</strong></dt>
   <dd><%= @order.created_date %> @ <%= @order.created_time %></dd>
   <% if !@order.pending? %>
-    <dt><strong><%= model_class.human_attribute_name(:updated_date) %>:</strong></dt>
+    <dt><strong>Updated Date:</strong></dt>
     <dd><%= @order.updated_date %> @ <%= @order.updated_time %></dd>
   <% end %>
 </dl>
 
 <div class="form-actions">
   <% if @order.pending? %>
-    <%= link_to t('.edit', :default => t("Cancel")),
-      order_cancel_path(@order),
-      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+    <%= link_to 'Cancel', order_cancel_path(@order),
+      :data => { :confirm => 'Are you sure?' },
       :class => 'btn btn-mini btn-danger' %>
   <% end %>
 </div>

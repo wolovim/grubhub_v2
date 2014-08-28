@@ -1,5 +1,16 @@
 <h1>CHECKOUT PAGE!</h1>
-<%= @order.errors.full_messages %>
+
+<% if @order.errors.any? %>
+  <div id="error-explanation">
+    <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+    <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <!-- Show cart items summary -->
 <div class="row">
@@ -62,12 +73,12 @@
       <div class="input-group">
         <span class="input-group-addon">
           <label class="radio-inline">
-            <input type="radio" name="paymentMethod" id="cash-radio" value="cash"> Cash
+            <%= f.radio_button :payment_type, :cash %> Cash
           </label>
         </span>
         <span class="input-group-addon">
           <label class="radio-inline">
-            <input type="radio" name="paymentMethod" id="credit-radio" value="credit"> Credit Card
+            <%= f.radio_button :payment_type, :credit %> Credit Card
           </label>
         </span>
       </div><!-- /input-group -->

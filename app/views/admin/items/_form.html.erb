@@ -6,7 +6,6 @@
   <%= f.file_field :image %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                admin_items_path, :class => 'btn' %>
+    <%= link_to 'Cancel', admin_items_path, :class => 'btn' %>
   </div>
 <% end %>
