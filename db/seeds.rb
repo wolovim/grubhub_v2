@@ -43,19 +43,33 @@ Item.create( title: "The Harvard", price: 620,
   description: "Has read more books than you.", category_ids: ["4"])
 
 # USERS
-User.create(first_name: "Rachel", last_name: "Warbelow", email: "demo+rachel@jumpstartlab.com",
+rachel = User.create(first_name: "Rachel", last_name: "Warbelow", email: "demo+rachel@jumpstartlab.com",
   password: "password", password_confirmation: "password", role: :default)
-User.create(first_name: "Jeff", last_name: "Casimir", email: "demo+jeff@jumpstartlab.com",
+jeff = User.create(first_name: "Jeff", last_name: "Casimir", email: "demo+jeff@jumpstartlab.com",
   password: "password", password_confirmation: "password", role: :default, nickname: 'j3')
-User.create(first_name: "Jorge", last_name: "Tellez", email: "demo+jorge@jumpstartlab.com",
+jorge = User.create(first_name: "Jorge", last_name: "Tellez", email: "demo+jorge@jumpstartlab.com",
   password: "password", password_confirmation: "password", role: :default, nickname: 'novohispano')
-User.create(first_name: "Josh", last_name: "Cheek", email: "demo+josh@jumpstartlab.com",
+josh = User.create(first_name: "Josh", last_name: "Cheek", email: "demo+josh@jumpstartlab.com",
   password: "password", password_confirmation: "password", role: :admin, nickname: 'josh')
-User.create(first_name: "Joe", last_name: "Shmoe", email: "yourdad@aol.com",
-  password: "password", password_confirmation: "password", role: :default, nickname: 'DudeGuy')
-User.create(first_name: "Barbra", last_name: "Streisand", email: "yourmom@aol.com",
-  password: "password", password_confirmation: "password", role: :admin, nickname: 'Barb')
 
+rachel_address1 = Address.create(street: '1510 Blake St', city: 'Denver', state: 'CO', zip: '80205', user: rachel)
+rachel_address2 = Address.create(street: '198 Araphoe St', city: 'Denver', state: 'CO', zip: '80205', user: rachel)
+jeff_address1 = Address.create(street: '3273 Lawrence St', city: 'Denver', state: 'CO', zip: '80205', user: jeff)
+jeff_address2 = Address.create(street: '98 California St', city: 'Denver', state: 'CO', zip: '80205', user: jeff)
+rachel_address3 = Address.create(street: '101 Stout St', city: 'Denver', state: 'CO', zip: '80205', user: rachel)
+jorge_address = Address.create(street: '23 Colfax Ave', city: 'Denver', state: 'CO', zip: '80205', user: jorge)
+
+#ORDERS
+Order.create(user: rachel, order_type: 'delivery', payment_type: 'cash', address: rachel_address1, status: "ordered")
+Order.create(user: rachel, order_type: 'delivery', payment_type: 'credit', address: rachel_address2, status: "ordered")
+Order.create(user: jeff, order_type: 'delivery', payment_type: 'credit', address: jeff_address1, status: "ordered")
+Order.create(user: jeff, order_type: 'delivery', payment_type: 'credit', address: jeff_address1, status: "ordered")
+Order.create(user: jeff, order_type: 'delivery', payment_type: 'cash', address: jeff_address1, status: "cancelled")
+Order.create(user: jorge, order_type: 'delivery', payment_type: 'cash', address: jorge_address, status: "cancelled")
+Order.create(user: jorge, order_type: 'delivery', payment_type: 'cash', address: jorge_address, status: "paid")
+Order.create(user: jorge, order_type: 'pickup', payment_type: 'cash', address: jorge_address, status: "completed")
+Order.create(user: jorge, order_type: 'pickup', payment_type: 'cash', address: jorge_address, status: "ordered")
+Order.create(user: jorge, order_type: 'pickup', payment_type: 'cash', address: jorge_address, status: "paid")
 
 
 ##ORDER ITEMS
@@ -113,29 +127,3 @@ OrderItem.create(item_id: 2,
   order_id: 12, quantity: 5, unit_price: 8000)
 OrderItem.create(item_id: 3,
   order_id: 14, quantity: 6, unit_price: 1000)
-
-#ORDERS
-Order.create(user_id: 1, order_type: 'delivery', payment_type: 'cash', address_id: 1, status: "ordered")
-Order.create(user_id: 2, order_type: 'delivery', payment_type: 'credit', address_id: 2, status: "ordered")
-Order.create(user_id: 2, order_type: 'delivery', payment_type: 'credit', address_id: 2, status: "ordered")
-Order.create(user_id: 5, order_type: 'delivery', payment_type: 'credit', address_id: 2, status: "ordered")
-Order.create(user_id: 2, order_type: 'delivery', payment_type: 'credit', address_id: 2, status: "ordered")
-Order.create(user_id: 3, order_type: 'delivery', payment_type: 'cash', address_id: 3, status: "cancelled")
-Order.create(user_id: 4, order_type: 'delivery', payment_type: 'cash', address_id: 4, status: "cancelled")
-Order.create(user_id: 5, order_type: 'delivery', payment_type: 'cash', address_id: 5, status: "paid")
-Order.create(user_id: 3, order_type: 'delivery', payment_type: 'credit', address_id: 6, status: "paid")
-Order.create(user_id: 5, order_type: 'pickup', payment_type: 'cash', address_id: 7, status: "completed")
-Order.create(user_id: 5, order_type: 'pickup', payment_type: 'credit', address_id: 8, status: "completed")
-Order.create(user_id: 2, order_type: 'pickup', payment_type: 'cash', address_id: 9, status: "ordered")
-Order.create(user_id: 3, order_type: 'pickup', payment_type: 'cash', address_id: 10, status: "paid")
-
-Address.create(street: '1510 Blake St', city: 'Denver', state: 'CO', zip: '80205', user_id: 2)
-Address.create(street: '198 Araphoe St', city: 'Denver', state: 'CO', zip: '80205', user_id: 2)
-Address.create(street: '3273 Lawrence St', city: 'Denver', state: 'CO', zip: '80205', user_id: 3)
-Address.create(street: '98 California St', city: 'Denver', state: 'CO', zip: '80205', user_id: 4)
-Address.create(street: '101 Stout St', city: 'Denver', state: 'CO', zip: '80205', user_id: 5)
-Address.create(street: '23 Colfax Ave', city: 'Denver', state: 'CO', zip: '80205', user_id: 6)
-Address.create(street: '52 Park Ave', city: 'Denver', state: 'CO', zip: '80205', user_id: 7)
-Address.create(street: '982 Curtis St', city: 'Denver', state: 'CO', zip: '80205', user_id: 9)
-Address.create(street: '29 Wynkoop', city: 'Denver', state: 'CO', zip: '80205', user_id: 8)
-Address.create(street: '10 Wewatta', city: 'Denver', state: 'CO', zip: '80205', user_id: 3)
