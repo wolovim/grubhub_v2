@@ -16,12 +16,12 @@ class OrdersController < ApplicationController
   end
 
   def new
-    if Cart.new(session).empty?
+    if current_cart.empty?
       redirect_to cart_path, notice: 'Your cart is empty.'
     else
       @order = Order.new
       @order.address = Address.new
-      @items = Item.where(id: session[:cart].keys).decorate
+      @items = Item.where(id: current_cart.keys).decorate
       @addresses = current_user.addresses.decorate
     end
   end
@@ -31,6 +31,7 @@ class OrdersController < ApplicationController
 
     if @order.save
       current_cart.clear
+      CartSession.new(session).clear
       flash[:success] = 'Your order has been received.'
       redirect_to order_path(@order)
     else

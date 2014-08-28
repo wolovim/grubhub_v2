@@ -9,7 +9,16 @@ class ApplicationController < ActionController::Base
   end
 
   def current_cart
-    Cart.new(session)
+    if current_user
+      items = session[:cart] || {}
+      cart = Cart.find_by(user: current_user) || Cart.new(user: current_user)
+      cart.items ||= "{}"
+      cart.items = items.to_json unless items.empty?
+      cart.save
+      @cart ||= cart
+    else
+      @cart ||= CartSession.new(session)
+    end
   end
 
   def is_admin?

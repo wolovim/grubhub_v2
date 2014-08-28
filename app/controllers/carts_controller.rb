@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   def show
-    @items = Item.where(id: session[:cart].keys).decorate
+    @items = Item.where(id: current_cart.keys).decorate
   end
 
   def update
@@ -9,6 +9,7 @@ class CartsController < ApplicationController
 
     if item = Item.find_by(id: item_id, enabled: true)
       current_cart.store(item_id, quantity)
+      current_cart.save
 
       if current_cart.quantity(item_id) > 0
         if current_cart.new?(item_id)

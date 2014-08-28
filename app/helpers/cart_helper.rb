@@ -1,14 +1,11 @@
 module CartHelper
   def calculate_total
-    total = current_cart.cart.inject(0) do |sum, (id, quantity)|
-      item = Item.find(id)
-      sum += item_subtotal_raw(item.id, item.price)
-    end
+    total = current_cart.total
     price_in_dollars(total)
   end
 
   def cart_count
-    current_cart.cart.inject(0) { |sum, (_, x)| sum + x }
+    current_cart.count
   end
   
   def item_quantity(item_id)

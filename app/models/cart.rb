@@ -1,54 +1,19 @@
-class Cart
-  attr_reader :cart, :new_items
+class Cart < ActiveRecord::Base
+  include CartMethods
 
-  def initialize(session)
-    session[:cart] ||= {}
-    @cart = session[:cart]
-    @new_items = []
+  belongs_to :user
+  before_save :store_items
+
+  def cart
+    @cart ||= JSON.parse(items)
   end
 
-  def empty?
-    cart.empty?
-  end
-
-  def store(item_id, amount)
-    item_id = item_id.to_s
-
-    new_items << item_id unless exists?(item_id)
-    cart.store(item_id, quantity(item_id) + amount)
-
-    if quantity(item_id) <= 0
-      delete(item_id)
-    end
-  end
-
-  def quantity(item_id)
-    cart.fetch(item_id.to_s, 0)
-  end
-
-  def delete(item_id)
-    cart.delete(item_id.to_s)
-  end
-
-  def new?(item_id)
-    new_items.any? { |x| x == item_id.to_s }
-  end
-
-  def exists?(item_id)
-    cart.has_key?(item_id.to_s)
-  end
-
-  def keys
-    cart.keys
-  end
-
-  def each
-    if block_given?
-      cart.each { |x| yield(x) }
-    end
+  def store_items
+    self.items = cart.to_json
   end
 
   def clear
     cart.clear
+    save
   end
 end
