@@ -16,10 +16,14 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new
-    @order.address = Address.new
-    @items = Item.where(id: session[:cart].keys).decorate
-    @addresses = current_user.addresses.decorate
+    if Cart.new(session).empty?
+      redirect_to cart_path, notice: 'Your cart is empty.'
+    else
+      @order = Order.new
+      @order.address = Address.new
+      @items = Item.where(id: session[:cart].keys).decorate
+      @addresses = current_user.addresses.decorate
+    end
   end
 
   def create

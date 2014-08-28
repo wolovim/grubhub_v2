@@ -8,16 +8,15 @@ class CartsController < ApplicationController
     quantity = params[:cart][:quantity].to_i
 
     if item = Item.find_by(id: item_id, enabled: true)
-      current_quantity = current_cart[item_id] || 0
-      current_cart.store(item_id, current_quantity + quantity)
-      if current_quantity + quantity > 0
-        if current_quantity == 0
+      current_cart.store(item_id, quantity)
+
+      if current_cart.quantity(item_id) > 0
+        if current_cart.new?(item_id)
           flash[:success] = 'Added to your cart. (You can afford that?)'
         else
           flash[:success] = 'Updated quantity for item.'
         end
       else
-        current_cart.delete(item_id)
         flash[:success] = "'#{item.title}' has been removed from your cart."
         redirect_to cart_path
         return
@@ -31,7 +30,8 @@ class CartsController < ApplicationController
 
   def destroy
     item = Item.find_by(id: params[:cart][:item_id])
-    current_cart.delete(params[:cart][:item_id])
+    current_cart.delete(item.id)
+
     flash[:success] = "'#{item.title}' has been removed from your cart."
     redirect_to cart_path
   end

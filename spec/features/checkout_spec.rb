@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 describe 'Checking out', type: :feature do
+  context 'with an empty cart' do
+    it 'sees an error message' do
+      register
+      login
+      visit new_order_path
+      expect(page).to have_content 'Your cart is empty.'
+    end
+  end
+
   context 'with a populated cart' do
     before(:each) do
       category = Category.create(name: 'Donuts')

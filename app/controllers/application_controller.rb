@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_cart
-    session[:cart] ||= {}
+    Cart.new(session)
   end
 
   def is_admin?
