@@ -38,6 +38,7 @@ group :test do
   gem 'simplecov', require: false
   gem 'nyan-cat-formatter'
   gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 gem 'simple_form'

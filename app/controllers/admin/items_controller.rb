@@ -22,14 +22,13 @@ class Admin::ItemsController < AdminController
 	end
 
 	def edit
-		@item = Item.find(params[:id])
+    @item = Item.find(params[:id]).decorate
     @categories = Category.all
 	end
 
 	def update
-		@item = Item.find(params[:id])
-		new_params = update_item_params(item_params)
-		if @item.update(new_params)
+    @item = Item.find(params[:id]).decorate
+		if @item.update(item_params)
 			redirect_to admin_items_path
 		else
 			render :edit
@@ -64,10 +63,11 @@ class Admin::ItemsController < AdminController
 	private
 
 	def item_params
-		params.require(:item).permit(:title, :description, :price, :image)
+		safe_params = params.require(:item).permit(:title, :description, :price, :image)
+    update_params(safe_params)
 	end
 
-	def update_item_params(params)
+	def update_params(params)
 		params[:price] = (params[:price].to_d * 100).to_i
 		params
 	end

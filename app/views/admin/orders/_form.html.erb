@@ -4,7 +4,7 @@
   <%= simple_form_for order_item, url: admin_order_item_path(order_item) do |f| %>
     <br/>
     <%= f.input :quantity %>
-    <%= f.input :unit_price, :input_html => { :value => order_item.unit_price_decimal }, as: :decimal %><br/>
+    <%= f.input :unit_price, input_html: { value: order_item.unit_price_decimal }, as: :decimal %><br/>
     <%= f.button :submit, :class => 'btn-primary' %>
     <br/><br/>
     <%= link_to t('.edit', :default => t("Remove")),
