@@ -10,44 +10,52 @@
         <th>Subtotal</th>
         <th>Remove?</th>
       </tr>
-      <% @items.each do |item| %>
+      <% if @items.any? %>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.title %></td>
+            <td class="quantity">
+              <div class="quantity-buttons">
+                <%= form_for(:cart, url: cart_path, method: :patch, html: { class: 'decrement quantity-button' }) do |f| %>
+                  <%= f.hidden_field :item_id, value: item.id, class: "inline" %>
+                  <%= f.hidden_field :quantity, value: -1, class: "inline" %>
+                  <%= f.submit '-', class: "btn btn-default inline" %>
+                <% end %>
+                <span class="quantity-button">
+                  <%= item_quantity(item.id) %>
+                </span>              
+                <%= form_for(:cart, url: cart_path, method: :patch, html: { class: 'increment quantity-button' }) do |f| %>
+                  <%= f.hidden_field :item_id, value: item.id, class: "inline" %>
+                  <%= f.hidden_field :quantity, value: 1, class: "inline" %>
+                  <%= f.submit '+', class: "btn btn-default inline" %>
+                <% end %>
+              </div>
+            </td>
+            <td><%= item.unit_price_dollars %></td>
+            <td><%= item_subtotal(item.id, item.price) %></td>
+            <td>
+              <%= form_for(:cart, url: cart_path, method: :delete) do |f| %>
+                <%= f.hidden_field :item_id, value: item.id %>
+                <%= f.submit "Remove", class: "btn btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
         <tr>
-          <td><%= item.title %></td>
-          <td class="quantity">
-            <div class="quantity-buttons">
-              <%= form_for(:cart, url: cart_path, method: :patch, html: { class: 'decrement quantity-button' }) do |f| %>
-                <%= f.hidden_field :item_id, value: item.id, class: "inline" %>
-                <%= f.hidden_field :quantity, value: -1, class: "inline" %>
-                <%= f.submit '-', class: "btn btn-default inline" %>
-              <% end %>
-              <span class="quantity-button">
-                <%= item_quantity(item.id) %>
-              </span>              
-              <%= form_for(:cart, url: cart_path, method: :patch, html: { class: 'increment quantity-button' }) do |f| %>
-                <%= f.hidden_field :item_id, value: item.id, class: "inline" %>
-                <%= f.hidden_field :quantity, value: 1, class: "inline" %>
-                <%= f.submit '+', class: "btn btn-default inline" %>
-              <% end %>
-            </div>
-          </td>
-          <td><%= item.unit_price_dollars %></td>
-          <td><%= item_subtotal(item.id, item.price) %></td>
-          <td>
-            <%= form_for(:cart, url: cart_path, method: :delete) do |f| %>
-              <%= f.hidden_field :item_id, value: item.id %>
-              <%= f.submit "Remove", class: "btn btn-danger" %>
-            <% end %>
-          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><span id="cart-total"><%= calculate_total %> TOTAL</span></td>
+          <td></td>
+        </tr>
+      <% else %>
+        <tr>
+          <td colspan="5" style="text-align:center;">Your cart is empty.</td>
         </tr>
       <% end %>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><span id="cart-total"><%= calculate_total %> TOTAL</span></td>
-        <td></td>
-      </tr>
     </table>
-    <div id="checkout-button"><%= link_to "Checkout", new_order_path, class: 'btn btn-success center' %></div>
+    <% if @items.any? %>
+      <div id="checkout-button"><%= link_to "Checkout", new_order_path, class: 'btn btn-success center' %></div>
+    <% end %>
   </div>
 </div>
