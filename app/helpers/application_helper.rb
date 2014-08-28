@@ -16,6 +16,6 @@ module ApplicationHelper
 	end
 
 	def display_name(user)
-		user.nickname ? user.nickname : user.first_name
+		user.nickname.length > 0 ? user.nickname : user.first_name
 	end
 end
