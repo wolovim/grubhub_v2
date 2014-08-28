@@ -1,4 +1,6 @@
 class ItemDecorator < Draper::Decorator
+  decorates_association :categories
+
   delegate_all
 
   def display_categories

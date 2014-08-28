@@ -168,9 +168,10 @@ describe 'when viewing the items' do
 		end
 
 		it 'has can delete a category from item' do
-			category = Category.create(id: 27, name: 'Test Category')
-			item = Item.create(id: 17, title: "OMG Donut", description: "Just like, wow.", price: 1800)
-			item_cateogry = ItemCategory.create(item_id: 17, category_id: 27)
+			category = Category.create(name: 'Test Category')
+			item = Item.create(title: "OMG Donut", description: "Just like, wow.", price: 1800)
+			ItemCategory.create(item: item, category: category)
+
 			visit edit_admin_item_path(item)
 			expect(page).to have_content "Test Category"
 			click_link "Delete"
@@ -178,9 +179,10 @@ describe 'when viewing the items' do
 		end
 
 		it 'can add a category to an item' do
-			Category.create(id: 27, name: 'Test Category')
-			Category.create(id: 28, name: 'Testy Cat')
-			Category.create(id: 29, name: 'Tasty')
+			Category.create(name: 'Test Category')
+			Category.create(name: 'Testy Cat')
+			Category.create(name: 'Tasty')
+
 			visit edit_admin_item_path(item)
 			expect(page).to_not have_content 'Delete'
 			click_link "Tasty"
