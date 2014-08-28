@@ -156,7 +156,7 @@ describe 'user experience' do
       user = User.find(1)
       click_on 'Account'
       click_on 'Profile'
-      expect(current_path). to eq(user_path(user))
+      expect(current_path). to eq(account_path)
     end
 
     it 'can view date joined, first name, last name, email, and nickname' do
@@ -179,7 +179,7 @@ describe 'user experience' do
       fill_in 'Password', with: '123'
       fill_in 'Password confirmation', with: '123'
       click_on 'Update User'
-      expect(current_path).to eq(user_path(user))
+      expect(current_path).to eq(account_path)
       expect(page).not_to have_content('Nando')
       expect(page).to have_content('Carlos')
     end

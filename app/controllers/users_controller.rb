@@ -14,22 +14,22 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @user = User.find(params[:id]).decorate
-  end
+  #def edit
+  #  @user = current_user.decorate
+  #end
 
-  def show
-    @user = User.find(params[:id]).decorate
-  end
+  #def show
+  #  @user = current_user.decorate
+  #end
 
-  def update
-    @user = User.find(params[:id]).decorate
-    if @user.update(user_params)
-      redirect_to user_path(@user)
-    else
-      render :edit
-    end
-  end
+  #def update
+  #  @user = current_user.decorate
+  #  if @user.update(user_params)
+  #    redirect_to user_path(@user)
+  #  else
+  #    render :edit
+  #  end
+  #end
 
   private
 
