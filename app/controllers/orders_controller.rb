@@ -30,6 +30,7 @@ class OrdersController < ApplicationController
     @order = current_user.orders.new_with_items(merged_params, current_cart)
 
     if @order.save
+      current_cart.clear
       flash[:success] = 'Your order has been received.'
       redirect_to order_path(@order)
     else

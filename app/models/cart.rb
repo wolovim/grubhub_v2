@@ -47,4 +47,8 @@ class Cart
       cart.each { |x| yield(x) }
     end
   end
+
+  def clear
+    cart.clear
+  end
 end
