@@ -103,6 +103,7 @@ class Order < ActiveRecord::Base
         )
         update_attribute(:status, 'paid')
       rescue Stripe::CardError => e
+        errors.add :base, "There was a problem with your credit card."
         false
       end
     end
