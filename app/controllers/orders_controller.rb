@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
   end
 
   def cancel
-    @order = Order.find_by(params[:order_id], user: current_user)
+    @order = Order.find_by(id: params[:order_id], user: current_user)
 
     if @order
       @order.cancel
