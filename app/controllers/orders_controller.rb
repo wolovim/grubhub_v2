@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
+  before_filter :check_user
+
   def index
-    @orders = Order.current_orders(current_user).decorate
+    @orders = current_user.orders.decorate
   end
 
   def show
@@ -14,16 +16,11 @@ class OrdersController < ApplicationController
   end
 
   def new
-    if current_user
-      @order = Order.new
-      @order.address = Address.new
-      @items = Item.where(id: session[:cart].keys).decorate
-      @addresses = current_user.addresses.decorate
-		else
-			flash[:error] = "Please login or register to continue checkout"
-			redirect_to login_path
-		end
-	end
+    @order = Order.new
+    @order.address = Address.new
+    @items = Item.where(id: session[:cart].keys).decorate
+    @addresses = current_user.addresses.decorate
+  end
 
   def create
     @order = current_user.orders.new_with_items(merged_params, current_cart)
@@ -39,9 +36,14 @@ class OrdersController < ApplicationController
   end
 
   def cancel
-    @order = Order.find(params[:order_id])
-    @order.cancel
-    redirect_to orders_path
+    @order = Order.find_by(params[:order_id], user: current_user)
+
+    if @order
+      @order.cancel
+      redirect_to orders_path
+    else
+      not_found
+    end
   end
 
   private

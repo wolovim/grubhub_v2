@@ -11,6 +11,7 @@ class AccountsController < ApplicationController
 
   def update
     @user = current_user.decorate
+
     if @user.update(user_params)
       redirect_to account_path
     else
