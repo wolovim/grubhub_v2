@@ -2,11 +2,11 @@ class OrdersController < ApplicationController
   before_filter :check_user
 
   def index
-    @orders = current_user.orders.decorate
+    @orders = Order.current_orders(current_user).decorate
   end
 
   def show
-    @order = Order.find_by(id: params[:id], user: current_user)
+    @order = Order.includes([:order_items, :items]).find_by(id: params[:id], user: current_user)
 
     if @order
       @order = @order.decorate

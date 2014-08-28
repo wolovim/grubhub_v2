@@ -2,11 +2,15 @@ class Admin::OrdersController < AdminController
   before_action :check_admin, only: [:index]
 
 	def index
-    @orders = Order.all.decorate
+    @orders = Order.includes([:user, :order_items]).all.decorate
 	end
 
 	def show
-    @order = Order.find(params[:id]).decorate
+    @order = Order.includes([:items]).find(params[:id]).decorate
+	end
+
+	def edit
+    @order = Order.includes([:order_items, :items]).find(params[:id]).decorate
 	end
 
 	def ordered
@@ -27,10 +31,6 @@ class Admin::OrdersController < AdminController
 	def cancelled
     @orders = Order.cancelled.decorate
 		render :index
-	end
-
-	def edit
-    @order = Order.find(params[:id]).decorate
 	end
 
 	def update

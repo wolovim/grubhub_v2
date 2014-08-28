@@ -1,7 +1,6 @@
 class Admin::ItemsController < AdminController
 	def index
-    @items = Item.all.decorate
-		@categories = Category.all
+    @items = Item.includes(:categories).all.decorate
 	end
 
 	def show

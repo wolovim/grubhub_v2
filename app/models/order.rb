@@ -8,11 +8,12 @@ class Order < ActiveRecord::Base
   belongs_to :address
   accepts_nested_attributes_for :address, reject_if: :pickup_or_existing_address
 
-  scope :ordered, -> { where(status: 'ordered') }
-  scope :paid, -> { where(status: 'paid') }
-  scope :completed, -> { where(status: 'completed') }
-  scope :cancelled, -> { where(status: 'cancelled') }
-  scope :current_orders, ->(user) { where(user: user) }
+  scope :user_and_oi, -> { includes([:user, :order_items]) }
+  scope :ordered, -> { user_and_oi.where(status: 'ordered') }
+  scope :paid, -> { user_and_oi.where(status: 'paid') }
+  scope :completed, -> { user_and_oi.where(status: 'completed') }
+  scope :cancelled, -> { user_and_oi.where(status: 'cancelled') }
+  scope :current_orders, ->(user) { includes(:order_items).where(user: user) }
 
   def self.new_with_items(params, cart)
     order = new(params)
@@ -75,7 +76,7 @@ class Order < ActiveRecord::Base
 
   def total_wait_time
     # each paid order causes 4 min delay
-    num_paid = Order.all.select {|o| o.status == 'paid'}.count
+    num_paid = Order.paid.size
     # order is delayed by 10 minutes for each additional six items
     order_size_delay = items.count / 6
     # 12 mins is default wait time
