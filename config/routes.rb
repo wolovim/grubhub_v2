@@ -7,16 +7,14 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :items, only: [:show]
-  resources :categories
+  resources :categories, only: [:index]
   resources :order_items, only: [:destroy, :update]
   resources :users, only: [:new, :create]
   resource :account, only: [:show, :edit, :update]
   resource :cart, only: [:show, :update, :destroy]
 
-  resources :orders do
-    get '/update_status' => 'orders#update_status', as: :update_status
+  resources :orders, only: [:index, :new, :create, :show] do
     get '/cancel' => 'orders#cancel', as: :cancel
-    get '/remove_item/:item_id' => 'orders#remove_item', as: :remove_item
   end
 
   get '/ordered' => 'orders#ordered', as: :ordered
