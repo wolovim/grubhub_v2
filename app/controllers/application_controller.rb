@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def current_cart
     if current_user
       items = session[:cart] || {}
-      cart = Cart.find_by(user: current_user) || Cart.new(user: current_user)
+      cart = Cart.find_or_initialize_by(user: current_user)
       cart.items ||= "{}"
       cart.items = items.to_json unless items.empty?
       cart.save
