@@ -136,11 +136,12 @@
         <div class="checkout-dropdown">
           <div class="form-group">
             <label for="CardCardNumber">Credit Card Number</label>
-            <input type="text" class="form-control" placeholder="1111222233334444">
+            <input type="text" class="form-control" id="credit_card" data-stripe="number">
             <label for="ExpirationDate">Expiration Date</label>
-            <input type="text" class="form-control" placeholder="0117">
+            <input type="text" class="form-control" id="exp_month" data-stripe="exp-month">
+            <input type="text" class="form-control" id="exp_year" data-stripe="exp-year">
             <label for="CVV">CVV</label>
-            <input type="text" class="form-control" placeholder="123">
+            <input type="text" class="form-control" id="cvv" data-stripe="cvv">
           </div>
         </div><!-- /checkout-dropdown -->
       </div><!-- /#payment-selecetor -->

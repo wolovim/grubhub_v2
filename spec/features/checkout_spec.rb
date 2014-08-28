@@ -58,9 +58,15 @@ describe 'Checking out', type: :feature do
       end
 
       context 'paying with credit card' do
-        it 'can create a new order' do
+        it 'can create a new order', js: true do
           choose 'Pickup'
           choose 'Credit Card'
+
+          fill_in :credit_card, with: 4242424242424242
+          fill_in :exp_year, with: 2015
+          fill_in :exp_month, with: 2
+          fill_in :cvv, with: 123
+
           click_button 'Create Order'
 
           expect(page).to have_content 'Your order has been received.'
@@ -92,8 +98,6 @@ describe 'Checking out', type: :feature do
         end
 
         it 'can select an existing address' do
-          visit new_order_path
-
           choose 'Delivery'
           choose 'Select a saved address'
           select '123 Fake St. #307, Broomfield, CO 80021'
@@ -108,14 +112,22 @@ describe 'Checking out', type: :feature do
 
       context 'paying with credit card' do
         it 'can create a new order' do
-          skip # Credit cards are ignored right now.
-               # If we add Stripe, this needs to be changed.
+          skip
           choose 'Delivery'
+          choose 'Select a saved address'
+          select '123 Fake St. #307, Broomfield, CO 80021'
           choose 'Credit Card'
+
+          fill_in :credit_card, with: 4242424242424242
+          fill_in :exp_year, with: 2015
+          fill_in :exp_month, with: 2
+          fill_in :cvv, with: 123
+
           click_button 'Create Order'
 
           expect(page).to have_content 'Your order has been received.'
           expect(page).to have_content '$30.00'
+          expect(page).to have_content address
         end
       end
     end

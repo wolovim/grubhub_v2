@@ -92,6 +92,23 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def charge(token)
+    if payment_type == 'credit'
+      begin
+        charge = Stripe::Charge.create(
+          :amount => total, # amount in cents, again
+          :currency => "usd",
+          :card => token,
+          :description => user.email
+        )
+        update_attribute(:status, 'paid')
+      rescue Stripe::CardError => e
+        false
+      end
+    end
+    true
+  end
+
   private
 
   def reject_from_items(item_id)

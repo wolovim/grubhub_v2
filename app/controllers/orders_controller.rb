@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.orders.new_with_items(merged_params, current_cart)
 
-    if @order.save
+    if @order.charge(params[:stripeToken]) && @order.save
       current_cart.clear
       CartSession.new(session).clear
       flash[:success] = 'Your order has been received.'
