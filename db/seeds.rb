@@ -1,46 +1,42 @@
 # CATEGORIES
-Category.create(name: "Your Mom's Favorites")
+Category.create(name: "Mom's Favorites")
 Category.create(name: "Donut's of Lore")
-Category.create(name: "You Probably Can't Afford")
-Category.create(name: "These Donuts Are Above You")
-Category.create(name: "Donuts We Wont Sell You")
-Category.create(name: "Donuts We Wont Even Show You")
+Category.create(name: "Gluten Free")
+Category.create(name: "Classics")
+Category.create(name: "House Specialties")
+Category.create(name: "Extra Sprinkles")
 
 #ITEMS
 
-#Moms Favs
-Item.create( title: "The Mangler", price: 2400,
-  description: "One bite, all the mangles. Just like mom used to make.",
+Item.create( title: "Chocolate", price: 2400,
+  description: "Chocolate Fudge.",
   category_ids: ["1"])
-Item.create( title: "The Enola Gay", price: 500,
-  description: "Droppin' bombs in your mouth.",
+Item.create( title: "Glazed", price: 500,
+  description: "Lightly glazed.",
   category_ids: ["1", "4"])
-Item.create( title: "The BroNut", price: 19000,
-  description: "Comes with 5lbs of Whey Protien and a BowFlex.", category_ids: ["1"])
+Item.create( title: "Cinammon", price: 19000,
+  description: "Covered with cinammon and sugar.", category_ids: ["1"])
 
-#Lore
-Item.create( title: "Unicorn Bitty", price: 7500,
-  description: "Made from real bits of unicorn.", category_ids: ["2"])
+Item.create( title: "Strawberry Jam", price: 7500,
+  description: "Filled with strawberry jelly.", category_ids: ["2"])
 Item.create( title: "Sauron's Delight", price: 2500,
   description: "Only the fires of Mordor could digest this.", category_ids: ["2","5"])
 Item.create( title: "Chewybacca", price: 2500,
   description: "RRrRRGLRRr GLRrrrr rrrGHRR RrRRrr!", category_ids: ["2"])
 
-#Afford Expensive
-Item.create( title: "Diamond Mine", price: 177000,
-  description: "One diamond in every bite.", category_ids: ["3"])
-Item.create( title: "Lucky Louvre", price: 0,
-  description: "Made from priceless ground artifacts.", category_ids: ["3","5"])
-Item.create( title: "Benji Bite", price: 8910,
-  description: "$100 bills, ground into meal, fried to perfection.", category_ids: ["3"])
+Item.create( title: "Chocolate Chip", price: 177000,
+  description: "Covered with chocolate chips.", category_ids: ["3"])
+Item.create( title: "Blueberry Jam", price: 0,
+  description: "Filled with blueberry jelly.", category_ids: ["3","5"])
+Item.create( title: "Cotton Candy", price: 8910,
+  description: "Covered with cotton candy flavored icing.", category_ids: ["3"])
 
-#Above you
-Item.create( title: "Fronut", price: 980,
-  description: "Free afro pick with purchase.", category_ids: ["3", "4"])
+Item.create( title: "Frosted Chocolate", price: 980,
+  description: "Covered with chocolate icing.", category_ids: ["3", "4"])
 Item.create( title: "Gorgeous", price: 2500,
-  description: "Unlike your face.", category_ids: ["4"])
-Item.create( title: "The Harvard", price: 620,
-  description: "Has read more books than you.", category_ids: ["4"])
+  description: "Handcrafted to perfection.", category_ids: ["4"])
+Item.create( title: "Oreo", price: 620,
+  description: "Covered with crumbled Oreo cookies.", category_ids: ["4"])
 
 # USERS
 rachel = User.create(first_name: "Rachel", last_name: "Warbelow", email: "demo+rachel@jumpstartlab.com",
